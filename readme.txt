@@ -180,4 +180,5 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 3. Other page example 3
 4. Other page example 4
 5. Other page example 5
-6. WP Admin options
+6. Other page example 6
+7. WP Admin options
