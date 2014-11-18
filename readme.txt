@@ -8,8 +8,8 @@ Author URI: http://es.ilentheme.com
 Author: iLen
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.6
-Version: 2.8.2
+Stable tag: 2.8
+Version: 2.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 2.8.3 = 
+* Fixed Css in core.css
 = 2.8.2 = 
 * Change text in tab 'Productivity'
 * Update core <code>iLenFramework 1.6.6</code>

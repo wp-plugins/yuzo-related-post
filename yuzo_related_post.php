@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: Gets the related post on your blog with any design characteristics.
-Version: 2.8.2
+Version: 2.8.3
 Author: iLen
 Author URI: http://es.ilentheme.com
 */

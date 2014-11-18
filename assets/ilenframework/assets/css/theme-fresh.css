@@ -5,7 +5,7 @@
     last update: 28/10/2014
 */
 body{
-  background: inherit;
+  /*background: inherit;*/
 }
 a{}
 a:hover{text-decoration: none!important;}
@@ -19,7 +19,7 @@ a:hover{text-decoration: none!important;}
   width: 750px;
   /*box-shadow: 0px 0px 3px rgb(187, 187, 187)!important;*/
   margin-left: 5px;
-  background: transparent;
+  /*background: transparent;*/
   margin-top: 0;
 }
 
@@ -503,6 +503,48 @@ input[type="range"]::-webkit-slider-thumb {
   color: #444;
 }
 
+.ilenplugin-options footer a.ibtn:hover span i{
+  -webkit-animation: rotate_icons 2s infinite linear;
+  -moz-animation: rotate_icons 2s infinite linear;
+  -o-animation: rotate_icons 2s infinite linear;
+  animation: rotate_icons 2s infinite linear;
+}
+
+/*
+.ilenplugin-options{
+  -webkit-animation: reveal .5s ease;
+  -webkit-animation-fill-mode: end;
+}
+.ilenplugin-options #box_a{
+  -webkit-animation: reveal 1s ease;
+  -webkit-animation-fill-mode: end; 
+}
+.ilenplugin-options #box_b{
+  -webkit-animation: reveal 1.5s ease;
+  -webkit-animation-fill-mode: end; 
+}
+.ilenplugin-options #box_c{
+  -webkit-animation: reveal 2s ease;
+  -webkit-animation-fill-mode: end; 
+}
+.ilenplugin-options #box_d{
+  -webkit-animation: reveal .5s ease;
+  -webkit-animation-fill-mode: end; 
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -520,6 +562,9 @@ input[type="range"]::-webkit-slider-thumb {
 #wpwrap,#wpcontent{
     /*background: #fff;*/
 }
+.ilentheme-options{
+}
+
 .ilentheme-options h2,
 .ilentheme-options h2:before,
 .ilentheme-options h2:after{
@@ -1394,12 +1439,22 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
-.ilenplugin-options footer a.ibtn:hover span i{
+.ilentheme-options footer a.ibtn:hover span i,
+.ilentheme-options header a.ibtn:hover span i{
   -webkit-animation: rotate_icons 2s infinite linear;
   -moz-animation: rotate_icons 2s infinite linear;
   -o-animation: rotate_icons 2s infinite linear;
   animation: rotate_icons 2s infinite linear;
 }
+
+.ilentheme-options .postbox{
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);  
+}
+.ilentheme-options .select2-search-choice-close{
+  top: 3px;
+}
+
+
 
 /* ANIMATION */
 .spinInfinite{
@@ -1416,4 +1471,36 @@ input[type="range"]::-webkit-slider-thumb {
   to { 
     -webkit-transform: rotate(360deg);
   }
+}
+
+
+@-webkit-keyframes reveal {
+  0% {
+    -webkit-transform: translateY(100%);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: translateY(50%);
+    opacity: .2;
+  }
+  80% {
+    opacity: .4;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.ilentheme-options{
+  -webkit-animation: reveal 3s ease;
+  -webkit-animation-fill-mode: end;
+}
+.ilentheme-options #box_a{
+  -webkit-animation: reveal 4s ease;
+  -webkit-animation-fill-mode: end; 
+}
+.ilentheme-options #box_b{
+  -webkit-animation: reveal 5s ease;
+  -webkit-animation-fill-mode: end; 
 }
