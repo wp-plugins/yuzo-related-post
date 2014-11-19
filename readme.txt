@@ -176,11 +176,11 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Screenshots ==
-<h3>Thousands of websites are using this plugin.</h3>
 1. Show related post
-2. Other page example 2
-3. Other page example 3
-4. Other page example 4
-5. Other page example 5
-6. Other page example 6
-7. WP Admin options
+2. The fastest of all
+3. Other page example 2
+4. Other page example 3
+5. Other page example 4
+6. Other page example 5
+7. Other page example 6
+8. WP Admin options
