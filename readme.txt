@@ -49,6 +49,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 == Changelog ==
 = 3.0 = 
 <strong>Real changes</strong>
+
 * Styling change
   * NEW style added
   * NEW defaults
@@ -57,16 +58,12 @@ Gives shape and life to your post with 'Yuzo related post' ;)
   * Add option: Thumbnail Border Radio
   * Add option: Margin
   * Add option: Padding
-  * Choose effect
-    * Enlarge Related
-    * Zoom
-    * Shine
+  * Choose effect (Enlarge Related,Zoom,Shine)
   * Add option: Title color
   * Add option: Text color
   * Tab productivity update
 * Fixed Code
 * Update core <code>iLenFramework 1.7</code>
-
 = 2.8.3 = 
 * Fixed Css in core.css
 = 2.8.2 = 
