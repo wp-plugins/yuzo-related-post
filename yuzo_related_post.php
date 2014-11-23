@@ -3,13 +3,14 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: Gets the related post on your blog with any design characteristics.
-Version: 2.8.3
+Version: 3.0
 Author: iLen
 Author URI: http://es.ilentheme.com
 */
 if ( !class_exists('yuzo_related_post') ) {
+// get utils
+require_once '/assets/ilenframework/assets/lib/utils.php';
 require_once 'assets/functions/options.php';
-
 class yuzo_related_post extends yuzo_related_post_make{
 
   var $plugin_options = null;
@@ -109,7 +110,7 @@ class yuzo_related_post extends yuzo_related_post_make{
       }
         
       $_html = "";
-      $_html .= "<div class='yuzo_related_post'  data-version='{$this->parameter["version"]}'>";
+      $_html .= "<div class='yuzo_related_post style-$yuzo_options->style'  data-version='{$this->parameter["version"]}'>";
 
      if( $wp_query->post_count != 0 ){ // if have result in loop post
 
@@ -207,6 +208,45 @@ class yuzo_related_post extends yuzo_related_post_make{
       $my_array_views = array();
       if( have_posts() && $wp_query->post_count != 0 ){
 
+        // set transitions
+        $css_transitions = null;
+        if(  isset($yuzo_options->bg_color_hover_transitions) && $yuzo_options->bg_color_hover_transitions ){
+          $css_transitions = " -webkit-transition: background {$yuzo_options->bg_color_hover_transitions}s linear; -moz-transition: background {$yuzo_options->bg_color_hover_transitions}s linear; -o-transition: background {$yuzo_options->bg_color_hover_transitions}s linear; transition: background {$yuzo_options->bg_color_hover_transitions}s linear;";
+        }
+
+        // border radius
+        $css_border = null;
+        if( isset($yuzo_options->thumbnail_border_radius) && $yuzo_options->thumbnail_border_radius ){
+          $css_border = " border-radius: {$yuzo_options->thumbnail_border_radius}% ";
+
+          if(  $yuzo_options->thumbnail_border_radius == 50 ){
+            $css_border = " border-radius: {$yuzo_options->thumbnail_border_radius}%; margin:0 auto; width:".((int)$yuzo_options->height_image - 20)."px";
+          }
+        }
+
+        // margin related
+        $css_margin = null;
+        if( isset($yuzo_options->related_margin) && $yuzo_options->related_margin ){
+          $css_margin = " margin: {$yuzo_options->related_margin->top}px  {$yuzo_options->related_margin->right}px  {$yuzo_options->related_margin->bottom}px  {$yuzo_options->related_margin->left}px; ";
+        }
+
+        // padding related
+        $css_padding = null;
+        if( isset($yuzo_options->related_padding) && $yuzo_options->related_padding ){
+          $css_padding = " padding: {$yuzo_options->related_padding->top}px  {$yuzo_options->related_padding->right}px  {$yuzo_options->related_padding->bottom}px  {$yuzo_options->related_padding->left}px; ";
+        }
+
+        // effects visual
+        $css_effects = self::effects();
+        $css_shine_effect1="";
+        $css_shine_effect2="";
+        if( isset($yuzo_options->effect_related) && $yuzo_options->effect_related == 'shine' ){
+          $css_shine_effect1=" ilen_shine ";
+          $css_shine_effect2=" <span class='shine-effect'></span> ";
+        }
+
+ 
+        $count = 1;
         $_html .= "<div class='clearfix'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
         while ( have_posts() ) : the_post();
 
@@ -217,15 +257,19 @@ class yuzo_related_post extends yuzo_related_post_make{
             $bold_title = "font-weight:bold";
           }
           if( (int)$yuzo_options->text2_length > 0 ){
-            $text2_extract = '<span style="font-size:'.((int)$yuzo_options->font_size - 4).'px;" >'.IF_setHtml( self::yuzo_extract_title( strip_tags( get_the_content() ), (int)$yuzo_options->text2_length ) ).'</span>';
+            $text2_extract = '<span class="yuzo_text" style="font-size:'.((int)$yuzo_options->font_size - 4).'px;" >'.IF_setHtml( self::yuzo_extract_title( strip_tags( get_the_content() ), (int)$yuzo_options->text2_length ) ).'</span>';
           }
  
                 if( $yuzo_options->style == 1 ){
                     $image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
               $_html .= '
-              <div class="relatedthumb" style="width:'.((int)$yuzo_options->height_image +15).'px;float:left;overflow:hidden;">  
+              <div class="relatedthumb " style="width:'.((int)$yuzo_options->height_image + 15).'px;float:left;overflow:hidden;">  
+                  
                   <a rel="external" href="'.get_permalink().'">
-                            <div style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; "></div>
+                          <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;">
+                            '.$css_shine_effect2.'
+                            <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; '.$css_border.'"></div>
+                          </div>
                             <div>'.$my_array_views['top'].'</div>
                        <span style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';">'.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'</span>
                   '.$text2_extract .'
@@ -235,8 +279,12 @@ class yuzo_related_post extends yuzo_related_post_make{
               </div>';
               $style="<style>
                         .yuzo_related_post img{width:".((int)$yuzo_options->height_image + 10 )."px !important; height:{$yuzo_options->height_image}px !important;}
-                        .yuzo_related_post .relatedthumb{line-height:".((int)$yuzo_options->font_size +2 )."px;background:{$yuzo_options->bg_color} !important;}
-                        .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color_hover} !important}
+                        .yuzo_related_post .relatedthumb{line-height:".((int)$yuzo_options->font_size +2 )."px;background:{$yuzo_options->bg_color->color} !important;}
+                        .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;$css_transitions}
+                        .yuzo_related_post .relatedthumb a{color:{$yuzo_options->title_color};}
+                        .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                        .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
+                        $css_effects
                         </style>";
                     $script="<script>
                     jQuery(function() {
@@ -248,18 +296,52 @@ class yuzo_related_post extends yuzo_related_post_make{
                     $_html .= '
               <div class="relatedthumb yuzo-list"  >  
                   <a rel="external" href="'.get_permalink().'" class="image-list">
-                             <div style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; "></div>
+                  <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;">
+                            '.$css_shine_effect2.'
+                             <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; '.$css_border.' "></div>
+                  </div>
                   </a>
-                  <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'</a></h3>
+                  <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'  '.$my_array_views['bottom'].'</a></h3>
                         '.$text2_extract .'
-                        '.$my_array_views['bottom'].'
+                       
               </div>';
                     $style="<style>
-                .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color_hover} !important}
+                .yuzo_related_post .relatedthumb { background:{$yuzo_options->bg_color->color} !important;$css_transitions }
+                .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;}
+                .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                .yuzo_related_post .relatedthumb a{color:{$yuzo_options->title_color};}
+                .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
+                $css_effects
+                </style>";
+                    
+                }elseif( $yuzo_options->style == 3 ){
+                    //$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
+                    $_html .= '
+                    <div class="relatedthumb yuzo-list"  >  
+                        <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).' '.$my_array_views['bottom'].'</a>  </h3>
+                              '.$text2_extract .'
+                    </div>';
+                    $style="<style>
+                .yuzo_related_post .relatedthumb{background:{$yuzo_options->bg_color->color} !important;$css_transitions}
+                .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;$css_transitions}
+                .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
+                </style>";
+                    
+                }elseif( $yuzo_options->style == 4 ){
+                    //$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
+                    $_html .= '
+                    <div class="relatedthumb yuzo-list-color color-'.$count.'"  >  
+                        <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).' '.$my_array_views['bottom'].'</a>  </h3>
+                              '.$text2_extract .'
+                    </div>';
+                    $style="<style>
+                    .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                    .yuzo_related_post .relatedthumb a{color:{$yuzo_options->title_color};}
                 </style>";
                     
                 }
-
+                $count++;
         endwhile;
 
       }else{
@@ -278,60 +360,141 @@ class yuzo_related_post extends yuzo_related_post_make{
                );
         query_posts( $args ); 
         $_html .= "<div class='clearfix'>".IF_setHtml($yuzo_options->top_text)."</div>";
-          while ( have_posts() ) : the_post();
+          // set transitions
+        $css_transitions = null;
+        if(  isset($yuzo_options->bg_color_hover_transitions) && $yuzo_options->bg_color_hover_transitions ){
+          $css_transitions = " -webkit-transition: background {$yuzo_options->bg_color_hover_transitions}s linear; -moz-transition: background {$yuzo_options->bg_color_hover_transitions}s linear; -o-transition: background {$yuzo_options->bg_color_hover_transitions}s linear; transition: background {$yuzo_options->bg_color_hover_transitions}s linear;";
+        }
 
+        // border radius
+        $css_border = null;
+        if( isset($yuzo_options->thumbnail_border_radius) && $yuzo_options->thumbnail_border_radius ){
+          $css_border = " border-radius: {$yuzo_options->thumbnail_border_radius}% ";
 
-            $bold_title = "";
-            $text2_extract = "";
-            if($yuzo_options->title_bold=='1'){
-              $bold_title = "font-weight:bold";
-            }
-            if( (int)$yuzo_options->text2_length>0 ){
-              $text2_extract = '<span style="font-size:'.((int)$yuzo_options->font_size-4).'px;" >'.IF_setHtml( self::yuzo_extract_title( strip_tags( get_the_content() ), (int)$yuzo_options->text2_length ) ).'</span>';
-            }
-                
-                
-                    if( $yuzo_options->style == 1 ){
+          if(  $yuzo_options->thumbnail_border_radius == 50 ){
+            $css_border = " border-radius: {$yuzo_options->thumbnail_border_radius}%; margin:0 auto; width:".((int)$yuzo_options->height_image - 20)."px";
+          }
+        }
+
+        // margin related
+        $css_margin = null;
+        if( isset($yuzo_options->related_margin) && $yuzo_options->related_margin ){
+          $css_margin = " margin: {$yuzo_options->related_margin->top}px  {$yuzo_options->related_margin->right}px  {$yuzo_options->related_margin->bottom}px  {$yuzo_options->related_margin->left}px; ";
+        }
+
+        // padding related
+        $css_padding = null;
+        if( isset($yuzo_options->related_padding) && $yuzo_options->related_padding ){
+          $css_padding = " padding: {$yuzo_options->related_padding->top}px  {$yuzo_options->related_padding->right}px  {$yuzo_options->related_padding->bottom}px  {$yuzo_options->related_padding->left}px; ";
+        }
+
+        // effects visual
+        $css_effects = self::effects();
+        $css_shine_effect1="";
+        $css_shine_effect2="";
+        if( isset($yuzo_options->effect_related) && $yuzo_options->effect_related == 'shine' ){
+          $css_shine_effect1=" ilen_shine ";
+          $css_shine_effect2=" <span class='shine-effect'></span> ";
+        }
+
+ 
+        $count = 1;
+        $_html .= "<div class='clearfix'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
+        while ( have_posts() ) : the_post();
+
+          $my_array_views = self::getViewsPost_to_yuzo();
+          $bold_title = "";
+          $text2_extract = "";
+          if( $yuzo_options->title_bold =='1'){
+            $bold_title = "font-weight:bold";
+          }
+          if( (int)$yuzo_options->text2_length > 0 ){
+            $text2_extract = '<span class="yuzo_text" style="font-size:'.((int)$yuzo_options->font_size - 4).'px;" >'.IF_setHtml( self::yuzo_extract_title( strip_tags( get_the_content() ), (int)$yuzo_options->text2_length ) ).'</span>';
+          }
+ 
+                if( $yuzo_options->style == 1 ){
                     $image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
-                    $_html .= '
-                    <div class="relatedthumb" style="width:'.((int)$yuzo_options->height_image +15).'px;float:left;overflow:hidden;">  
-                        <a rel="external" href="'.get_permalink().'">
-                            <div style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px; background-size: cover;"></div>
-                            '.$my_array_views['top'].'
-                             <span style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'</span>
-                        '.$text2_extract .'
-                        '.$my_array_views['bottom'].'
-                        </a>  
-                    </div>';
-                    $style="<style>
-                                .yuzo_related_post img{width:".((int)$yuzo_options->height_image + 10 )."px !important; height:{$yuzo_options->height_image}px !important;}
-                                .yuzo_related_post .relatedthumb{line-height:".((int)$yuzo_options->font_size +2 )."px;background:{$yuzo_options->bg_color} !important;}
-                                .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color_hover} !important}
-                            </style>";
-                        $script="<script>
-                            jQuery(function() {
-                                jQuery('.yuzo_related_post').equalizer({ overflow : 'relatedthumb2' });
-                            });
-                            </script>";
+              $_html .= '
+              <div class="relatedthumb " style="width:'.((int)$yuzo_options->height_image + 15).'px;float:left;overflow:hidden;">  
+                  
+                  <a rel="external" href="'.get_permalink().'">
+                          <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;">
+                            '.$css_shine_effect2.'
+                            <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; '.$css_border.'"></div>
+                          </div>
+                            <div>'.$my_array_views['top'].'</div>
+                       <span style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';">'.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'</span>
+                  '.$text2_extract .'
+                  <div>'.$my_array_views['bottom'].'</div>
+                  </a>
+
+              </div>';
+              $style="<style>
+                        .yuzo_related_post img{width:".((int)$yuzo_options->height_image + 10 )."px !important; height:{$yuzo_options->height_image}px !important;}
+                        .yuzo_related_post .relatedthumb{line-height:".((int)$yuzo_options->font_size +2 )."px;background:{$yuzo_options->bg_color->color} !important;}
+                        .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;$css_transitions}
+                        .yuzo_related_post .relatedthumb a{color:{$yuzo_options->title_color};}
+                        .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                        .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
+                        $css_effects
+                        </style>";
+                    $script="<script>
+                    jQuery(function() {
+                      jQuery('.yuzo_related_post').equalizer({ overflow : 'relatedthumb2' });
+                    });
+                    </script>";
                 }elseif( $yuzo_options->style == 2 ){
                     $image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
                     $_html .= '
-                    <div class="relatedthumb yuzo-list"  >  
-                        <a rel="external" href="'.get_permalink().'" class="image-list">
-                             <div style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; "></div>
-                        </a>
-                        <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';">'.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'</a></h3>
+              <div class="relatedthumb yuzo-list"  >  
+                  <a rel="external" href="'.get_permalink().'" class="image-list">
+                  <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;">
+                            '.$css_shine_effect2.'
+                             <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; '.$css_border.' "></div>
+                  </div>
+                  </a>
+                  <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'  '.$my_array_views['bottom'].'</a></h3>
                         '.$text2_extract .'
-                        '.$my_array_views['bottom'].'
+                       
+              </div>';
+                    $style="<style>
+                .yuzo_related_post .relatedthumb { background:{$yuzo_options->bg_color->color} !important;$css_transitions }
+                .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;}
+                .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                .yuzo_related_post .relatedthumb a{color:{$yuzo_options->title_color};}
+                .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
+                $css_effects
+                </style>";
+                    
+                }elseif( $yuzo_options->style == 3 ){
+                    //$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
+                    $_html .= '
+                    <div class="relatedthumb yuzo-list"  >  
+                        <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).' '.$my_array_views['bottom'].'</a>  </h3>
+                              '.$text2_extract .'
                     </div>';
                     $style="<style>
-                        .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color_hover} !important}
-                    </style>";
+                .yuzo_related_post .relatedthumb{background:{$yuzo_options->bg_color->color} !important;$css_transitions}
+                .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;$css_transitions}
+                .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
+                </style>";
+                    
+                }elseif( $yuzo_options->style == 4 ){
+                    //$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
+                    $_html .= '
+                    <div class="relatedthumb yuzo-list-color color-'.$count.'"  >  
+                        <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).' '.$my_array_views['bottom'].'</a>  </h3>
+                              '.$text2_extract .'
+                    </div>';
+                    $style="<style>
+                    .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                    .yuzo_related_post .relatedthumb a{color:{$yuzo_options->title_color};}
+                </style>";
                     
                 }
-
-            
-          endwhile;
+                $count++;
+        endwhile;
  
           
         }
@@ -352,6 +515,10 @@ class yuzo_related_post extends yuzo_related_post_make{
 
     if( isset($_GET["page"]) &&  $_GET["page"] == $this->parameter["id_menu"] ){
         wp_enqueue_script( 'admin-js-'.$this->parameter["name_option"], plugins_url('/assets/js/admin.js',__FILE__), array( 'jquery' ), $this->parameter['version'], true );
+        // Register styles
+        wp_register_style( 'admin-css-'.$this->parameter["name_option"], plugins_url('/assets/css/admin.css',__FILE__),'all',$this->parameter['version'] );
+        // Enqueue styles
+        wp_enqueue_style( 'admin-css-'.$this->parameter["name_option"] );
     }
 
   }
@@ -383,6 +550,63 @@ function yuzo_extract_title(  $text = "",  $length = 30 ){
 }
 
 
+function effects(){
+
+   global $yuzo_options;
+
+   $css_effects = null;
+   if( isset( $yuzo_options->effect_related ) ){
+
+      if( $yuzo_options->effect_related == 'enlarge' ){
+        /* link: http://santyweb.blogspot.com/2011/06/css-agrandar-imagenes-o-texto-al-pasar.html */
+        $css_effects = ".yuzo_related_post .relatedthumb{
+display:block!important;
+-webkit-transition:-webkit-transform 0.3s ease-out;
+-moz-transition:-moz-transform 0.3s ease-out;
+-o-transition:-o-transform 0.3s ease-out;
+-ms-transition:-ms-transform 0.3s ease-out;
+transition:transform 0.3s ease-out;
+}
+.yuzo_related_post .relatedthumb:hover{
+-moz-transform: scale(1.1);
+-webkit-transform: scale(1.1);
+-o-transform: scale(1.1);
+-ms-transform: scale(1.1);
+transform: scale(1.1)
+}";
+      }elseif( $yuzo_options->effect_related == 'zoom_icon_link' ){
+        /* link: http://santyweb.blogspot.com/2011/06/css-agrandar-imagenes-o-texto-al-pasar.html */
+        $css_effects = ".yuzo_related_post .relatedthumb .yuzo-img{
+  -webkit-transition:all 0.3s ease-out;
+  -moz-transition:all 0.3s ease-out;
+  -o-transition:all 0.3s ease-out;
+  -ms-transition:all 0.3s ease-out;
+  transition:all 0.3s ease-out;
+}
+.yuzo_related_post .relatedthumb .yuzo-img-wrap{
+  overflow:hidden;
+  background: url(".$this->parameter['theme_imagen']."/link-overlay.png) no-repeat center;
+}
+.yuzo_related_post .relatedthumb:hover .yuzo-img {
+  opacity: 0.7;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}";
+      }
+      elseif( $yuzo_options->effect_related == 'shine' ){
+        $css_effects = ".yuzo_related_post .relatedthumb{}";
+      }
+
+
+      
+      
+   }
+
+
+   return $css_effects;
+
+
+}
 
 function hits( $content ="" ){
 
@@ -548,9 +772,9 @@ function getViewsPost_to_yuzo(){
       }*/
 
       if( $yuzo_options->show_in_related_post_position == 'show-views-top' ){
-        $meta_views_top = "<div class='yuzo_views_post yuzo_icon_views' style='font-size:".((int)$yuzo_options->font_size - 2)."px;'>$text_views $counts</div>";
+        $meta_views_top = "<div class='yuzo_views_post yuzo_icon_views yuzo_icon_views__top' style='font-size:".((int)$yuzo_options->font_size - 2)."px;'>$text_views $counts</div>";
       }elseif( $yuzo_options->show_in_related_post_position == 'show-views-bottom' ){
-        $meta_views_bottom = "<div class='yuzo_views_post yuzo_icon_views' style='font-size:".((int)$yuzo_options->font_size - 2)."px;'>$text_views $counts</div>";
+        $meta_views_bottom = "<div class='yuzo_views_post yuzo_icon_views yuzo_icon_views__bottom' style='font-size:".((int)$yuzo_options->font_size - 2)."px;'>$text_views $counts</div>";
       }
 
     }
@@ -571,8 +795,8 @@ function getViewsPost_to_yuzo(){
 
 ### Function: Calculate Post Views With WP_CACHE Enabled
 function wp_yuzo_postview_cache_count_enqueue() {
-  global $post;
 
+  global $post;
   
   if( !defined( 'WP_CACHE' ) || !WP_CACHE )
     return;

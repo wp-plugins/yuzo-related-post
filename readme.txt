@@ -8,8 +8,8 @@ Author URI: http://es.ilentheme.com
 Author: iLen
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.8
-Version: 2.8.3
+Stable tag: 2.8.3
+Version: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Gets the related post on your blog with any design characteristics.
 
 == Description ==
-<strong>Minimalist and Fast..!</strong>
+<h3>Minimalist, productive and Fast..!</h3>
 
 Displays related post your stories with different features of text and image size.
 
@@ -47,6 +47,26 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 3.0 = 
+#Real changes
+* Styling change
+  * NEW style added
+  * NEW defaults
+  * Background color and hover color inline
+  * Add option: Hover transitions
+  * Add option: Thumbnail Border Radio
+  * Add option: Margin
+  * Add option: Padding
+  * Choose effect:
+    * Enlarge Related
+    * Zoom
+    * Shine
+  * Add option: Title color
+  * Add option: Text color
+  * Tab productivity update
+* Fixed Code
+* Update core <code>iLenFramework 1.7</code>
+
 = 2.8.3 = 
 * Fixed Css in core.css
 = 2.8.2 = 

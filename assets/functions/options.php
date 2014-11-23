@@ -20,10 +20,6 @@ class yuzo_related_post_make{
         else
             self::parameters();
 
-
-        // get utils
-        require_once  ABSPATH.'/wp-content/plugins/'.$this->parameter['name_plugin_url']."/assets/ilenframework/assets/lib/utils.php";
-
     }
 
     function getHeaderPlugin(){
@@ -37,7 +33,7 @@ class yuzo_related_post_make{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'2.8.3',
+                                 'version'        =>'3.0',
                                  'url'            =>'',
                                  'logo'           =>'<i class="fa fa-bolt"></i>', // or image .jpg,png
                                  'logo_text'      =>'', // alt of image
@@ -129,17 +125,7 @@ class yuzo_related_post_make{
                                                                             'class' =>'',
                                                                             'row'   =>array('a','b')),
 
-                                                                    array(  'title' =>__('Thumbnail size',$this->parameter['name_option']),
-                                                                            'help'  =>__('Image size, recommended "Medium"',$this->parameter['name_option']),
-                                                                            'type'  =>'select',
-                                                                            'value' =>'medium',
-                                                                            'items' =>array('thumbnail'=>'Thumbnail','medium'=>'Medium'),
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'thumbnail_size',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'thumbnail_size',
-                                                                            'class' =>'',
-                                                                            'row'   =>array('a','b')),
-
-
+ 
                                                                      array(  'title' =>__('Related to',$this->parameter['name_option']),
                                                                             'help'  =>__('Related Post based',$this->parameter['name_option']),
                                                                             'type'  =>'select',
@@ -189,6 +175,46 @@ class yuzo_related_post_make{
 
                                             'options'    => array( 
 
+                                                                    array(  'title' =>__('Choose your style',$this->parameter['name_option']),
+                                                                            'help'  =>'Yuzo shows you 4 different styles to show related posts.',
+                                                                            'type'  =>'radio_image',
+                                                                            'value' =>1,
+                                                                            'items' =>array(    
+
+                                                                                                array('value'=>2,
+                                                                                                      'text' =>'Vertical',
+                                                                                                      'image'=>$this->parameter['theme_imagen'].'/2-.png'),
+
+                                                                                                array('value'=>1,
+                                                                                                      'text' =>'Horizontal',
+                                                                                                      'image'=>$this->parameter['theme_imagen'].'/1-.png'),
+
+                                                                                                array('value'=>3,
+                                                                                                      'text' =>'List',
+                                                                                                      'image'=>$this->parameter['theme_imagen'].'/3-.png'),
+
+                                                                                                array('value'=>4,
+                                                                                                      'text' =>'Experimental',
+                                                                                                      'image'=>$this->parameter['theme_imagen'].'/4-.png'),
+ 
+                                                                                            ),
+
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'style',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'style',
+                                                                            'class' =>'yuzo_style_chosse',
+                                                                            'row'   =>array('a','c')),
+
+
+                                                                    array(  'title' =>__('Thumbnail size',$this->parameter['name_option']),
+                                                                            'help'  =>__('Image size',$this->parameter['name_option']),
+                                                                            'type'  =>'select',
+                                                                            'value' =>'thumbnail',
+                                                                            'items' =>array('thumbnail'=>'Thumbnail','medium'=>'Medium'),
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'thumbnail_size',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'thumbnail_size',
+                                                                            'class' =>'',
+                                                                            'row'   =>array('a','b')),
+
                                                                     array(  'title' =>__('Height & Width image',$this->parameter['name_option']),
                                                                             'help'  =>__('in px',$this->parameter['name_option']),
                                                                             'type'  =>'text',
@@ -197,85 +223,62 @@ class yuzo_related_post_make{
                                                                             'name'  =>$this->parameter['name_option'].'_'.'height_image',
                                                                             'class' =>'',
                                                                             'row'   =>array('a','b')),
-
-
-                                                                    array(  'title' =>__('Font size',$this->parameter['name_option']),
-                                                                            'help'  =>__('Font size of title related',$this->parameter['name_option']),
-                                                                            'type'  =>'select',
-                                                                            'value' =>13,
-                                                                            'items' =>array(12=>'12',13=>'13',14=>'14',15=>'15',16=>'16',17=>'17',18=>'18',19=>'19',20=>'20'),
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'font_size',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'font_size',
-                                                                            'class' =>'',
-                                                                            'row'   =>array('a','b')),
-
-                                                                    array(  'title' =>__('Title length',$this->parameter['name_option']),
-                                                                            'help'  =>__('Number of characters to be shown in the title',$this->parameter['name_option']),
-                                                                            'type'  =>'text',
-                                                                            'value' =>'50',
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'text_length',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'text_length',
-                                                                            'class' =>'',
-                                                                            'row'   =>array('a','b')),
-
-                                                                    array(  'title' =>__('Title Bold:',$this->parameter['name_option']), //title section
-                                                                            'help'  =>'Title font weight',
-                                                                            'type'  =>'checkbox', //type input configuration
-                                                                            'value' =>'0', //value
-                                                                            'value_check'=>1,
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'title_bold', //id
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'title_bold', //name
-                                                                            'class' =>'', //class
-                                                                            'row'   =>array('a','b')),
-
-                                                                    array(  'title' =>__('Text length',$this->parameter['name_option']),
-                                                                            'help'  =>__('Number of text lettering post',$this->parameter['name_option']),
-                                                                            'type'  =>'text',
-                                                                            'value' =>'0',
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'text2_length',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'text2_length',
-                                                                            'class' =>'',
-                                                                            'row'   =>array('a','b')),
-
-
+ 
                                                                     array(  'title' =>__('Background Color',$this->parameter['name_option']),
-                                                                            'help'  =>'', 
-                                                                            'type'  =>'color', 
-                                                                            'value' =>'#FFF', // default
+                                                                            'help'  =>'Selected background color and mouse hover, you can also leave blank', 
+                                                                            'type'  =>'color_hover',
+                                                                            'value' =>array('color'=>'','hover'=>'#fcfcf4'),
                                                                             'id'    =>$this->parameter['name_option'].'_'.'bg_color',
                                                                             'name'  =>$this->parameter['name_option'].'_'.'bg_color', 
                                                                             'class' =>'', 
                                                                             'row'   =>array('a','b')),
 
-                                                                    array(  'title' =>__('Hover Background Color',$this->parameter['name_option']),
-                                                                            'help'  =>'', 
-                                                                            'type'  =>'color', 
-                                                                            'value' =>'#FFFFE6', // default
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'bg_color_hover',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'bg_color_hover', 
-                                                                            'class' =>'', 
-                                                                            'row'   =>array('a','b')),
-                                                                            
-                                                                            
-                                                                    array(  'title' =>__('Style',$this->parameter['name_option']),
-                                                                            'help'  =>'',
-                                                                            'type'  =>'radio_image',
-                                                                            'value' =>1,
-                                                                            'items' =>array(    array('value'=>1,
-                                                                                                      'text' =>'Horizontal',
-                                                                                                      'image'=>$this->parameter['theme_imagen'].'/horizontal1.jpg'),
-
-                                                                                                array('value'=>2,
-                                                                                                      'text' =>'Vertical',
-                                                                                                      'image'=>$this->parameter['theme_imagen'].'/vertical1.jpg'),
- 
-                                                                                            ),
-
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'style',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'style',
+                                                                    array(  'title' =>__('Hover transitions',$this->parameter['name_option']),
+                                                                            'help'  =>__('Effect transitions background when mouse over in related<br />You can enter values such as: 0.2, 0.5 , 0.8, 1, 1.5 , 2,3, etc..',$this->parameter['name_option']),
+                                                                            'type'  =>'text',
+                                                                            'value' =>'0.2',
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'bg_color_hover_transitions',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'bg_color_hover_transitions',
                                                                             'class' =>'',
                                                                             'row'   =>array('a','b')),
-                                                                            
+
+                                                                    array(  'title' =>__('Thumbnail Border Radio',$this->parameter['name_option']),
+                                                                            'help'  =>__('Select the percentage of border for the image (%)<br/> 0=square - 50=circle',$this->parameter['name_option']),
+                                                                            'type'  =>'range2',
+                                                                            'value' =>'',
+                                                                            'id'  =>$this->parameter['name_option']. '_'. 'thumbnail_border_radius',
+                                                                            'name'  =>$this->parameter['name_option']. '_'. 'thumbnail_border_radius',
+                                                                            'min' =>0,
+                                                                            'max' =>50,
+                                                                            'step'  =>1,
+                                                                            'value' =>0,
+                                                                            'class' =>'',
+                                                                            'color' => 1,
+                                                                            'row' => array('a','b')),
+
+                                                                    array(  'title' =>__('Margin',$this->parameter['name_option']),
+                                                                            'help'  =>__('Place the related margin on each post',$this->parameter['name_option']),
+                                                                            'type'  =>'input_4',
+                                                                            'value' =>array('top'=>0,'right'=>0,'bottom'=>0,'left'=>0),
+                                                                            'id'  =>$this->parameter['name_option']. '_'. 'related_margin',
+                                                                            'name'  =>$this->parameter['name_option']. '_'. 'related_margin',
+                                                                            'min' =>0,
+                                                                            'max' =>50,
+                                                                            'step'  =>1,
+                                                                            'class' =>'',
+                                                                            'row' =>array('a','b')),
+
+                                                                  array(    'title'         =>__('Padding',$this->parameter['name_option']),
+                                                                            'help'          =>__('Place the related padding on each post',$this->parameter['name_option']),
+                                                                            'type'          =>'input_4',
+                                                                            'value'         =>array('top'=>5,'right'=>5,'bottom'=>5,'left'=>5),
+                                                                            'id'            =>$this->parameter['name_option']. '_'. 'related_padding',
+                                                                            'name'          =>$this->parameter['name_option']. '_'. 'related_padding',
+                                                                            'min'           =>0,
+                                                                            'max'           =>50,
+                                                                            'step'          =>1,
+                                                                            'class'         =>'',
+                                                                            'row'           =>array('a','b')),
                                                                             
 
                                                                    ),
@@ -467,11 +470,101 @@ class yuzo_related_post_make{
                                                                                       <code>loop.php</code>,
                                                                                       <code>your-template.php</code> file anywhere you 
                                                                                       want and with the personalization you want since this function will get the number of visits this Post. <br /><br />
-                                                                                      <p  style="text-align:center"><strong style="font-weight:bold;">Possibly the best WordPress Related Post ;)</strong></p>',
+                                                                                      <div><p  style="text-align:center"><strong style="font-weight:bold;">Possibly the best WordPress Related Post ;)</strong></p><p style="text-align:center;maring:0 auto;"><span class="ilen_shine" style="display:inline-block;width:114px;height:51px;"><span class="shine-effect"></span><img  src="'.$this->parameter['theme_imagen'].'/wordpress-and-love.png" /></span></p></div>',
                                                                             'id'    =>$this->parameter['name_option'].'_'.'yuzo_get_views_html',
                                                                             'name'  =>$this->parameter['name_option'].'_'.'yuzo_get_views_html',
                                                                             'class' =>'yuzo_message_html',
                                                                             'row'   =>array('a','c')),
+ 
+                                                            )
+                                        ),
+                'i'=>array(                'title'      => __('Effect on related',$this->parameter['name_option']), 
+                                           'title_large'=> __('',$this->parameter['name_option']), 
+                                           'description'=> '',  
+                                           'icon'       => '',
+                                           'tab'        => 'tab02',
+
+                                            'options'    => array( 
+                                                                    array(  'title' =>__('Choose effect',$this->parameter['name_option']),
+                                                                            'help'  =>__('Yuzo has many visual effects with respect to the image when the mouse is over the related.',$this->parameter['name_option']),
+                                                                            'type'  =>'select',
+                                                                            'value' =>'none',
+                                                                            'items' =>array(
+                                                                                            'none'           =>__('None',$this->parameter['name_option']),
+                                                                                            'enlarge'        =>__('Enlarge related',$this->parameter['name_option']),
+                                                                                            'zoom_icon_link' =>__('Zoom + Icons link + Opacity',$this->parameter['name_option']),
+                                                                                            'shine'          =>__('Shine',$this->parameter['name_option']),
+                                                                                           ),
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'effect_related',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'effect_related',
+                                                                            'class' =>'',
+                                                                            'row'   =>array('a','b')),
+                                                          ),
+                ),
+                'h'=>array(                'title'      => __('Text',$this->parameter['name_option']), 
+                                           'title_large'=> __('',$this->parameter['name_option']), 
+                                           'description'=> '',  
+                                           'icon'       => '',
+                                           'tab'        => 'tab02',
+
+                                            'options'    => array( 
+
+
+                                                                    array(  'title' =>__('Font size',$this->parameter['name_option']),
+                                                                            'help'  =>__('Font size of title related',$this->parameter['name_option']),
+                                                                            'type'  =>'select',
+                                                                            'value' =>13,
+                                                                            'items' =>array(12=>'12',13=>'13',14=>'14',15=>'15',16=>'16',17=>'17',18=>'18',19=>'19',20=>'20'),
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'font_size',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'font_size',
+                                                                            'class' =>'',
+                                                                            'row'   =>array('a','b')),
+
+                                                                    array(  'title' =>__('Title length',$this->parameter['name_option']),
+                                                                            'help'  =>__('Number of characters to be shown in the title',$this->parameter['name_option']),
+                                                                            'type'  =>'text',
+                                                                            'value' =>'50',
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'text_length',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'text_length',
+                                                                            'class' =>'',
+                                                                            'row'   =>array('a','b')),
+
+                                                                    array(  'title' =>__('Title Bold:',$this->parameter['name_option']), //title section
+                                                                            'help'  =>'Title font weight',
+                                                                            'type'  =>'checkbox', //type input configuration
+                                                                            'value' =>'0', //value
+                                                                            'value_check'=>1,
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'title_bold', //id
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'title_bold', //name
+                                                                            'class' =>'', //class
+                                                                            'row'   =>array('a','b')),
+
+                                                                    array(  'title' =>__('Title color',$this->parameter['name_option']),
+                                                                            'help'  =>__('Selected title color, you can also leave blank',$this->parameter['name_option']),
+                                                                            'type'  =>'color',
+                                                                            'value' =>'',
+                                                                            'id'  =>$this->parameter['name_option']. '_'. 'title_color',
+                                                                            'name'  =>$this->parameter['name_option']. '_'. 'title_color',
+                                                                            'class' =>'',
+                                                                            'row' =>array('a','b')),
+
+                                                                    array(  'title' =>__('Text length',$this->parameter['name_option']),
+                                                                            'help'  =>__('Number of text lettering post',$this->parameter['name_option']),
+                                                                            'type'  =>'text',
+                                                                            'value' =>'0',
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'text2_length',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'text2_length',
+                                                                            'class' =>'',
+                                                                            'row'   =>array('a','b')),
+
+                                                                    array(  'title' =>__('Text color',$this->parameter['name_option']),
+                                                                            'help'  =>__('Selected text color, you can also leave blank',$this->parameter['name_option']),
+                                                                            'type'  =>'color',
+                                                                            'value' =>'#777777',
+                                                                            'id'  =>$this->parameter['name_option']. '_'. 'text_color',
+                                                                            'name'  =>$this->parameter['name_option']. '_'. 'text_color',
+                                                                            'class' =>'',
+                                                                            'row' =>array('a','b')),
  
                                                             )
                                         ),
