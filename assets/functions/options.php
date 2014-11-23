@@ -33,7 +33,7 @@ class yuzo_related_post_make{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'3.1.4',
+                                 'version'        =>'3.2',
                                  'url'            =>'',
                                  'logo'           =>'<i class="fa fa-bolt"></i>', // or image .jpg,png
                                  'logo_text'      =>'', // alt of image
@@ -350,6 +350,16 @@ class yuzo_related_post_make{
                                                                             'value_check'=>'1',
                                                                             'id'    =>$this->parameter['name_option'].'_'.'display_random',
                                                                             'name'  =>$this->parameter['name_option'].'_'.'display_random',
+                                                                            'class' =>'',
+                                                                            'row'   =>array('a','b')),
+
+                                                                    array(  'title' =>__('Do not display properly. JS conflicts',$this->parameter['name_option']), //title section
+                                                                            'help'  =>'If not well visualized Related Post Yuzo possibly has a conflict with some other plugin Javascript, you can enable this option to remove the Yuzo js. This plugin will work normally.', //descripcion section
+                                                                            'type'  =>'checkbox', 
+                                                                            'value' =>'0',
+                                                                            'value_check'=>'1',
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'yuzo_conflict',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'yuzo_conflict',
                                                                             'class' =>'',
                                                                             'row'   =>array('a','b')),
 

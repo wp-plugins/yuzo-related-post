@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: Gets the related post on your blog with any design characteristics.
-Version: 3.1.4
+Version: 3.2
 Author: iLen
 Author URI: http://es.ilentheme.com
 */
@@ -287,11 +287,14 @@ class yuzo_related_post extends yuzo_related_post_make{
                         .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
                         $css_effects
                         </style>";
-                    $script="<script>
-                    jQuery(function() {
-                      jQuery('.yuzo_related_post').equalizer({ overflow : 'relatedthumb2' });
-                    });
-                    </script>";
+
+                    if ( ! isset($yuzo_options->yuzo_conflict) || ! $yuzo_options->yuzo_conflict ) {
+                      $script="<script>
+                      jQuery(function() {
+                        jQuery('.yuzo_related_post').equalizer({ overflow : 'relatedthumb2' });
+                      });
+                      </script>";
+                    }
                 }elseif( $yuzo_options->style == 2 ){
                     $image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
                     $_html .= '
@@ -360,8 +363,9 @@ class yuzo_related_post extends yuzo_related_post_make{
                 'orderby'          => 'rand'
                );
         query_posts( $args ); 
-        $_html .= "<div class='yuzo_clearfixed'>".IF_setHtml($yuzo_options->top_text)."</div>";
-          // set transitions
+
+
+        // set transitions
         $css_transitions = null;
         if(  isset($yuzo_options->bg_color_hover_transitions) && $yuzo_options->bg_color_hover_transitions ){
           $css_transitions = " -webkit-transition: background {$yuzo_options->bg_color_hover_transitions}s linear; -moz-transition: background {$yuzo_options->bg_color_hover_transitions}s linear; -o-transition: background {$yuzo_options->bg_color_hover_transitions}s linear; transition: background {$yuzo_options->bg_color_hover_transitions}s linear;";
@@ -400,7 +404,9 @@ class yuzo_related_post extends yuzo_related_post_make{
 
  
         $count = 1;
-        $_html .= "<div class='yuzo_clearfixed'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
+        if( isset($yuzo_options->top_text) && $yuzo_options->top_text ){
+          $_html .= "<div class='yuzo_clearfixed'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
+        }
         while ( have_posts() ) : the_post();
 
           $my_array_views = self::getViewsPost_to_yuzo();
@@ -439,11 +445,14 @@ class yuzo_related_post extends yuzo_related_post_make{
                         .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
                         $css_effects
                         </style>";
-                    $script="<script>
-                    jQuery(function() {
-                      jQuery('.yuzo_related_post').equalizer({ overflow : 'relatedthumb2' });
-                    });
-                    </script>";
+
+                    if ( ! isset($yuzo_options->yuzo_conflict) || ! $yuzo_options->yuzo_conflict ) {
+                      $script="<script>
+                      jQuery(function() {
+                        jQuery('.yuzo_related_post').equalizer({ overflow : 'relatedthumb2' });
+                      });
+                      </script>";
+                    }
                 }elseif( $yuzo_options->style == 2 ){
                     $image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
                     $_html .= '
@@ -527,13 +536,16 @@ class yuzo_related_post extends yuzo_related_post_make{
 
   function script_and_style_front(){
 
+    global $yuzo_options;
+
     // Register styles
     wp_register_style( 'front-css-'.$this->parameter["name_option"], plugins_url('/assets/css/style.css',__FILE__),'all',$this->parameter['version'] );
     // Enqueue styles
     wp_enqueue_style( 'front-css-'.$this->parameter["name_option"] );
 
-
-    wp_enqueue_script( 'front-js-'.$this->parameter["name_option"], plugins_url('/assets/js/jquery.equalizer.js',__FILE__), array( 'jquery' ), '1.2.5', true );
+    if ( ! isset($yuzo_options->yuzo_conflict) || ! $yuzo_options->yuzo_conflict ) {
+      wp_enqueue_script( 'front-js-'.$this->parameter["name_option"], plugins_url('/assets/js/jquery.equalizer.js',__FILE__), array( 'jquery' ), '1.2.5', true );
+    }
 
   }
 

@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.0
 Tested up to: 4.0
 Stable tag: 2.8.3
-Version: 3.1.4
+Version: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 3.2 = 
+* Add option: Hover transitions 'Do not display properly. JS conflicts'
+If not well visualized Related Post Yuzo possibly has a conflict with some other plugin Javascript, you can enable this option to remove the Yuzo js. This plugin will work normally.
 = 3.1.4 = 
 * Fixed Title no show when no input in
 = 3.1.2 = 
