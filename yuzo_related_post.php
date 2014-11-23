@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: Gets the related post on your blog with any design characteristics.
-Version: 3.2
+Version: 3.3
 Author: iLen
 Author URI: http://es.ilentheme.com
 */
@@ -545,6 +545,16 @@ class yuzo_related_post extends yuzo_related_post_make{
 
     if ( ! isset($yuzo_options->yuzo_conflict) || ! $yuzo_options->yuzo_conflict ) {
       wp_enqueue_script( 'front-js-'.$this->parameter["name_option"], plugins_url('/assets/js/jquery.equalizer.js',__FILE__), array( 'jquery' ), '1.2.5', true );
+    }
+
+    // RTL!
+    if( is_rtl() ){
+
+      // Register styles
+      wp_register_style( 'front-css-rtl-'.$this->parameter["name_option"], plugins_url('/assets/css/rtl.css',__FILE__),'all',$this->parameter['version'] );
+      // Enqueue styles
+      wp_enqueue_style( 'front-css-rtl-'.$this->parameter["name_option"] );
+
     }
 
   }
