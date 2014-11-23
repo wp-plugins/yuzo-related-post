@@ -1,21 +1,27 @@
 Nuevos cambios en YUZO RELATED POST:
- ☐ Crear la posibilidad de crear 2 template de uso (en forma de layout)
+ ✔ Crear la posibilidad de crear 2 template de uso (en forma de layout) @done (14-11-23 02:17)
    mira este ejemplo: https://wordpress.org/plugins/seo-alrp/screenshots/ 
    https://s.w.org/plugins/seo-alrp/screenshot-4.jpg?r=1009711
 
+   --- ✄ -----------------------
+   **esto ya no va**
    Cada uno de los template tiene que tener su propia personalización, al menos eso
    es lo que pienso, no se si se pueda fucionar opciones y simplemente cada uno tiene
    su propio, pero tienes que hacer estas pruebas
 
-   *poner la opcion para poder ponerle border por cada related
-   *poner la opcion de manejar le padding margin por cada related
-   *poner la opcion de manejarlo de manera responsive
- ☐ Crear estadiscicas 
+   *poner la opcion para poder ponerle border por cada related 
+    --- ✄ -----------------------
+
+ ☐ Seo links 
+ ✔ poner la opcion de manejar le padding margin por cada related @done (14-11-23 02:15)
+ ☐ poner la opcion de manejarlo de manera responsive
+ ☐ Border shadow en los related con imagenes
+ ☐ Crear estadiscicas @low
    Cada vez que den un clic en el link tienes que mandarlo a un php que obtenga las 
    estadistias como el plugin de video, estos link en los related tienen que tener
    los nofollow porque sera unos link lamparas, los link reales tiene que estar
    escondidos alli por hay
- ☐ Crear link SEO
+ ☐ Crear link SEO @high
    Esto le permitira a la persona poner otros link en linea a linea y se mostraran
    ocultos con el rel="follow" algo asi lo que te mando hacer lo de calle7 para que
    google los considera mas
@@ -34,10 +40,10 @@ Nuevos cambios en YUZO RELATED POST:
      lo puede excluir de type post o de paginas
    ☐ -Efectos visuales
      A nive del hover image
- ☐ Efectos visiales
+ ✔ Efectos visiales @done (14-11-23 02:16)
    A nivel de los related post, recuerda que tienes variso ejemplos en tus notas y en
    codepen.io
- ☐ Navegación
+ ☐ Navegación @low
    Crear 2 tipos de navecación, posiblemente el que te aparece a los lados de la pagina
    seria uno y el otro podia ser ese que sale NEXT/PREV abajo de la noticia, esta opcion
    no estoy muy seguro pero podria ser buena
@@ -53,7 +59,8 @@ Nuevos cambios en YUZO RELATED POST:
    en las promociones, tambien se tiene que ver un reporte estadistico de los clic en esta
    promocion, sirve para promover otros blogs de manera gratis y si uno tener que ver en eso
  ☐ Dashboar with views
-   El dashboar se le debe agragar la columna de los views, lo interesante de esto es que debe
+   ✔ El dashboar se le debe agragar la columna de los views @done (14-11-23 02:17)
+   ☐ Colores segun las visitas @critical
    mostrar un fuego gris cuando es menos de 1000, cuando pase los 1000 un fuego amarillo suave
    cuando pase los 10 mil un fuego naranja, cuando pasa los 25 mil fuego rojo y mas de 50 mil 
    fuergo azul :D
