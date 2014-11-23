@@ -47,6 +47,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 3.1.2 = 
+* Fixed error faltal caused by a bad start route.
 = 3.1.1 = 
 * Fixed css core.css and theme-fresh.css (Problem Firefox)
 = 3.1 = 
