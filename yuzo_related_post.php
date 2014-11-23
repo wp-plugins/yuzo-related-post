@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: Gets the related post on your blog with any design characteristics.
-Version: 3.0
+Version: 3.1
 Author: iLen
 Author URI: http://es.ilentheme.com
 */
@@ -102,7 +102,6 @@ class yuzo_related_post extends yuzo_related_post_make{
 
         if( ! in_array( '-1',$yuzo_options->exclude_category ) ){    
           foreach ($yuzo_options->exclude_category as $ce_key => $ce_value) {
-            //$array_no_category[]="-{$ce_value}";
             $array_no_category[]=$ce_value;
           }
         }
@@ -561,11 +560,11 @@ function effects(){
         /* link: http://santyweb.blogspot.com/2011/06/css-agrandar-imagenes-o-texto-al-pasar.html */
         $css_effects = ".yuzo_related_post .relatedthumb{
 display:block!important;
--webkit-transition:-webkit-transform 0.3s ease-out;
--moz-transition:-moz-transform 0.3s ease-out;
--o-transition:-o-transform 0.3s ease-out;
--ms-transition:-ms-transform 0.3s ease-out;
-transition:transform 0.3s ease-out;
+-webkit-transition:-webkit-transform 0.3s ease-out!important;
+-moz-transition:-moz-transform 0.3s ease-out!important;
+-o-transition:-o-transform 0.3s ease-out!important;
+-ms-transition:-ms-transform 0.3s ease-out!important;
+transition:transform 0.3s ease-out!important;
 }
 .yuzo_related_post .relatedthumb:hover{
 -moz-transform: scale(1.1);

@@ -47,9 +47,10 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 3.1 = 
+* Fixed effect (Zoom)
 = 3.0 = 
 <strong>Real changes</strong>
-
 * Styling change
   * NEW style added
   * NEW defaults
