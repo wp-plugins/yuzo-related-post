@@ -12,10 +12,10 @@ Nuevos cambios en YUZO RELATED POST:
    *poner la opcion para poder ponerle border por cada related 
     --- ✄ -----------------------
 
- ☐ Seo links 
+ ☐ Seo links @empesado(23/11/2014 2:28:31)
  ✔ poner la opcion de manejar le padding margin por cada related @done (14-11-23 02:15)
  ☐ poner la opcion de manejarlo de manera responsive
- ☐ Border shadow en los related con imagenes
+ ☐ Border shadow en los related con imagenes (box-shadow: 2px 2px 4px rgba(116, 116, 116, 1)
  ☐ Crear estadiscicas @low
    Cada vez que den un clic en el link tienes que mandarlo a un php que obtenga las 
    estadistias como el plugin de video, estos link en los related tienen que tener
