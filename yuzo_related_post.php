@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: Gets the related post on your blog with any design characteristics.
-Version: 3.1.2
+Version: 3.1.3
 Author: iLen
 Author URI: http://es.ilentheme.com
 */
@@ -246,7 +246,7 @@ class yuzo_related_post extends yuzo_related_post_make{
 
  
         $count = 1;
-        $_html .= "<div class='clearfix'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
+        $_html .= "<div class='yuzo_clearfixed'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
         while ( have_posts() ) : the_post();
 
           $my_array_views = self::getViewsPost_to_yuzo();
@@ -358,7 +358,7 @@ class yuzo_related_post extends yuzo_related_post_make{
                 'orderby'          => 'rand'
                );
         query_posts( $args ); 
-        $_html .= "<div class='clearfix'>".IF_setHtml($yuzo_options->top_text)."</div>";
+        $_html .= "<div class='yuzo_clearfixed'>".IF_setHtml($yuzo_options->top_text)."</div>";
           // set transitions
         $css_transitions = null;
         if(  isset($yuzo_options->bg_color_hover_transitions) && $yuzo_options->bg_color_hover_transitions ){
@@ -398,7 +398,7 @@ class yuzo_related_post extends yuzo_related_post_make{
 
  
         $count = 1;
-        $_html .= "<div class='clearfix'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
+        $_html .= "<div class='yuzo_clearfixed'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
         while ( have_posts() ) : the_post();
 
           $my_array_views = self::getViewsPost_to_yuzo();

@@ -6,9 +6,10 @@
 	margin: 10px 0;
 
 }
-.yuzo_related_post .clearfix{
+.yuzo_related_post .yuzo_clearfixed{
 	clear: both;
   display: block;
+  margin: 5px 0;
 }
 .yuzo_related_post h3 {margin: 0 !important}
 .yuzo_related_post .relatedposts {margin: 0 0 20px 0; float: left; font-size: 12px;}  
