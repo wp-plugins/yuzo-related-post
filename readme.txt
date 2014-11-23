@@ -21,7 +21,7 @@ Gets the related post on your blog with any design characteristics.
 
 Displays related post your stories with different features of text and image size.
 
-<blockquote><h4>Thousands of websites are using this plugin</h4><p>Adjusts the image size of post related to fit your template.</p></blockquote>
+<blockquote><strong>Thousands of websites are using this plugin</strong><p>Adjusts the image size of post related to fit your template.</p></blockquote>
 <strong>This are some of the options Plugin: </strong>
 <ul>
 <li>Post Type. (post,page,attachment, other types) </li>
@@ -48,7 +48,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 == Changelog ==
 = 3.0 = 
-#Real changes
+<strong>Real changes</strong>
 * Styling change
   * NEW style added
   * NEW defaults
@@ -57,7 +57,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
   * Add option: Thumbnail Border Radio
   * Add option: Margin
   * Add option: Padding
-  * Choose effect:
+  * Choose effect
     * Enlarge Related
     * Zoom
     * Shine
