@@ -249,6 +249,7 @@ class yuzo_related_post extends yuzo_related_post_make{
         if( isset($yuzo_options->top_text) && $yuzo_options->top_text ){
           $_html .= "<div class='yuzo_clearfixed'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
         }
+
         while ( have_posts() ) : the_post();
 
           $my_array_views = self::getViewsPost_to_yuzo();
