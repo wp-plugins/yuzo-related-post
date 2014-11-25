@@ -80,6 +80,7 @@ If not well visualized Related Post Yuzo possibly has a conflict with some other
   * Tab productivity update
 * Fixed Code
 * Update core <code>iLenFramework 1.7</code>
+
 = 2.8.3 = 
 * Fixed Css in core.css
 = 2.8.2 = 
