@@ -41,8 +41,10 @@ class yuzo_related_post_make{
                                  'url_framework'  =>plugins_url()."/yuzo-related-post/assets/ilenframework",
                                  'theme_imagen'   =>plugins_url()."/yuzo-related-post/assets/images",
                                  'languages'      =>plugins_url()."/yuzo-related-post/assets/languages",
-                                 'twitter'        => 'https://twitter.com/intent/tweet?text=View this awesome plugin WP;url=http://bit.ly/1rLUvBM&amp;via=iLenElFuerte',
+                                 //'twitter'        => 'https://twitter.com/intent/tweet?text=View this awesome plugin WP;url=http://bit.ly/1rLUvBM&amp;via=iLenElFuerte',
+                                 'twitter'        => '',
                                  'wp_review'      => 'http://wordpress.org/support/view/plugin-reviews/yuzo-related-post?filter=5',
+                                 'wp_support'     => 'https://wordpress.org/support/plugin/yuzo-related-post',
                                  'type'           =>'plugin',
                                  'method'         =>'free',
                                  'themeadmin'     =>'fresh');
