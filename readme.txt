@@ -14,7 +14,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
-Gets the related post on your blog with any design characteristics.
+The first plugin that ever have to install on your page Wordpress.
 
 == Description ==
 <h3>Minimalist, productive and Fast..!</h3>
