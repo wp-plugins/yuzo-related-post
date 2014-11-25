@@ -6,10 +6,10 @@ Plugin URI: https://wordpress.org/support/plugin/yuzo-related-post
 Tags: related post, post, relate post, wordpress related post, related page, full related post, best related post, html5, css3, post content, plugin for content, plugin related post, wp post relacionados, wordpress post relacionados, related post, zemanta related post,ads, feeds,  multisite, pages, posts, related, Related Content, related posts, rss, thumbnails, yarpp,feed, feeds, Post, posts, related, related posts, rss, similar posts, thumbnail, widget,categories, category, custom post, custom posts, plugin, Post, posts, related, related posts, similar, similar posts,posts, related, related posts, seo,add this, addtoany, aim, analytics, bitly, bookmark button, bookmarking, bookmarks, bookmarks menu, buffer, del.icio.us, Digg, email button, evernote, Facebook, facebook like, facebook recommend, fark, gmail, goo.gl, google, google analytics, google bookmarks, google plus, google translate, Google+1,  Hubspot, instapaper, linkedin, linkwithin, netlog, nrelate, orkut, outbrain, pinterest, popular, popular posts, recommendations, Reddit, Related Content, related posts, seo, sexybookmarks, Share, share and enjoy, share and follow, share button, share this, Shareaholic, sharebar, shareholic, sharethis, sharing, sharing is caring, sharing is sexy, shortcode, sociable, social, social share, socialize, stats, stumbleupon, sumome, thumbnails, tinyurl, translate, tumblr, twitter,  url shortener, wanelo,  wpmu, yaarp, yahoo, yahoo messenger, yammer, yarpp, yummly
 Author URI: http://es.ilentheme.com
 Author: iLen
-Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 2.8.3
-Version: 3.4.2
+Requires at least: 3.9
+Tested up to: 4.0.1
+Stable tag: 3.4
+Version: 3.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,10 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 3.4.3 =
+* Add animation in type related on selected (wp options)
+* Fixed designer in RTL Ready!
+* Minor change in code
 = 3.4.2 =
 * Update core <code>iLenFramework 1.7.2</code>
 = 3.4 =

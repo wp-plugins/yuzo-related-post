@@ -371,7 +371,7 @@ class ilen_framework_1_7_2 {
 						<span class="header__logo waves-effect"><?php echo $this->parameter['logo']; ?></span>
 						<h2>
 							<?php echo $this->parameter['name_long']; ?>
-							<span class='ilen-version <?php if( strlen($this->parameter['name_long'])>20 ){ echo 'text-long'; } ?>'><?php echo $this->parameter['version'] ?></span>
+							<span class='ilen-version'><?php echo $this->parameter['version'] ?></span>
 						</h2>
 						<?php if( $this->parameter['wp_review'] ): ?><a href="<?php echo $this->parameter['wp_review'] ?>" class="leave-a-review ibtn btnred right" target="_blank"><span><i class="fa fa-star"></i></span>Leave a review</a><?php endif; ?>
 						<?php if( $this->parameter['twitter'] ): ?><a href="<?php echo $this->parameter['twitter'] ?>" class="tweet-about-it ibtn btnturke right" target="_blank"><span><i class="fa fa-twitter"></i></span>Write your experience</a><?php endif; ?>

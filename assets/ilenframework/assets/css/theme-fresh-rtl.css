@@ -77,3 +77,17 @@
 .ilenplugin-options .row.radio_image .a_line{
   text-align: right;
 }
+.ilenplugin-options header .header__logo{
+  float: right!important;
+}
+.ilenplugin-options .ilen-version{
+  text-align: left;
+  float: left;
+  position: relative;
+  top: 5px;
+  right: 10px;
+}
+.ilenplugin-options #poststuff h2{
+  max-width: 40%!important;
+  width: inherit!important;
+}
