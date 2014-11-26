@@ -519,7 +519,7 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 				    </aside>
 				    <main>
 				      <b><?php _e('Nice',$this->parameter['name_option'])."."; ?></b>
-				      <br /><br />
+				      <br />
 				      <?php _e('Update successfully',$this->parameter['name_option']) ?>
 				    </main>
 				  </div>
@@ -530,21 +530,26 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 				    </aside>
 				    <main>
 				      <b><?php _e('Oh bollocks',$this->parameter['name_option'])."."; ?>.</b>
-				      <br /><br />
+				      <br />
 				      <?php _e('Failed to update',$this->parameter['name_option']) ?>
 				    </main>
 				  </div>
 			<?php endif; ?>
 
 			<div class="post-body-content__wrap">
-			<header>
+			<header class="<?php if( strlen($this->parameter['name_long'])>20 ){ echo 'text-long'; } ?>">
 				<span class="header__logo"><?php echo $this->parameter['logo']; ?></span>
-				<h2 class="<?php if( strlen($this->parameter['name_long'])>20 ){ echo 'text-long'; } ?>">
+				<h2>
 					<?php echo $this->parameter['name_long']; ?>
-					<span class='ilen-version <?php if( strlen($this->parameter['name_long'])>20 ){ echo 'text-long'; } ?>'><?php if( isset($this->parameter['method']) && $this->parameter['method'] == 'free' ){ echo __('Free',$this->parameter['name_option']); }else{ echo __('PRO',$this->parameter['name_option']); } echo " ".$this->parameter['version']; ?></span>
+					<?php if( !is_rtl() ): ?>
+					<span class='ilen-version'><?php if( isset($this->parameter['method']) && $this->parameter['method'] == 'free' ){ echo __('Free',$this->parameter['name_option']); }else{ echo __('PRO',$this->parameter['name_option']); } echo " ".$this->parameter['version']; ?></span>
+				<?php elseif( is_rtl() ) : ?>
+					<span class='ilen-version'><?php if( isset($this->parameter['method']) && $this->parameter['method'] == 'free' ){ echo  $this->parameter['version']. " " .__('Free',$this->parameter['name_option']); }else{ echo $this->parameter['version']. " " . __('PRO',$this->parameter['name_option']); }  ?></span>
+				<?php endif; ?> 
 				</h2>
 				<?php if( $this->parameter['wp_review'] ): ?><a href="<?php echo $this->parameter['wp_review'] ?>" class="leave-a-review ibtn btnred right" target="_blank"><span><i class="fa fa-star"></i></span>Leave a review</a><?php endif; ?>
 				<?php if( $this->parameter['twitter'] ): ?><a href="<?php echo $this->parameter['twitter'] ?>" class="tweet-about-it ibtn btnturke right" target="_blank"><span><i class="fa fa-twitter"></i></span>Write your experience</a><?php endif; ?>
+				<?php if( $this->parameter['wp_support'] ): ?><a href="<?php echo $this->parameter['wp_support'] ?>" class="ibtn btngray2 right" target="_blank"><span><i class="fa fa-wrench"></i></span>Support</a><?php endif; ?>
 			</header>
 			<div class="ilentabs_wrap">
 			<?php $Myoptions = self::theme_definitions(); ?>

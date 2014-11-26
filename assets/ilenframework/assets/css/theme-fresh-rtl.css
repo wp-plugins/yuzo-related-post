@@ -96,3 +96,21 @@
   margin-right: 0;
   margin-left: 10px;
 }
+
+.ilenplugin-options .ilentabs_wrap .has-sidebar{
+  float: right;
+}
+.ilenplugin-options .ilentabs_wrap .sb{
+  float: left;
+}
+.ilenplugin-options .ilentabs_wrap #nav{
+  background: #EFEFEF;
+  height: 50px;
+}
+.ilenplugin-options h2 .nav-tab{
+  border-left: 1px solid #d7d7d7;
+  border-right: 0;
+}
+.ilenplugin-options .ilentabs .header__logo{
+  margin-top: 10px;
+}
