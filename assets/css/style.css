@@ -20,7 +20,7 @@
 .yuzo_related_post .yuzo_text { color:  }
 /*.yuzo_related_post .relatedthumb:hover:not(.style-4) {background-color: #F7F7F7; color: #000;}*/
 .yuzo_related_post .relatedthumb .yuzo-img-wrap{ margin-bottom: 10px; }
-
+.yuzo_related_post.style-1{ overflow: inherit!important; }
 /* views */
 .yuzo_icon_views{
   padding-left: 21px;
