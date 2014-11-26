@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 3.5
+Version: 3.6
 Author: iLen
 Author URI: http://es.ilentheme.com
 */
@@ -737,8 +737,13 @@ function yuzo_get_PostViews($post_ID, $count_key = 'yuzo_views'){
     if( $count_key ){
       $count = get_post_meta($post_ID, $count_key, true);
     }
+
+    // format
+    if( isset($yuzo_options->format_count) && $yuzo_options->format_count ){
+      $counts = number_format((int)$counts, 0, '', "$yuzo_options->format_count");
+    }
  
-    return (int)$count;
+    return $count;
 }
    
 //Function that Adds a 'Views' Column to your Posts tab in WordPress Dashboard.
@@ -780,6 +785,11 @@ function getViewsPost_to_yuzo(){
       $meta_views_custom = isset( $yuzo_options->meta_views_custom )?$yuzo_options->meta_views_custom:'';
       $counts = self::yuzo_get_PostViews( get_the_ID(), $meta_views_custom  );
 
+    }
+
+    // format
+    if( isset($yuzo_options->format_count) && $yuzo_options->format_count ){
+      $counts = number_format((int)$counts, 0, '', "$yuzo_options->format_count");
     }
 
     //get postition

@@ -33,7 +33,7 @@ class yuzo_related_post_make{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'3.5',
+                                 'version'        =>'3.6',
                                  'url'            =>'',
                                  'logo'           =>'<i class="fa fa-bolt"></i>', // or image .jpg,png
                                  'logo_text'      =>'', // alt of image
@@ -436,6 +436,16 @@ class yuzo_related_post_make{
                                                                             'value' =>'views',
                                                                             'id'    =>$this->parameter['name_option'].'_'.'show_in_related_post_text',
                                                                             'name'  =>$this->parameter['name_option'].'_'.'show_in_related_post_text',
+                                                                            'class' =>'',
+                                                                            'row'   =>array('a','b')),
+
+                                                                    array(  'title' =>__('Format thousands',$this->parameter['name_option']),
+                                                                            'help'  =>__('Select between 2 formats that you can identify thousands in the hit counter by Post.',$this->parameter['name_option']),
+                                                                            'type'  =>'select',
+                                                                            'items' =>array(''=>__('none',$this->parameter['name_option']),','=>__(',',$this->parameter['name_option']),'.'=>__('.',$this->parameter['name_option'])),
+                                                                            'value' =>'views',
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'format_count',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'format_count',
                                                                             'class' =>'',
                                                                             'row'   =>array('a','b')),
  
