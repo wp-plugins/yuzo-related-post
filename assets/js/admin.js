@@ -32,5 +32,10 @@ jQuery(document).ready(function( $ ){
     $("#yuzo_related_post_text2_length").val(0);
   });
 
+  if( $("#yuzo_related_post_meta_views").val() == 'other' ){
+    $(".class_yuzo_meta_custom").css("display","block");
+    $(".class_yuzo_meta_custom").css("background","rgb(249, 249, 249)");
+  }
+
 
 });
