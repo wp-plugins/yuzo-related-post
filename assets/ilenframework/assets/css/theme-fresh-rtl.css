@@ -114,3 +114,7 @@
 .ilenplugin-options .ilentabs .header__logo{
   margin-top: 10px;
 }
+.ilenplugin-options .row_textarea .text_length{
+  left: 0;
+  right: inherit;
+}
