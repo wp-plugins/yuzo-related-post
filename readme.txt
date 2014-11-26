@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.0.1
 Stable tag: 3.4
-Version: 3.4.3
+Version: 3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 3.5 =
+* Minor change in core
 = 3.4.3 =
 * Add animation in type related on selected (wp options)
 * Fixed designer in RTL Ready!
