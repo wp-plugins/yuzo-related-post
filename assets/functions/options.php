@@ -33,7 +33,7 @@ class yuzo_related_post_make{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'3.6.1',
+                                 'version'        =>'3.7',
                                  'url'            =>'',
                                  'logo'           =>'<i class="fa fa-bolt"></i>', // or image .jpg,png
                                  'logo_text'      =>'', // alt of image
@@ -214,6 +214,16 @@ class yuzo_related_post_make{
                                                                             'items' =>array('thumbnail'=>'Thumbnail','medium'=>'Medium'),
                                                                             'id'    =>$this->parameter['name_option'].'_'.'thumbnail_size',
                                                                             'name'  =>$this->parameter['name_option'].'_'.'thumbnail_size',
+                                                                            'class' =>'',
+                                                                            'row'   =>array('a','b')),
+
+                                                                    array(  'title' =>__('Background size',$this->parameter['name_option']),
+                                                                            'help'  =>__('<code>Cover:</code> The recommended since adjusts the picture for all related post are well aligned and looks exactly.<br /><br /> <code>Contain:</code>Fits both high and wide to display the image completely, but if the radius ratio is more high than the width of the other related post is not displayed aligned with respect.',$this->parameter['name_option']),
+                                                                            'type'  =>'select',
+                                                                            'value' =>'cover',
+                                                                            'items' =>array('cover'=>'Cover','contain'=>'Contain'),
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'background_size',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'background_size',
                                                                             'class' =>'',
                                                                             'row'   =>array('a','b')),
 

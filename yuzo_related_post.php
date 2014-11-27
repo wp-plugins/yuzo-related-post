@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 3.6.1
+Version: 3.7
 Author: iLen
 Author URI: http://es.ilentheme.com
 */
@@ -244,6 +244,16 @@ class yuzo_related_post extends yuzo_related_post_make{
           $css_shine_effect2=" <span class='shine-effect'></span> ";
         }
 
+        // background size
+        $css_background_size = "";
+        if( !isset($yuzo_options->background_size) ){
+          $css_background_size = 'cover';
+        }elseif( isset($yuzo_options->background_size) && $yuzo_options->background_size == 'cover' ){
+          $css_background_size = 'cover';
+        }elseif( isset($yuzo_options->background_size) && $yuzo_options->background_size == 'contain' ){
+          $css_background_size = 'contain';
+        }
+
  
         $count = 1;
         if( isset($yuzo_options->top_text) && $yuzo_options->top_text ){
@@ -270,7 +280,7 @@ class yuzo_related_post extends yuzo_related_post_make{
                   <a rel="external" href="'.get_permalink().'">
                           <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;">
                             '.$css_shine_effect2.'
-                            <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; '.$css_border.'"></div>
+                            <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: '.$css_background_size.'; '.$css_border.'"></div>
                           </div>
                             <div>'.$my_array_views['top'].'</div>
                        <span style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';">'.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'</span>
@@ -303,7 +313,7 @@ class yuzo_related_post extends yuzo_related_post_make{
                   <a rel="external" href="'.get_permalink().'" class="image-list">
                   <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;">
                             '.$css_shine_effect2.'
-                             <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; '.$css_border.' "></div>
+                             <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size:  '.$css_background_size.'; '.$css_border.' "></div>
                   </div>
                   </a>
                   <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'  '.$my_array_views['bottom'].'</a></h3>
@@ -403,11 +413,22 @@ class yuzo_related_post extends yuzo_related_post_make{
           $css_shine_effect2=" <span class='shine-effect'></span> ";
         }
 
+        // background size
+        $css_background_size = "";
+        if( !isset($yuzo_options->background_size) ){
+          $css_background_size = 'cover';
+        }elseif( isset($yuzo_options->background_size) && $yuzo_options->background_size == 'cover' ){
+          $css_background_size = 'cover';
+        }elseif( isset($yuzo_options->background_size) && $yuzo_options->background_size == 'contain' ){
+          $css_background_size = 'contain';
+        }
+
  
         $count = 1;
         if( isset($yuzo_options->top_text) && $yuzo_options->top_text ){
           $_html .= "<div class='yuzo_clearfixed'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
         }
+
         while ( have_posts() ) : the_post();
 
           $my_array_views = self::getViewsPost_to_yuzo();
@@ -428,7 +449,7 @@ class yuzo_related_post extends yuzo_related_post_make{
                   <a rel="external" href="'.get_permalink().'">
                           <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;">
                             '.$css_shine_effect2.'
-                            <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; '.$css_border.'"></div>
+                            <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: '.$css_background_size.'; '.$css_border.'"></div>
                           </div>
                             <div>'.$my_array_views['top'].'</div>
                        <span style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';">'.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'</span>
@@ -461,7 +482,7 @@ class yuzo_related_post extends yuzo_related_post_make{
                   <a rel="external" href="'.get_permalink().'" class="image-list">
                   <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_options->height_image+15).'px;height:'.((int)$yuzo_options->height_image - 20).'px;">
                             '.$css_shine_effect2.'
-                             <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size: cover; '.$css_border.' "></div>
+                             <div class="yuzo-img" style="background:url('.$image['src'].') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.((int)$yuzo_options->height_image - 20).'px;margin-bottom: 5px;background-size:  '.$css_background_size.'; '.$css_border.' "></div>
                   </div>
                   </a>
                   <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).'  '.$my_array_views['bottom'].'</a></h3>
