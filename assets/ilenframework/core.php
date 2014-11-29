@@ -547,9 +547,9 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 					<span class='ilen-version'><?php if( isset($this->parameter['method']) && $this->parameter['method'] == 'free' ){ echo  $this->parameter['version']. " " .__('',$this->parameter['name_option']); }else{ echo $this->parameter['version']. " " . __('',$this->parameter['name_option']); }  ?></span>
 				<?php endif; ?> 
 				</h2>
-				<?php if( $this->parameter['wp_review'] ): ?><a href="<?php echo $this->parameter['wp_review'] ?>" class="leave-a-review ibtn btnred right" target="_blank"><span><i class="fa fa-star"></i></span>Leave a review</a><?php endif; ?>
-				<?php if( $this->parameter['twitter'] ): ?><a href="<?php echo $this->parameter['twitter'] ?>" class="tweet-about-it ibtn btnturke right" target="_blank"><span><i class="fa fa-twitter"></i></span>Write your experience</a><?php endif; ?>
-				<?php if( $this->parameter['wp_support'] ): ?><a href="<?php echo $this->parameter['wp_support'] ?>" class="ibtn btngray2 right" target="_blank"><span><i class="fa fa-wrench"></i></span>Support</a><?php endif; ?>
+				<?php if( isset($this->parameter['wp_review']) && $this->parameter['wp_review'] ): ?><a href="<?php echo $this->parameter['wp_review'] ?>" class="leave-a-review ibtn btnred right" target="_blank"><span><i class="fa fa-star"></i></span>Leave a review</a><?php endif; ?>
+				<?php if( isset($this->parameter['twitter'] ) && $this->parameter['twitter'] ): ?><a href="<?php echo $this->parameter['twitter'] ?>" class="tweet-about-it ibtn btnturke right" target="_blank"><span><i class="fa fa-twitter"></i></span>Write your experience</a><?php endif; ?>
+				<?php if( isset($this->parameter['wp_support']) && $this->parameter['wp_support'] ): ?><a href="<?php echo $this->parameter['wp_support'] ?>" class="ibtn btngray2 right" target="_blank"><span><i class="fa fa-wrench"></i></span>Support</a><?php endif; ?>
 			</header>
 			<div class="ilentabs_wrap">
 			<?php $Myoptions = self::theme_definitions(); ?>
