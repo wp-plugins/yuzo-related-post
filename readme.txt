@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.0.1
 Stable tag: 3.5
-Version: 3.7
+Version: 3.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 3.7.1 =
+* Fixed style.css: add (width:100%;float:left;display:block)
+With this fix to Yuzo will have if their own space without affecting other related post.
 = 3.7 =
 * Add option: Background size
 Cover: The recommended since adjusts the picture for all related post are well aligned and looks exactly.
