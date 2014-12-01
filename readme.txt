@@ -49,7 +49,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 == Changelog ==
 = 3.7.2 =
 * Fixed style.css (Problems with desktop widget)
-* Clear kernet
+* Clear kernel
 = 3.7.1 =
 * Fixed style.css: add (width:100%;float:left;display:block)
 With this fix to Yuzo will have if their own space without affecting other related post.

@@ -21,7 +21,7 @@ jQuery(document).ready(function( $ ){
 
  
 	$('.yuzo_style_chosse #yuzo_related_post_style_img_2').on("click", function(event){
-    $("#yuzo_related_post_height_image").val(75);
+    $("#yuzo_related_post_height_image").val(85);
     $("#yuzo_related_post_font_size").val(14);
     $("#yuzo_related_post_text2_length").val(150);
   });
