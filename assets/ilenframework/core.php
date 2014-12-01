@@ -13,7 +13,7 @@ class ilen_framework_1_7_2 {
 		var $parameter 			= array();
 		var $save_status		= null;
 		var $IF_CONFIG			= null;
-    	var $components         = null;
+    var $components     = null;
 
 	function __construct(){
 
@@ -1050,17 +1050,11 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 
 							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
 							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?> color_hover" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
-								<div class="a"><h3><?php echo $value['title']; ?></h3></div>
+								<div class="a"><?php echo $value['title']; ?><div class="help"><?php echo $value['help']; ?></div></div>
 								<div class="<?php echo $side_two; ?>">
 									<?php $bg_hover = isset($options_theme[ $value['name'] ])?$options_theme[ $value['name'] ]:''; ?>
-									<table>
-										<tr>
-											<td class="color_hover_color"><input type="text" class="theme_color_picker" value="<?php if(isset( $bg_hover['color'] )){ echo $bg_hover['color']; } ?>" name="<?php echo $value['name'].'_color'; ?>" id="<?php echo $value['id'].'_color' ?>" data-default-color="<?php if(isset( $bg_hover['color'] )){ echo $bg_hover['color']; } ?>" /></td>
-											<td class="color_hover_text">&nbsp; <?php _e('Hover',$this->parameter['name_option']) ?></td>
-											<td class="color_hover_hover"><input type="text" class="theme_color_picker" value="<?php if(isset( $bg_hover['hover'] )){ echo $bg_hover['hover']; } ?>" name="<?php echo $value['name'].'_hover';  ?>" id="<?php echo $value['id'].'_hover'; ?>" data-default-color="<?php if(isset( $bg_hover['hover'] )){  echo  $bg_hover['hover']; } ?>" /></td>
-										</tr>
-									 </table>
-									<div class="help"><?php echo $value['help']; ?></div>
+									<div class="color_hover_first_element"><input type="text" class="theme_color_picker" value="<?php if(isset( $bg_hover['color'] )){ echo $bg_hover['color']; } ?>" name="<?php echo $value['name'].'_color'; ?>" id="<?php echo $value['id'].'_color' ?>" data-default-color="<?php if(isset( $bg_hover['color'] )){ echo $bg_hover['color']; } ?>" /></div>
+									<div class='color_hover_two_element'><?php _e('hover',$this->parameter['name_option']); ?> <input type="text" class="theme_color_picker" value="<?php if(isset( $bg_hover['hover'] )){ echo $bg_hover['hover']; } ?>" name="<?php echo $value['name'].'_hover';  ?>" id="<?php echo $value['id'].'_hover'; ?>" data-default-color="<?php if(isset( $bg_hover['hover'] )){  echo  $bg_hover['hover']; } ?>" /></div>
 								</div>
 							</div>
 							<?php if(isset( $value['after'] )){ echo $value['after'];} ?>
@@ -1182,7 +1176,7 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 											</div>
 											<div style="width:27%;float:left">
 												Opacity
-												<span  id="<?php echo $value['id'] ?>-value" style="padding: 5px 10px;background: #FAFAFA;color: #444;"></span>
+												<span  id="<?php echo $value['id'] ?>-value" style="padding: 5px 10px;background: #FAFAFA;color: #444;border: 1px solid #F1F1F1;"></span>
 											</div>
 											<input type="hidden" name="<?php echo $value['name'] ?>_opacity" id="<?php echo $value['id'] ?>_opacity" value="<?php if(isset( $options_theme[ $value['name'] ] )){ echo (int)$options_theme[ $value['name'] ]; }else{ echo 100; } ?>" />
 											<script>
@@ -1218,7 +1212,7 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 										</script>
 									
 								</div>
-								<div class="c">
+								<div class="b" style="float:right">
 									<div style="padding: 10px 0;;" class="upload">
 										<input id="<?php echo $value['id'] ?>_src" type="text" name="<?php echo $value['name'] ?>_src" value="<?php echo $bg_complete['src']; ?>" class="theme_src_upload"  />
 										<a class="upload_image_button_complete button top-tip"  data-button-set="<?php _e('Select image',$this->parameter['name_option']) ?>" > <i class="fa fa-cloud-upload"></i><?php _e('Upload image',$this->parameter['name_option']) ?></a>
@@ -1338,7 +1332,7 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 								<div class="<?php echo $side_two; ?>">
 									<div>
 										<div style="width:10%;float:left">
-											<span  id="<?php echo $value['id'] ?>-value" style="padding: 5px 10px;background: #FAFAFA;color: #444;"></span>
+											<span  id="<?php echo $value['id'] ?>-value" style="padding: 5px 10px;background: #FAFAFA;color: #444;border: 1px solid #F1F1F1;"></span>
 										</div>
 										<div style="width: 84%;float: right;padding: 0;border-radius: 5px;" >
 											<div id="<?php echo $value['id'] ?>-range" <?php if( isset($value['color']) && $value['color'] == 1 ){ echo "class='noUi-connect'"; } ?>></div>	
@@ -1761,7 +1755,7 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 								<div class="<?php echo $side_two; ?>">
 									<div>
 										<div style="width:10%;float:left">
-											<span  id="<?php echo $value['id'] ?>-value" style="padding: 5px 10px;background: #FAFAFA;color: #444;"></span>
+											<span  id="<?php echo $value['id'] ?>-value" style="padding: 5px 10px;background: #FAFAFA;color: #444;border: 1px solid #F1F1F1;"></span>
 										</div>
 										<div style="width: 76%;float: left;padding: 0;border-radius: 5px;margin-left: 13px;" >
 											<div id="<?php echo $value['id'] ?>-range" <?php if( isset($value['color']) && $value['color'] == 1 ){ echo "class='noUi-connect'"; } ?>></div>	

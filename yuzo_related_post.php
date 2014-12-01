@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 3.7.1
+Version: 3.7.2
 Author: iLen
 Author URI: http://es.ilentheme.com
 */
@@ -26,12 +26,13 @@ class yuzo_related_post extends yuzo_related_post_make{
     $yuzo_options = IF_get_option( $this->parameter['name_option'] );
     $this->plugin_options = $yuzo_options;
 
-    // ajax nonce for count visits in cache
+    // ajax nonce for count visits in cache plugin
     if(  defined( 'WP_CACHE' ) && WP_CACHE ){
       add_action( 'wp_enqueue_scripts',  array( &$this, 'wp_yuzo_postview_cache_count_enqueue') );
       add_action( 'wp_ajax_nopriv_yuzo-plus-views', array( &$this, 'hits_ajax' ) );
       add_action( 'wp_ajax_yuzo-plus-views', array( &$this, 'hits_ajax' ) );
     }else{
+      // count normal
       add_action('wp_head',array( &$this,'hits'), 12 );
     }
 
@@ -63,14 +64,6 @@ class yuzo_related_post extends yuzo_related_post_make{
       // add scripts & styles
       add_action( 'wp_enqueue_scripts', array( &$this,'script_and_style_front' ) );
  
-
-
-      // count hit post
-      /*if(  !defined( 'WP_CACHE' ) || !WP_CACHE ){
-        add_action('wp_head',array( &$this,'hits'), 12 );
-      }*/
-
-
     }
 
 
@@ -187,7 +180,6 @@ class yuzo_related_post extends yuzo_related_post_make{
       $post__not_in[] = $post->ID;
       $args        = array('post__not_in' => $post__not_in,
                     'posts_per_page'      => (int)$yuzo_options->display_post,
-                    //'tag__in'           => $string_tags,
                     'post_type'           => (array)$yuzo_options->post_type,
                     'post_status'         => 'publish',
                     'ignore_sticky_posts' => 1,
@@ -196,7 +188,6 @@ class yuzo_related_post extends yuzo_related_post_make{
                     'tag__in'             => $tag_ids,
                     'category__in'        => $string_cate,
                     'category__not_in'    => $array_no_category
-                    //'cat'               =>$string_no_category
                   );
 
       query_posts( $args );  
