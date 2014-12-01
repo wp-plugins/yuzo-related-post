@@ -33,7 +33,7 @@ class yuzo_related_post_make{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'3.7.2',
+                                 'version'        =>'3.7.3',
                                  'url'            =>'',
                                  'logo'           =>'<i class="fa fa-bolt"></i>', // or image .jpg,png
                                  'logo_text'      =>'', // alt of image
@@ -94,79 +94,6 @@ class yuzo_related_post_make{
                                                                             'name'  =>$this->parameter['name_option'].'_'.'display_post',
                                                                             'class' =>'',
                                                                             'row'   =>array('a','b')),
-
-                                                                    array(  'title' =>__('Post Type:',$this->parameter['name_option']), //title section
-                                                                            'help'  =>__('Type related post where is displayed',$this->parameter['name_option']), //descripcion section
-                                                                            'type'  =>'checkbox', 
-                                                                            'value' =>array('post'),
-                                                                            'value_check'=>array('post'),
-                                                                            'display'   =>'types_post', 
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'post_type', //id
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'post_type', //name
-                                                                            'class' =>'', //class
-                                                                            'row'   =>array('a','b')),
-
-
-                                                                    array(  'title' =>__('Show in Home:',$this->parameter['name_option']), //title section
-                                                                            'help'  =>'Displays related post in the home? (only if template allows)',
-                                                                            'type'  =>'checkbox', //type input configuration
-                                                                            'value' =>'0', // default
-                                                                            'value_check'=>1, // value data
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'show_home',  
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'show_home',  
-                                                                            'class' =>'', //class
-                                                                            'row'   =>array('a','b')),
- 
-
-                                                                    array(  'title' =>__('Default image URL',$this->parameter['name_option']),
-                                                                            'help'  =>__('Default image in case there is no image in the post',$this->parameter['name_option']),
-                                                                            'type'  =>'upload',
-                                                                            'value' =>$this->parameter['theme_imagen'].'/default.png',
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'default_image',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'default_image',
-                                                                            'class' =>'',
-                                                                            'row'   =>array('a','b')),
-
- 
-                                                                     array(  'title' =>__('Related to',$this->parameter['name_option']),
-                                                                            'help'  =>__('Related Post based',$this->parameter['name_option']),
-                                                                            'type'  =>'select',
-                                                                            'value' =>1,
-                                                                            'items' =>array(1=>__('Tags',$this->parameter['name_option']),
-                                                                                            2=>__('Category',$this->parameter['name_option']),
-                                                                                            3=>__('Tags & Category',$this->parameter['name_option']),
-                                                                                            4=>__('Random',$this->parameter['name_option']),
-                                                                                            ),
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'related_to',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'related_to',
-                                                                            'class' =>'',
-                                                                            'row'   =>array('a','b')),
-
-
-                                                                    array(  'title' =>__('Order by',$this->parameter['name_option']),
-                                                                            'help'  =>__('Multiple criteria systems',$this->parameter['name_option']),
-                                                                            'type'  =>'select',
-                                                                            'value' =>'rand',
-                                                                            'items' =>array('none'=>'None','ID'=>'ID','author'=>'Author','title'=>'Title','name'=>'Name','date'=>'Date','modified'=>'Modified','rand'=>'Rand','comment_count'=>'Comment Count'),
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'order_by',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'order_by',
-                                                                            'class' =>'',
-                                                                            'row'   =>array('a','b')),
-
-
-                                                                    array(  'title' =>__('Order',$this->parameter['name_option']),
-                                                                            'help'  =>'',
-                                                                            'type'  =>'select',
-                                                                            'value' =>'DESC',
-                                                                            'items' =>array('DESC'=>'Desc','ASC'=>'Asc'),
-                                                                            'id'    =>$this->parameter['name_option'].'_'.'order',
-                                                                            'name'  =>$this->parameter['name_option'].'_'.'order',
-                                                                            'class' =>'',
-                                                                            'row'   =>array('a','b')),
-
-
-
-
                                                                     ),
                 ),
                 'b'=>array(                'title'      => __('Custom styling',$this->parameter['name_option']), 
@@ -295,6 +222,96 @@ class yuzo_related_post_make{
 
                                                                    ),
                 ),
+                'j'=>array(                'title'      => __('Medium',$this->parameter['name_option']), 
+                                                           'title_large'=> __('',$this->parameter['name_option']), 
+                                                           'description'=> '',  
+                                                           'icon'       => '',
+                                                           'tab'        => 'tab01',
+
+                                                            'options'    => array( 
+
+
+                                                                                     array(  'title' =>__('Post Type:',$this->parameter['name_option']), //title section
+                                                                                              'help'  =>__('Type related post where is displayed',$this->parameter['name_option']), //descripcion section
+                                                                                              'type'  =>'checkbox', 
+                                                                                              'value' =>array('post'),
+                                                                                              'value_check'=>array('post'),
+                                                                                              'display'   =>'types_post', 
+                                                                                              'id'    =>$this->parameter['name_option'].'_'.'post_type', //id
+                                                                                              'name'  =>$this->parameter['name_option'].'_'.'post_type', //name
+                                                                                              'class' =>'', //class
+                                                                                              'row'   =>array('a','b')),
+
+
+                                                                                      array(  'title' =>__('Show in Home:',$this->parameter['name_option']), //title section
+                                                                                              'help'  =>'Displays related post in the home? (only if template allows)',
+                                                                                              'type'  =>'checkbox', //type input configuration
+                                                                                              'value' =>'0', // default
+                                                                                              'value_check'=>1, // value data
+                                                                                              'id'    =>$this->parameter['name_option'].'_'.'show_home',  
+                                                                                              'name'  =>$this->parameter['name_option'].'_'.'show_home',  
+                                                                                              'class' =>'', //class
+                                                                                              'row'   =>array('a','b')),
+                   
+
+                                                                                      array(  'title' =>__('Default image URL',$this->parameter['name_option']),
+                                                                                              'help'  =>__('Default image in case there is no image in the post',$this->parameter['name_option']),
+                                                                                              'type'  =>'upload',
+                                                                                              'value' =>$this->parameter['theme_imagen'].'/default.png',
+                                                                                              'id'    =>$this->parameter['name_option'].'_'.'default_image',
+                                                                                              'name'  =>$this->parameter['name_option'].'_'.'default_image',
+                                                                                              'class' =>'',
+                                                                                              'row'   =>array('a','b')),
+
+                   
+                                                                                       array(  'title' =>__('Related to',$this->parameter['name_option']),
+                                                                                              'help'  =>__('Related Post based',$this->parameter['name_option']),
+                                                                                              'type'  =>'select',
+                                                                                              'value' =>1,
+                                                                                              'items' =>array(1=>__('Tags',$this->parameter['name_option']),
+                                                                                                              2=>__('Category',$this->parameter['name_option']),
+                                                                                                              3=>__('Tags & Category',$this->parameter['name_option']),
+                                                                                                              4=>__('Random',$this->parameter['name_option']),
+                                                                                                              ),
+                                                                                              'id'    =>$this->parameter['name_option'].'_'.'related_to',
+                                                                                              'name'  =>$this->parameter['name_option'].'_'.'related_to',
+                                                                                              'class' =>'',
+                                                                                              'row'   =>array('a','b')),
+
+
+                                                                                      array(  'title' =>__('Order by',$this->parameter['name_option']),
+                                                                                              'help'  =>__('Multiple criteria systems',$this->parameter['name_option']),
+                                                                                              'type'  =>'select',
+                                                                                              'value' =>'rand',
+                                                                                              'items' =>array('none'=>'None','ID'=>'ID','author'=>'Author','title'=>'Title','name'=>'Name','date'=>'Date','modified'=>'Modified','rand'=>'Rand','comment_count'=>'Comment Count'),
+                                                                                              'id'    =>$this->parameter['name_option'].'_'.'order_by',
+                                                                                              'name'  =>$this->parameter['name_option'].'_'.'order_by',
+                                                                                              'class' =>'',
+                                                                                              'row'   =>array('a','b')),
+
+
+                                                                                      array(  'title' =>__('Order',$this->parameter['name_option']),
+                                                                                              'help'  =>'',
+                                                                                              'type'  =>'select',
+                                                                                              'value' =>'DESC',
+                                                                                              'items' =>array('DESC'=>'Descendant','ASC'=>'Ascendant'),
+                                                                                              'id'    =>$this->parameter['name_option'].'_'.'order',
+                                                                                              'name'  =>$this->parameter['name_option'].'_'.'order',
+                                                                                              'class' =>'',
+                                                                                              'row'   =>array('a','b')),
+
+                                                                                      array(  'title' =>__('Show on feed:',$this->parameter['name_option']), //title section
+                                                                                              'help'  =>'Displays related post in the feed/rss',
+                                                                                              'type'  =>'checkbox', //type input configuration
+                                                                                              'value' =>'0', // default
+                                                                                              'value_check'=>1, // value data
+                                                                                              'id'    =>$this->parameter['name_option'].'_'.'show_feed',  
+                                                                                              'name'  =>$this->parameter['name_option'].'_'.'show_feed',  
+                                                                                              'class' =>'', //class
+                                                                                              'row'   =>array('a','b')),
+                 
+                                                                            )
+                                                        ),
                 'c'=>array(                'title'      => __('Advanced',$this->parameter['name_option']), 
                                            'title_large'=> __('',$this->parameter['name_option']), 
                                            'description'=> '',  
@@ -510,7 +527,7 @@ class yuzo_related_post_make{
  
                                                             )
                                         ),
-                'i'=>array(                'title'      => __('Effect on related',$this->parameter['name_option']), 
+                'h'=>array(                'title'      => __('Effect on related',$this->parameter['name_option']), 
                                            'title_large'=> __('',$this->parameter['name_option']), 
                                            'description'=> '',  
                                            'icon'       => '',
@@ -533,7 +550,7 @@ class yuzo_related_post_make{
                                                                             'row'   =>array('a','b')),
                                                           ),
                 ),
-                'h'=>array(                'title'      => __('Text',$this->parameter['name_option']), 
+                'i'=>array(                'title'      => __('Text',$this->parameter['name_option']), 
                                            'title_large'=> __('',$this->parameter['name_option']), 
                                            'description'=> '',  
                                            'icon'       => '',
