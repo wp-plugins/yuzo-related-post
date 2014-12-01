@@ -5,9 +5,9 @@
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_1_7_2') ) {
+if ( !class_exists('ilen_framework_1_7_3') ) {
 
-class ilen_framework_1_7_2 {
+class ilen_framework_1_7_3 {
 
 		var $options		   	= array();
 		var $parameter 			= array();
@@ -373,7 +373,7 @@ class ilen_framework_1_7_2 {
 							<?php echo $this->parameter['name_long']; ?>
 							<span class='ilen-version'><?php echo $this->parameter['version'] ?></span>
 						</h2>
-						<?php if( isset($this->parameter['wp_review']) && $this->parameter['wp_review'] ): ?><a href="<?php echo $this->parameter['wp_review'] ?>" class="leave-a-review ibtn btnred right" target="_blank"><span><i class="fa fa-star"></i></span>Leave a review</a><?php endif; ?>
+						<?php if( isset($this->parameter['wp_review']) && $this->parameter['wp_review'] ): ?><a href="<?php echo $this->parameter['wp_review'] ?>" class="leave-a-review ibtn btnred right grow-btn" target="_blank"><span><i class="fa fa-star"></i></span>Leave a review</a><?php endif; ?>
 						<?php if( isset($this->parameter['twitter'] ) && $this->parameter['twitter'] ): ?><a href="<?php echo $this->parameter['twitter'] ?>" class="tweet-about-it ibtn btnturke right" target="_blank"><span><i class="fa fa-twitter"></i></span>Write your experience</a><?php endif; ?>
 						<?php if( isset($this->parameter['wp_support']) && $this->parameter['wp_support'] ): ?><a href="<?php echo $this->parameter['wp_support'] ?>" class="ibtn btngray2 right" target="_blank"><span><i class="fa fa-wrench"></i></span>Support</a><?php endif; ?>
 					</header>
@@ -476,9 +476,18 @@ class ilen_framework_1_7_2 {
 				<input type="hidden" name='name_options' value='<?php echo $this->parameter["name_option"]; ?>' />
 				<input type="hidden" name='if_submit' id='if_submit' value='<?php if( isset($_POST) && $_POST ): ?>1<?php endif; ?>' />
 				</form>
+
 				<form action="" method="POST" name="frmreset" id="frmreset">
 					<input type="hidden" name='reset_options' value='1' />
 					<input type="hidden" name='name_options' value='<?php echo $this->parameter['name_option']; ?>' />
+				</form>
+
+				<!-- donate -->
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="frm_donate" name="frm_donate">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="MSRAUBMB5BZFU">
+					<a class="ibtn btngreen right btn_donate grow-btn" ><span><i  class="el-icon-heart" ></i></span><?php _e('Donate',$this->parameter['name_option']) ?></a>
+					<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
 				</form>
 
 				<!-- IF PLUGIN TAB, inner HTML in tab -->
@@ -491,7 +500,7 @@ class ilen_framework_1_7_2 {
 							});
 						<?php }
 					} ?>
- 
+ 					jQuery('#frm_donate').appendTo('.ilenplugin-options footer');
 					</script>
 				<!-- END -->
 		</div>
@@ -2352,5 +2361,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_1_7_2;
+$IF = new ilen_framework_1_7_3;
 ?>

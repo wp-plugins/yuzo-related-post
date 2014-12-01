@@ -265,6 +265,7 @@ a:hover{text-decoration: none!important;}
     padding-top: 0;
     padding-left: 0;
     cursor: pointer;
+    border:0;
 
     -webkit-box-sizing: initial!important;
     -moz-box-sizing: initial!important;
@@ -292,6 +293,9 @@ a.wp-color-result{
 .ilenplugin-options .btnblack span {background: #464646;text-shadow: 0px 1px 0px #595959;}
 .ilenplugin-options .btngray2 {background: #EFEFEF;text-shadow: 0px 1px 0px #DFDFDF;color: #A3A3A3;}
 .ilenplugin-options .btngray2 span {background: #E5E5E5;text-shadow: 0px 1px 0px #969696;}
+.ilenplugin-options .btngreen {background: #52EFB8;text-shadow: 0px 1px 0px #33a4ce;}
+.ilenplugin-options .btngreen span {background: #0BEF9F;text-shadow: 0px 1px 0px #33a4ce;} 
+
 
 .ilenplugin-options header a,
 .ilenplugin-options footer a{
@@ -529,7 +533,8 @@ input[type="range"]::-webkit-slider-thumb {
 .ilenplugin-options .row.radio_image {
   padding-left: 20px;
 }
-.ilenplugin-options footer a.ibtn:hover span i{
+.ilenplugin-options footer a.ibtn.btn_save:hover span i,
+.ilenplugin-options footer a.ibtn.btn_reset:hover span i{
   -webkit-animation: rotate_icons 2s infinite linear;
   -moz-animation: rotate_icons 2s infinite linear;
   -o-animation: rotate_icons 2s infinite linear;
@@ -1239,7 +1244,8 @@ input[type="range"]::-webkit-slider-thumb {
 .ilentheme-options .btnred span {background: #F97051;text-shadow: 0px 1px 0px #F9866B;}
 .ilentheme-options .btnblack {background: #707070;text-shadow: 0px 1px 0px #595959;}
 .ilentheme-options .btnblack span {background: #464646;text-shadow: 0px 1px 0px #595959;}
- 
+.ilentheme-options .btngreen {background: #52EFB8;text-shadow: 0px 1px 0px #33a4ce;}
+.ilentheme-options .btngreen span {background: #0BEF9F;text-shadow: 0px 1px 0px #33a4ce;} 
 
 .ilentheme-options header a,
 .ilentheme-options footer a{
@@ -1840,7 +1846,7 @@ input[type="range"]::-webkit-slider-thumb {
     }
 }
 
-.ilenplugin-options header a.leave-a-review:hover i {
+.ilenplugin-options a.grow-btn:hover i {
     -moz-transform: scale(1,1);
     -webkit-transform: scale(1,1);
     transform: scale(1,1);
