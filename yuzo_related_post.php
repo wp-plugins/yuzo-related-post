@@ -6,6 +6,7 @@ Description: The first plugin that ever have to install on your page Wordpress.
 Version: 3.7.4
 Author: iLen
 Author URI: http://es.ilentheme.com
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSRAUBMB5BZFU
 */
 if ( !class_exists('yuzo_related_post') ) {
 // get utils
