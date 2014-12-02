@@ -461,6 +461,7 @@ class ilen_framework_1_7_3 {
 						<footer>
 							<a class="btn_save ibtn btnblack left"><span><i class="fa fa-refresh"></i></span><?php _e('Save Changes',$this->parameter['name_option']) ?></a>
 							<a class="ibtn btnred left btn_reset" data-me="<?php _e('Want to update all the default values​​ &#63;',$this->parameter['name_option']) ?>"><span><i class="fa fa-repeat"></i></span><?php _e('Reset',$this->parameter['name_option']) ?></a>
+							<a class="ibtn btngreen right btn_donate grow-btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSRAUBMB5BZFU" target="_blank" ><span style="width: 55px;"><i  class="fa fa-cc-paypal" style="font-size: 23px;margin-top: 6px;margin-left: 13px;" ></i></span><?php _e('Donate',$this->parameter['name_option']) ?></a>
 						</footer>
 						<script>
 						/*jQuery(document).ready(function($){
@@ -483,12 +484,7 @@ class ilen_framework_1_7_3 {
 				</form>
 
 				<!-- donate -->
-				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="frm_donate" name="frm_donate">
-					<input type="hidden" name="cmd" value="_s-xclick">
-					<input type="hidden" name="hosted_button_id" value="MSRAUBMB5BZFU">
-					<a class="ibtn btngreen right btn_donate grow-btn" ><span><i  class="el-icon-heart" ></i></span><?php _e('Donate',$this->parameter['name_option']) ?></a>
-					<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-				</form>
+				
 
 				<!-- IF PLUGIN TAB, inner HTML in tab -->
 					<script>
@@ -500,7 +496,7 @@ class ilen_framework_1_7_3 {
 							});
 						<?php }
 					} ?>
- 					jQuery('#frm_donate').appendTo('.ilenplugin-options footer');
+ 					//jQuery('#frm_donate').appendTo('.ilenplugin-options footer');
 					</script>
 				<!-- END -->
 		</div>
