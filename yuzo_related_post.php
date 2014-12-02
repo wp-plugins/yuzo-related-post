@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 3.7.4
+Version: 3.7.5
 Author: iLen
 Author URI: http://es.ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -89,7 +89,7 @@ class yuzo_related_post extends yuzo_related_post_make{
 
       // validate show in feed or no
       if( is_feed() && (( ! isset($yuzo_options->show_feed) || ! $yuzo_options->show_feed)) ){
-        return;
+        return $content;
       }
 
 
