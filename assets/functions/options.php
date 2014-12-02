@@ -45,6 +45,7 @@ class yuzo_related_post_make{
                                  'twitter'        => '',
                                  'wp_review'      => 'http://wordpress.org/support/view/plugin-reviews/yuzo-related-post?filter=5',
                                  'wp_support'     => 'https://wordpress.org/support/plugin/yuzo-related-post',
+                                 'link_donate'    => 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSRAUBMB5BZFU',
                                  'type'           =>'plugin',
                                  'method'         =>'free',
                                  'themeadmin'     =>'fresh');
