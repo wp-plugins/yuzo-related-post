@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Yuzo  ̵ ̵ ̵  Related Post
+Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
 Version: 3.7.5

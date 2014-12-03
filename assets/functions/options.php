@@ -28,8 +28,8 @@ class yuzo_related_post_make{
         global $wp_social_pupup_header_plugins;
         return array(            'id'             =>'yuzo_related_post_id',
                                  'id_menu'        =>'yuzo-related-post',
-                                 'name'           =>'Yuzo  ̵ ̵ ̵  Related Post',
-                                 'name_long'      =>'Yuzo  ̵ ̵ ̵  Related Post',
+                                 'name'           =>'Yuzo  ̵ ̵ ̵  Related Posts',
+                                 'name_long'      =>'Yuzo  ̵ ̵ ̵  Related Posts',
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
