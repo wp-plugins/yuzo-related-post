@@ -312,7 +312,7 @@ class yuzo_related_post_make{
                                                                                               'row'   =>array('a','b')),
 
                                                                                       array(  'title' =>__('Order by',$this->parameter['name_option']),
-                                                                                              'help'  =>__('Ordenar por vía taxonomias',$this->parameter['name_option']),
+                                                                                              'help'  =>__('By via taxonomies, this might be more relevant in the algorithm to search for related real.s',$this->parameter['name_option']),
                                                                                               'type'  =>'select',
                                                                                               'value' =>'',
                                                                                               'items' =>array('related_scores_high__speedy'             =>__('Related Scores : High  ( Speedy )',$this->parameter['name_option']),
