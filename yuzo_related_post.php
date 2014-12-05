@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 3.7.6
+Version: 3.8
 Author: iLen
 Author URI: http://es.ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -155,6 +155,11 @@ class yuzo_related_post extends yuzo_related_post_make{
       $tag_ids = array();
       $string_cate = "";
       $string_tags = "";
+      $post__in = null;
+
+      $string_order_by = $yuzo_options->order_by;
+      $string_order    = $yuzo_options->order;
+
       if( $yuzo_options->related_to == '3' ){
         $tags = wp_get_post_tags($post->ID);
           if ($tags) {  
@@ -183,22 +188,29 @@ class yuzo_related_post extends yuzo_related_post_make{
 
         $string_order_by = 'rand';
 
+      }elseif( $yuzo_options->related_to == '5' ){ // Taxonomies 
+
+        $post__in = self::taxomy_real();
+        $string_order = "";
+        $string_order_by = 'post__in';
+
       }
 
-      $string_order_by = $yuzo_options->order_by;
-      $string_order    = $yuzo_options->order;
+   
+
 
       $post__not_in[] = $post->ID;
-      $args        = array('post__not_in' => $post__not_in,
-                    'posts_per_page'      => (int)$yuzo_options->display_post,
-                    'post_type'           => (array)$yuzo_options->post_type,
-                    'post_status'         => 'publish',
-                    'ignore_sticky_posts' => 1,
-                    'orderby'             => $string_order_by,
-                    'order'               => $string_order,
-                    'tag__in'             => $tag_ids,
-                    'category__in'        => $string_cate,
-                    'category__not_in'    => $array_no_category
+      $args        = array( 
+                            'posts_per_page'      => (int)$yuzo_options->display_post,
+                            'post_type'           => (array)$yuzo_options->post_type,
+                            'post_status'         => 'publish',
+                            'ignore_sticky_posts' => 1,
+                            'orderby'             => $string_order_by,
+                            'order'               => $string_order,
+                            'tag__in'             => $tag_ids,
+                            'category__in'        => $string_cate,
+                            'category__not_in'    => $array_no_category,
+                            'post__in'            => array_diff($post__in,$post__not_in),
                   );
 
       query_posts( $args );  
@@ -349,7 +361,7 @@ class yuzo_related_post extends yuzo_related_post_make{
                     //$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
                     $_html .= '
                     <div class="relatedthumb yuzo-list"  >  
-                        <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).' '.$my_array_views['bottom'].'</a>  </h3>
+                        <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.IF_setHtml( self::yuzo_extract_title( get_the_title(), $yuzo_options->text_length ) ).' '.$my_array_views['bottom'].'</a>   </h3>
                               '.$text2_extract .'
                     </div>';
                     $style="<style>
@@ -889,6 +901,99 @@ function wp_yuzo_postview_cache_count_enqueue() {
     
   }
 }
+
+
+
+
+
+
+function taxomy_real(){
+
+  global $yuzo_options,$wpdb;
+
+  $args = "SELECT term_taxonomy_id FROM {$wpdb->term_relationships} WHERE object_id = " . get_the_ID();
+
+  $term_taxonomy_ids = $wpdb->get_col( "$args" );
+  if ( !$term_taxonomy_ids ) { return; }
+  $term_taxonomy_ids_str = implode( ",", $term_taxonomy_ids );
+  
+  $object_ids = array();
+  $object_ids = $wpdb->get_col( "SELECT object_id FROM {$wpdb->term_relationships} WHERE term_taxonomy_id IN ( {$term_taxonomy_ids_str} ) " );
+  if ( !$object_ids ) { return; }
+  
+  $object_ids = array_count_values( $object_ids );
+  
+  arsort( $object_ids );
+
+  $order_by = isset($yuzo_options->order_by_taxonomias)?$yuzo_options->order_by_taxonomias:'';
+  $array_id_post_return = null;
+  if ( $order_by == "related_scores_high__speedy" ) {
+    $count = 1;
+    foreach ( $object_ids as $object_id => $relevancy_score ) {
+      $related_post = $wpdb->get_row( "SELECT ID FROM {$wpdb->posts} WHERE ID = {$object_id} AND post_status = 'publish'" );
+      if ( $related_post ) {
+
+        $array_id_post_return[] = $related_post->ID;
+
+        if ( $count++ >= ( (int)$yuzo_options->display_post + 1 ) ) {
+          break;
+        }
+      }
+    }
+  } else {
+    $relevancy_scores = array();
+    $post_ids = array();
+    $post_date = array();
+    $post_modified = array();
+    foreach ( $object_ids as $object_id => $relevancy_score ) {
+      $related_post = $wpdb->get_row( "SELECT ID, post_date, post_modified FROM {$wpdb->posts} WHERE ID = {$object_id} AND  post_status = 'publish'" );
+      if ( $related_post ) {
+        array_push( $relevancy_scores, $relevancy_score );
+        array_push( $post_ids, $related_post->ID );
+        array_push( $post_date, $related_post->post_date );
+        array_push( $post_modified, $related_post->post_modified );
+      }
+    }
+    if ( $post_ids ) {  
+      if ( $order_by == "related_scores_high__date_published_old" ){
+        array_multisort( $relevancy_scores, SORT_DESC, $post_date, SORT_ASC, $post_ids, SORT_ASC, $post_modified, SORT_ASC );
+      } elseif ( $order_by == "related_scores_low__date_published_new" ) {
+        array_multisort( $relevancy_scores, SORT_ASC, $post_date, SORT_DESC, $post_ids, SORT_DESC, $post_modified, SORT_DESC );
+      } elseif ( $order_by == "related_scores_low__date_published_old" ) {
+        array_multisort( $relevancy_scores, SORT_ASC, $post_date, SORT_ASC, $post_ids, SORT_ASC, $post_modified, SORT_ASC );
+      } elseif ( $order_by == "related_scores_high__date_modified_new" ) {
+        array_multisort( $relevancy_scores, SORT_DESC, $post_modified, SORT_DESC, $post_date, SORT_DESC, $post_ids, SORT_DESC );
+      } elseif ( $order_by == "related_scores_high__date_modified_old" ) {
+        array_multisort( $relevancy_scores, SORT_DESC, $post_modified, SORT_ASC, $post_date, SORT_ASC, $post_ids, SORT_ASC );
+      } elseif ( $order_by == "related_scores_low__date_modified_new" ) {
+        array_multisort( $relevancy_scores, SORT_ASC, $post_modified, SORT_DESC, $post_date, SORT_DESC, $post_ids, SORT_DESC );
+      } elseif ( $order_by == "related_scores_low__date_modified_old" ) {
+        array_multisort( $relevancy_scores, SORT_ASC, $post_modified, SORT_ASC, $post_date, SORT_ASC, $post_ids, SORT_ASC );
+      } elseif ( $order_by == "date_published_new" ) {
+        array_multisort( $post_date, SORT_DESC, $post_ids, SORT_DESC, $post_modified, SORT_DESC, $relevancy_scores, SORT_DESC );
+      } elseif ( $order_by == "date_published_old" ) {
+        array_multisort( $post_date, SORT_ASC, $post_ids, SORT_ASC, $post_modified, SORT_ASC, $relevancy_scores, SORT_DESC );
+      } elseif ( $order_by == "date_modified_new" ) {
+        array_multisort( $post_modified, SORT_DESC, $post_date, SORT_DESC, $post_ids, SORT_DESC, $relevancy_scores, SORT_DESC );
+      } elseif ( $order_by == "date_modified_old" ) {
+        array_multisort( $post_modified, SORT_ASC, $post_date, SORT_ASC, $post_ids, SORT_ASC, $relevancy_scores, SORT_DESC );
+      } else {
+        array_multisort( $relevancy_scores, SORT_DESC, $post_date, SORT_DESC, $post_ids, SORT_DESC, $post_modified, SORT_DESC );
+      }
+      $count = 1;
+      foreach ( $post_ids as $key => $post_id ) {
+        $array_id_post_return[] = $post_id;
+        if ( $count++ >= ((int)$yuzo_options->display_post + 1 ) ) {
+          break;
+        }
+      }
+    }
+  }
+
+
+  return $array_id_post_return;
+}
+
  
 
 

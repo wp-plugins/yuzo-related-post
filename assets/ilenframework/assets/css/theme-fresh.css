@@ -464,6 +464,12 @@ input[type="range"]::-webkit-slider-thumb {
   behavior: url(PIE.htc);
 }
 
+.ilenplugin-options .select-wrapper:hover,
+.ilenplugin-options .select-wrapper:focus,
+.ilenplugin-options .select-wrapper:active{
+  border:solid 1px #ACA8A8;
+}
+
 .ilenplugin-options .select-wrapper:before {
   position: absolute;
   z-index: 1;

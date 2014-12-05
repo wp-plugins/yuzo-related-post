@@ -10,7 +10,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.0.1
 Stable tag: 3.7
-Version: 3.7.6
+Version: 3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,21 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 3.8 =
+<strong>Add option: Related to based in Toxonomies (NEW)</strong>
+*Related Scores : High  ( Speedy )
+*Related Scores : High  /  Date Published : New  ( Default setting )
+*Related Scores : High  /  Date Published : Old
+*Related Scores : Low  /  Date Published : New
+*Related Scores : Low  /  Date Published : Old
+*Related Scores : High  /  Date Modified : New
+*Related Scores : High  /  Date Modified : Old
+*Related Scores : Low  /  Date Modified : New
+*Related Scores : Low  /  Date Modified : Old
+*Date Published : New
+*Date Published : Old
+*Date Modified : New
+*Date Modified : Old
 = 3.7.6 =
 *Add option: 'Text to display'
 You can choose from the first text of the article or else the extract of the article

@@ -19,6 +19,26 @@ jQuery(document).ready(function( $ ){
 	});
 
 
+  $("#yuzo_related_post_related_to").on('change',function(){
+
+    if( $(this).val() == '5' ){
+
+      $(".class_order_by").css("display","none");
+      $(".class_order").css("display","none");
+      $(".class_order_by_taxonomias").css("display","block");
+      
+
+    } else {
+
+      $(".class_order_by").css("display","block");
+      $(".class_order").css("display","block");
+      $(".class_order_by_taxonomias").css("display","none");
+
+    }
+
+  });
+
+
  
 	$('.yuzo_style_chosse #yuzo_related_post_style_img_2').on("click", function(event){
     $("#yuzo_related_post_height_image").val(85);
@@ -36,6 +56,23 @@ jQuery(document).ready(function( $ ){
     $(".class_yuzo_meta_custom").css("display","block");
     $(".class_yuzo_meta_custom").css("background","rgb(249, 249, 249)");
   }
+
+
+
+  if( $("#yuzo_related_post_related_to").val() == 5 ){
+
+      $(".class_order_by").css("display","none");
+      $(".class_order").css("display","none");
+      $(".class_order_by_taxonomias").css("display","block");
+      
+
+    } else {
+
+      $(".class_order_by").css("display","block");
+      $(".class_order").css("display","block");
+      $(".class_order_by_taxonomias").css("display","none");
+
+    }
 
 
 });
