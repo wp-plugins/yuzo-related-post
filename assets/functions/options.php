@@ -33,7 +33,7 @@ class yuzo_related_post_make{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'3.7.5',
+                                 'version'        =>'3.7.6',
                                  'url'            =>'',
                                  'logo'           =>'<i class="fa fa-bolt"></i>', // or image .jpg,png
                                  'logo_text'      =>'', // alt of image
@@ -604,6 +604,19 @@ class yuzo_related_post_make{
                                                                             'value' =>'0',
                                                                             'id'    =>$this->parameter['name_option'].'_'.'text2_length',
                                                                             'name'  =>$this->parameter['name_option'].'_'.'text2_length',
+                                                                            'class' =>'',
+                                                                            'row'   =>array('a','b')),
+
+                                                                    array(  'title' =>__('Text to display',$this->parameter['name_option']),
+                                                                            'help'  =>__('You can choose from the first text of the article or else the extract of the article',$this->parameter['name_option']),
+                                                                            'type'  =>'select',
+                                                                            'value' =>'none',
+                                                                            'items' =>array(
+                                                                                            '1'        =>__('Text in the article begins',$this->parameter['name_option']),
+                                                                                            '2'        =>__('Excerpt from article',$this->parameter['name_option']),
+                                                                                           ),
+                                                                            'id'    =>$this->parameter['name_option'].'_'.'text_show',
+                                                                            'name'  =>$this->parameter['name_option'].'_'.'text_show',
                                                                             'class' =>'',
                                                                             'row'   =>array('a','b')),
 

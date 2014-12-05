@@ -137,6 +137,10 @@
   overflow: inherit!important;
 }
 
+.yuzo_related_post.style-1 .yuzo_text{
+  display: block;
+}
+
 
 
 

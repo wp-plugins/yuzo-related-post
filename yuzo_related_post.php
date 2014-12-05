@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 3.7.5
+Version: 3.7.6
 Author: iLen
 Author URI: http://es.ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -270,8 +270,22 @@ class yuzo_related_post extends yuzo_related_post_make{
           if( $yuzo_options->title_bold =='1'){
             $bold_title = "font-weight:bold";
           }
+
+
+          // validate text to show
+          $text_to_show = null;
           if( (int)$yuzo_options->text2_length > 0 ){
-            $text2_extract = '<span class="yuzo_text" style="font-size:'.((int)$yuzo_options->font_size - 4).'px;" >'.IF_setHtml( self::yuzo_extract_title( strip_tags( get_the_content() ), (int)$yuzo_options->text2_length ) ).'</span>';
+
+            if( ! isset($yuzo_options->text_show) ){
+                $text_to_show = get_the_content();
+            }elseif( isset($yuzo_options->text_show) && $yuzo_options->text_show == 1 ){
+                $text_to_show = get_the_content();
+            }elseif( isset($yuzo_options->text_show) && $yuzo_options->text_show == 2 ){
+                $text_to_show = $post->post_excerpt;
+            }
+
+
+            $text2_extract = '<span class="yuzo_text" style="font-size:'.((int)$yuzo_options->font_size - 4).'px;" >'.IF_setHtml( self::yuzo_extract_title( strip_tags( $text_to_show ), (int)$yuzo_options->text2_length ) ).'</span>';
           }
  
                 if( $yuzo_options->style == 1 ){
@@ -440,7 +454,17 @@ class yuzo_related_post extends yuzo_related_post_make{
             $bold_title = "font-weight:bold";
           }
           if( (int)$yuzo_options->text2_length > 0 ){
-            $text2_extract = '<span class="yuzo_text" style="font-size:'.((int)$yuzo_options->font_size - 4).'px;" >'.IF_setHtml( self::yuzo_extract_title( strip_tags( get_the_content() ), (int)$yuzo_options->text2_length ) ).'</span>';
+
+            // validate text to show
+            $text_to_show = null;
+            if( ! isset($yuzo_options->text_show) ){
+                $text_to_show = get_the_content();
+            }elseif( isset($yuzo_options->text_show) && $yuzo_options->text_show == 1 ){
+                $text_to_show = get_the_content();
+            }elseif( isset($yuzo_options->text_show) && $yuzo_options->text_show == 2 ){
+                $text_to_show = get_the_excerpt();
+            }
+            $text2_extract = '<span class="yuzo_text" style="font-size:'.((int)$yuzo_options->font_size - 4).'px;" >'.IF_setHtml( self::yuzo_extract_title( strip_tags( $text_to_show ), (int)$yuzo_options->text2_length ) ).'</span>';
           }
  
                 if( $yuzo_options->style == 1 ){

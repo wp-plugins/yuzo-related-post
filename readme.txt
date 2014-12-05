@@ -9,8 +9,8 @@ Author URI: http://es.ilentheme.com
 Author: iLen
 Requires at least: 3.9
 Tested up to: 4.0.1
-Stable tag: 3.5
-Version: 3.7.5
+Stable tag: 3.7
+Version: 3.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,10 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 3.7.6 =
+*Add option: 'Text to display'
+You can choose from the first text of the article or else the extract of the article
+*Fixed style.css
 = 3.7.5 =
 *Fixed Feed/Rss content.
 I forgot to return the content that horror mine.
