@@ -788,7 +788,7 @@ function yuzo_get_PostViews($post_ID, $count_key = 'yuzo_views'){
 
     global $yuzo_options; 
 
-
+    $count = 0;
     if( isset($yuzo_options->meta_views) && $yuzo_options->meta_views == 'other' ){
       $count_key = isset($yuzo_options->meta_views_custom)? $yuzo_options->meta_views_custom:'';
     }
