@@ -49,7 +49,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 == Changelog ==
 = 3.8.1 =
-*Fixed variable in query_pos, converted in ARRAY
+* Fixed variable in query_pos, converted in ARRAY
 = 3.8 =
 <strong>Add option: Related to based in Toxonomies (NEW)</strong>
 * Related Scores : High  ( Speedy )
