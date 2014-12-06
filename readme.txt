@@ -52,6 +52,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 * Fixed variable in query_pos, converted in ARRAY
 = 3.8 =
 <strong>Add option: Related to based in Toxonomies (NEW)</strong>
+<br/>
 * Related Scores : High  ( Speedy )
 * Related Scores : High  /  Date Published : New  ( Default setting )
 * Related Scores : High  /  Date Published : Old
@@ -66,7 +67,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 * Date Modified : New
 * Date Modified : Old
 = 3.7.6 =
-*Add option: 'Text to display'
+* Add option: 'Text to display'
 You can choose from the first text of the article or else the extract of the article
 * Fixed style.css
 = 3.7.5 =
