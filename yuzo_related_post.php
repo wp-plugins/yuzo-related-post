@@ -800,7 +800,7 @@ function yuzo_get_PostViews($post_ID, $count_key = 'yuzo_views'){
     // format
     if( isset($yuzo_options->format_count) && $yuzo_options->format_count ){
       $count = number_format((int)$count, 0, '', "$yuzo_options->format_count");
-    }
+    }  
  
     return $count;
 }
