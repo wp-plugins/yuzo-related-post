@@ -52,25 +52,25 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 *Fixed variable in query_pos, converted in ARRAY
 = 3.8 =
 <strong>Add option: Related to based in Toxonomies (NEW)</strong>
-*Related Scores : High  ( Speedy )
-*Related Scores : High  /  Date Published : New  ( Default setting )
-*Related Scores : High  /  Date Published : Old
-*Related Scores : Low  /  Date Published : New
-*Related Scores : Low  /  Date Published : Old
-*Related Scores : High  /  Date Modified : New
-*Related Scores : High  /  Date Modified : Old
-*Related Scores : Low  /  Date Modified : New
-*Related Scores : Low  /  Date Modified : Old
-*Date Published : New
-*Date Published : Old
-*Date Modified : New
-*Date Modified : Old
+* Related Scores : High  ( Speedy )
+* Related Scores : High  /  Date Published : New  ( Default setting )
+* Related Scores : High  /  Date Published : Old
+* Related Scores : Low  /  Date Published : New
+* Related Scores : Low  /  Date Published : Old
+* Related Scores : High  /  Date Modified : New
+* Related Scores : High  /  Date Modified : Old
+* Related Scores : Low  /  Date Modified : New
+* Related Scores : Low  /  Date Modified : Old
+* Date Published : New
+* Date Published : Old
+* Date Modified : New
+* Date Modified : Old
 = 3.7.6 =
 *Add option: 'Text to display'
 You can choose from the first text of the article or else the extract of the article
-*Fixed style.css
+* Fixed style.css
 = 3.7.5 =
-*Fixed Feed/Rss content.
+* Fixed Feed/Rss content.
 I forgot to return the content that horror mine.
 = 3.7.4 =
 * Add button 'DONATE'
