@@ -5,7 +5,7 @@
 	margin: 10px 0;
   width: 100%;
   display: block;
-  float: left;
+  /*float: left;*/  /*problem with other plugins*/
   clear: both;
 
 }
