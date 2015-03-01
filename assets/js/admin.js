@@ -61,18 +61,18 @@ jQuery(document).ready(function( $ ){
 
   if( $("#yuzo_related_post_related_to").val() == 5 ){
 
-      $(".class_order_by").css("display","none");
-      $(".class_order").css("display","none");
-      $(".class_order_by_taxonomias").css("display","block");
-      
+    $(".class_order_by").css("display","none");
+    $(".class_order").css("display","none");
+    $(".class_order_by_taxonomias").css("display","block");
+    
 
-    } else {
+  } else {
 
-      $(".class_order_by").css("display","block");
-      $(".class_order").css("display","block");
-      $(".class_order_by_taxonomias").css("display","none");
+    $(".class_order_by").css("display","block");
+    $(".class_order").css("display","block");
+    $(".class_order_by_taxonomias").css("display","none");
 
-    }
+  }
 
 
 });

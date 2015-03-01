@@ -7,4 +7,5 @@ jQuery(document).ready(function(){
 		data:"postviews_id="+viewsCacheL10n.post_id+"&action=yuzo-plus-views&is_singular="+viewsCacheL10n.is_singular,
 		cache:!1
 	});
+
 });

@@ -1,30 +1,41 @@
 ﻿=== Plugin Name ===
-
 Contributors: iLenStudio
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/support/plugin/yuzo-related-post
 Tags: related posts,related post, post, relate post, wordpress related post, related page, full related post, best related post, html5, css3, post content, plugin for content, plugin related post, wp post relacionados, wordpress post relacionados, related post, zemanta related post,ads, feeds,  multisite, pages, posts, related, Related Content, related posts, rss, thumbnails, yarpp,feed, feeds, Post, posts, related, related posts, rss, similar posts, thumbnail, widget, categories, category, custom post, custom posts, plugin, Post, posts, related, related posts, similar, similar posts,posts, related, related posts, seo,add this, addtoany, aim, analytics, bitly, bookmark button, bookmarking, bookmarks, bookmarks menu, buffer, del.icio.us, Digg, email button, evernote, Facebook, facebook like, facebook recommend, fark, gmail, goo.gl, google, google analytics, google bookmarks, google plus, google translate, Google+1,  Hubspot, instapaper, linkedin, linkwithin, netlog, nrelate, orkut, outbrain, pinterest, popular, popular posts, recommendations, Reddit, Related Content, related posts, seo, sexybookmarks, Share, share and enjoy, share and follow, share button, share this, Shareaholic, sharebar, shareholic, sharethis, sharing, sharing is caring, sharing is sexy, shortcode, sociable, social, social share, socialize, stats, stumbleupon, sumome, thumbnails, tinyurl, translate, tumblr, twitter,  url shortener, wanelo,  wpmu, yaarp, yahoo, yahoo messenger, yammer, yarpp, yummly,rtl,plugin rtl
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSRAUBMB5BZFU
-Author URI: http://es.ilentheme.com
+Author URI: http://ilentheme.com
 Author: iLen
 Requires at least: 3.9
-Tested up to: 4.0.1
-Stable tag: 3.7
-Version: 3.8.2
+Tested up to: 4.1
+Stable tag: 4.0
+Version: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-
 The first plugin that ever have to install on your page Wordpress.
-
 == Description ==
-<h3>Minimalist, productive and Fast..!</h3>
-
+<blockquote>
+  <p>Support only <a href="http://support.ilentheme.com" target="_blank">HERE</a></p>
+</blockquote>
+<h4>Minimalist, productive and Fast..!</h4>
+Yuzo is intended to show related post plugin as accurate as possible, also has multiple features with more customization options +50 much as estrutura as design.
+Also in this new version features a super widget to display related or the best post your wordpress blog. This fast to use and configure intuitive and the best thing is free.
 Displays related post your stories with different features of text and image size.
 
-<blockquote><strong>Thousands of websites are using this plugin</strong><p>Adjusts the image size of post related to fit your template.</p></blockquote>
-<strong>This are some of the options Plugin: </strong>
+
+<strong>Here are some of its main features: </strong>
 <ul>
+<li>The fastest: Yuzo is considered one of the faster and less load on the PC</li>
+<li>Cache: Now Yuzo cache uses the images and sql to make your site faster.</li>
+<li>Post related manually: With this you can add a post that you want to be related to another post.</li>
+<li>Minimalist: It has a minimalist design with interesting effects.</li>
+<li>New Metabox: The new metabox is something you want to know.</li>
+<li>Yuzo Widget: You can see it in the widget and is a super widget.</li>
+<li>Customizing text: Allows you to customize the text in many ways, colors, etc ...</li>
+<li>Counter: Check the amounts of visits to your post have by Yuzo.</li>
+<li>Dashboard (Post): Display visits in the list of post in administration.</li>
+<li>Productivity: All tools and options needed to take advantage of the plugin.</li>
 <li>Post Type. (post,page,attachment, other types) </li>
 <li>Style: Horizontal & Vertical </li>
 <li>Categories on which related thumbnails will appear. </li>
@@ -35,6 +46,7 @@ Displays related post your stories with different features of text and image siz
 <li>And more options. </li>
 </ul>
 
+<blockquote><strong>Thousands of websites are using this plugin</strong><p>Adjusts the image size of post related to fit your template.</p></blockquote>
 Gives shape and life to your post with 'Yuzo related post' ;)
 
 == Installation ==
@@ -48,6 +60,18 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.0 =
+* The fastest: Yuzo is considered one of the faster and less load on the PC
+* Cache: Now Yuzo cache uses the images and sql to make your site faster.
+* Minimalist: It has a minimalist design with interesting effects.
+* New Metabox: The new metabox is something you want to know.
+* Yuzo Widget: You can see it in the widget and is a super widget.
+* Customizing text: Allows you to customize the text in many ways, colors, etc ...
+* Counter: Check the amounts of visits to your post have by Yuzo.
+* Dashboard (Post): Display visits in the list of post in administration.
+* Productivity: All tools and options needed to take advantage of the plugin.
+* Multiple corrections to code for speed
+* Update core <code>iLenFramework 2.0</code>
 = 3.8.1 =
 * Fixed variable in query_pos, converted in ARRAY
 = 3.8 =
@@ -66,6 +90,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 * Date Published : Old
 * Date Modified : New
 * Date Modified : Old
+
 = 3.7.6 =
 * Add option: 'Text to display'
 You can choose from the first text of the article or else the extract of the article
@@ -274,5 +299,3 @@ If not well visualized Related Post Yuzo possibly has a conflict with some other
 7. Other page example 6
 8. Other page example 7
 9. Other page example 8
-10. Other page example 9
-11. Other page example 10
