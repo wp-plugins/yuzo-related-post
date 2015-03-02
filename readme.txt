@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.1
 Stable tag: 4.0
-Version: 4.0
+Version: 4.1
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -59,6 +59,9 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.1 =
+* New presentations
+
 = 4.0 =
 * The fastest: Yuzo is considered one of the faster and less load on the PC
 * Cache: Now Yuzo cache uses the images and sql to make your site faster.

@@ -25,7 +25,7 @@ class yuzo_related_post_make extends IF_utils{
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
                                  'version'        =>'4.0',
                                  'db_version'     =>'1.0',
-                                 'present_version'=>'1.1',
+                                 'present_version'=>'1.2',
                                  'url'            =>'',
                                  'logo'           =>'<i class="el-icon-fire"></i>', // or image .jpg,png
                                  'logo_text'      =>'', // alt of image

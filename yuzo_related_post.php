@@ -1529,12 +1529,20 @@ global $IF_CONFIG, $yuzo_options;
 unset($IF_CONFIG);
 $IF_CONFIG = null;
 $IF_CONFIG = new yuzo_related_post;
-
 require_once "assets/ilenframework/core.php";
+
+
+
+
 if( isset($yuzo_options->active_widget) && $yuzo_options->active_widget ){
     require_once "assets/functions/widget.php";
 }
+
+
+
 require_once "assets/functions/metabox.php";
+
+
 
 function get_yuzo_related_posts($content=""){
   
@@ -1543,6 +1551,7 @@ function get_yuzo_related_posts($content=""){
   echo $IF_CONFIG->create_post_related($content);
   
 }
+
 
 
 function get_Yuzo_Views(){
@@ -1567,5 +1576,28 @@ function get_Yuzo_Views(){
   return (int)($counts);
 
 }
+
+
+
+function yuzo_redirect_welcome_upgrade() {
+
+    $present_version  = get_option( $this->parameter["name_option"].'_present_version' );
+    if( isset($this->parameter["present_version"]) && $present_version != $this->parameter["present_version"] ) {
+
+        update_option( $this->parameter["name_option"].'_present_version' , $this->parameter["present_version"] );
+        exit( wp_redirect( admin_url( 'options-general.php?page=yuzo-welcome&install_data=true' ) ) );
+
+    }
+
+}
+
+
+
+if( is_admin() ){
+    if( isset($_GET["page"]) && $_GET["page"] == "yuzo-related-post"  ){
+        yuzo_redirect_welcome_upgrade();    
+    }
+}
+
 
 ?>
