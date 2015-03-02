@@ -11,7 +11,6 @@ Tested up to: 4.1
 Stable tag: 4.0
 Version: 4.0
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The first plugin that ever have to install on your page Wordpress.
 == Description ==
