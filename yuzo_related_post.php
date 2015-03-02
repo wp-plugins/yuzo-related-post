@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.2
+Version: 4.2.1
 Author: iLen
 Author URI: http://es.ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -1448,6 +1448,8 @@ function yuzo_install_db(){
 
         if( $wpdb->get_row(  $sql_validate )->total > 0 ){
 
+            $remove_meta = 0;
+
             $args = array( 'fields' => 'ids' );
 
             $all_post_ids = get_posts( $args );
@@ -1459,7 +1461,10 @@ function yuzo_install_db(){
 
                     if( ! $wpdb->get_row( "select 1 from $table_name WHERE post_id = $post_id" ) ){
                         if( $count = get_post_meta( $post_id, 'yuzo_views' , true) ){
-                            @$wpdb->query("insert into $table_name values(0,$post_id,$count,'".date("Y-m-d H:m:i")."',".time().")");
+                            if( @$wpdb->query("insert into $table_name values(0,$post_id,$count,'".date("Y-m-d H:m:i")."',".time().")" ) ){
+                                $remove_meta = 1;
+                            }
+
                         }
 
                     }
@@ -1473,8 +1478,9 @@ function yuzo_install_db(){
             //$meta_value = ''; // Also ignored. The meta will be deleted regardless of value.
             //$delete_all = true;
             //delete_metadata( $meta_type, $user_id, $meta_key, $meta_value, $delete_all );
-
-            delete_post_meta_by_key( 'yuzo_views' );
+            if($remove_meta){
+                delete_post_meta_by_key( 'yuzo_views' );
+            }
 
         }
     }
