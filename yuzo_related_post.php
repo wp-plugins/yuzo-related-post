@@ -1580,11 +1580,11 @@ function get_Yuzo_Views(){
 
 
 function yuzo_redirect_welcome_upgrade() {
+    global $IF_CONFIG;
+    $present_version  = get_option($IF_CONFIG->parameter["name_option"].'_present_version' );
+    if( isset($IF_CONFIG->parameter["present_version"]) && $present_version != $IF_CONFIG->parameter["present_version"] ) {
 
-    $present_version  = get_option( $this->parameter["name_option"].'_present_version' );
-    if( isset($this->parameter["present_version"]) && $present_version != $this->parameter["present_version"] ) {
-
-        update_option( $this->parameter["name_option"].'_present_version' , $this->parameter["present_version"] );
+        update_option( $IF_CONFIG->parameter["name_option"].'_present_version' , $IF_CONFIG->parameter["present_version"] );
         exit( wp_redirect( admin_url( 'options-general.php?page=yuzo-welcome&install_data=true' ) ) );
 
     }

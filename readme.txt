@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.1
 Stable tag: 4.0
-Version: 4.1
+Version: 4.2
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -59,7 +59,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
-= 4.1 =
+= 4.2 =
 * New presentations
 
 = 4.0 =
