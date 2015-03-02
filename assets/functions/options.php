@@ -23,8 +23,8 @@ class yuzo_related_post_make extends IF_utils{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'4.2.2',
-                                 'db_version'     =>'1.1',
+                                 'version'        =>'4.2.3',
+                                 'db_version'     =>'1.2',
                                  'present_version'=>'1.2',
                                  'url'            =>'',
                                  'logo'           =>'<i class="el-icon-fire"></i>', // or image .jpg,png

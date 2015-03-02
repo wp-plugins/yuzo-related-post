@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.2.2
+Version: 4.2.3
 Author: iLen
 Author URI: http://es.ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -74,7 +74,8 @@ class yuzo_related_post extends yuzo_related_post_make{
             }
 
             // when active plugin verify db
-            register_activation_hook( __FILE__ , array( &$this,'yuzo_install_db' ) );
+            //register_activation_hook( __FILE__ , array( &$this,'yuzo_install_db' ) );
+            add_action( 'admin_head',  array( &$this,'yuzo_install_db' ) );
             // when active plugin redirect
             add_action( 'activated_plugin', array( &$this,'yuzo_redirect_welcome' ) );
             //register_activation_hook( __FILE__ , array( &$this, 'yuzo_redirect_welcome' ));
@@ -1460,7 +1461,9 @@ function yuzo_install_db(){
                     $count = null;
 
                     if( ! $wpdb->get_row( "select 1 from $table_name WHERE post_id = $post_id" ) ){
+
                         if( $count = get_post_meta( $post_id, 'yuzo_views' , true) ){
+
                             if( @$wpdb->query("insert into $table_name values(0,$post_id,$count,'".date("Y-m-d H:m:i")."',".time().")" ) ){
                                 $remove_meta = 1;
                             }
