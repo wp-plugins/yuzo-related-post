@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.2.3
+Version: 4.2.4
 Author: iLen
 Author URI: http://es.ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -1006,7 +1006,7 @@ function hits_ajax(){
 function yuzo_get_PostViews($post_ID, $count_key = '',$format = true){
 
     global $yuzo_options;
-    $transient_name      = "yuzo_view_cache";
+    $transient_name      = "yuzo_view_cache_$post_ID";
     $cacheTime           = 20; // minutes
     $the_cache_yuzo_view = false;
 
