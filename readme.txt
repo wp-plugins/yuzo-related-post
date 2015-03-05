@@ -8,8 +8,8 @@ Author URI: http://ilentheme.com
 Author: iLen
 Requires at least: 3.9
 Tested up to: 4.1.1
-Stable tag: 4.2.3
-Version: 4.2.5
+Stable tag: 4.2.6
+Version: 4.2.6
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -59,6 +59,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.2.6 =
+* Fixed widget display
 = 4.2.5 =
 * Corrected compatibility with BBpress
 = 4.2.4 =

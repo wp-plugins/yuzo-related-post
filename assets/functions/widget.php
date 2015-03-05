@@ -768,7 +768,7 @@ function widget($args,$instance){
     $post_in        = null;
     $post_not_in    = null;
 
-    // verify cache query
+    //verify cache query
     include_once(ABSPATH . 'wp-includes/pluggable.php');
     if( false === ($the_query_yuzo = get_transient($transient_name) ) || ( current_user_can( 'manage_options' )  && !isset($_GET['P3_NOCACHE']) )  ){
         $rebuilt_query  = true;
@@ -912,22 +912,22 @@ function widget($args,$instance){
                 $args_sql = array('orderby'         => 'comment_count',
                               'posts_per_page'  => (int)$yuzo_option_widget->number_post);
 
-                $args_sql['post__not_in'] = $post->ID;
+                $args_sql['post__not_in'] = array($post->ID);
 
             }elseif( $yuzo_option_widget->show_list == 'last-post' ){
 
                 $args_sql = array('order'           => 'DESC',
-                              'orderby'         => 'date',
-                              'posts_per_page'  => (int)$yuzo_option_widget->number_post);
+                                  'orderby'         => 'date',
+                                  'posts_per_page'  => (int)$yuzo_option_widget->number_post);
 
-                $args_sql['post__not_in'] = $post->ID;
+                $args_sql['post__not_in'] = array($post->ID);
 
             }elseif( $yuzo_option_widget->show_list  == 'rand' ){
 
                 $args_sql = array('orderby'         => 'rand',
                               'posts_per_page'  => (int)$yuzo_option_widget->number_post);
 
-                $args_sql['post__not_in'] = $post->ID;
+                $args_sql['post__not_in'] = array($post->ID);
 
             }elseif( $yuzo_option_widget->show_list == 'most-view' ){
 
@@ -963,9 +963,9 @@ function widget($args,$instance){
                                 $meta_view_widget = $yuzo_option_widget->meta_views_custom;
                             }
 
-                            $args_sql = array('meta_key'        => $yuzo_option_widget->meta_views_custom,
-                                          'orderby'         => 'meta_value_num',
-                                          'posts_per_page'  => (int)$yuzo_option_widget->number_post);
+                            $args_sql = array(  'meta_key'        => $yuzo_option_widget->meta_views_custom,
+                                                'orderby'         => 'meta_value_num',
+                                                'posts_per_page'  => (int)$yuzo_option_widget->number_post);
 
 
 
@@ -1065,10 +1065,8 @@ function widget($args,$instance){
     //var_dump($args_sql);
     // cache query
     if( $rebuilt_query ){
-
         $the_query_yuzo = new WP_Query( $args_sql );
-        set_transient( $transient_name , $the_query_yuzo, 60 * $cacheTime);
-
+        set_transient( $transient_name , $the_query_yuzo, 60 * $cacheTime );
         // remove FILTER interval
         if( $yuzo_option_widget->yuzo_widget_as == 'list-post' && $yuzo_option_widget->meta_views == 'other' && $yuzo_option_widget->meta_views_custom != 'popularposts' ){
             remove_filter('posts_where',array( $this,'filter_where_yuzo') );
