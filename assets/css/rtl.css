@@ -4,3 +4,10 @@
 .yuzo_related_post .relatedthumb{
   float: right!important;
 }
+.yuzo-list .image-list{
+  margin-left: 15px!important;
+  float: right!important;
+}
+.yuzo_related_post .relatedthumb{
+  text-align: right!important;
+}

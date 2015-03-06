@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'4.3',
+                                 'version'        =>'4.3.1',
                                  'db_version'     =>'1.4',
                                  'present_version'=>'1.2',
                                  'url'            =>'',
@@ -371,7 +371,7 @@ class yuzo_related_post_make extends IF_utils{
                                                                                                   'class' =>'class_order_by_taxonomias',
                                                                                                   'row'   =>array('a','b')),
 
-                                                                                          array(  'title' =>__('Show on feed:',$this->parameter['name_option']), //title section
+                                                                                            array(  'title' =>__('Show on feed:',$this->parameter['name_option']), //title section
                                                                                                   'help'  =>'Displays related post in the feed/rss',
                                                                                                   'type'  =>'checkbox', //type input configuration
                                                                                                   'value' =>'0', // default
@@ -388,6 +388,16 @@ class yuzo_related_post_make extends IF_utils{
                                                                                                   'value_check'=>1, // value data
                                                                                                   'id'    =>$this->parameter['name_option'].'_'.'target_link',  
                                                                                                   'name'  =>$this->parameter['name_option'].'_'.'target_link',  
+                                                                                                  'class' =>'', //class
+                                                                                                  'row'   =>array('a','b')),
+
+                                                                                            array('title' =>__('rel=nofollow?:',$this->parameter['name_option']), //title section
+                                                                                                  'help'  =>'If you enable this option yuzo related links will not be tracked by search engines.',
+                                                                                                  'type'  =>'checkbox', //type input configuration
+                                                                                                  'value' =>'0', // default
+                                                                                                  'value_check'=>1, // value data
+                                                                                                  'id'    =>$this->parameter['name_option'].'_'.'rel_nofollow',  
+                                                                                                  'name'  =>$this->parameter['name_option'].'_'.'rel_nofollow',  
                                                                                                   'class' =>'', //class
                                                                                                   'row'   =>array('a','b')),
                      

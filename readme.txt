@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.1.1
 Stable tag: 4.2.8
-Version: 4.3
+Version: 4.3.1
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -25,6 +25,7 @@ Displays related post your stories with different features of text and image siz
 
 <strong>Here are some of its main features: </strong>
 <ul>
+<li>RTL ready!</li>
 <li>The fastest: Yuzo is considered one of the faster and less load on the PC</li>
 <li>Cache: Now Yuzo cache uses the images and sql to make your site faster.</li>
 <li>Post related manually: With this you can add a post that you want to be related to another post.</li>
@@ -59,6 +60,9 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.3.1 =
+* Add rel='nofollow'
+* Fixed css support for RTL
 = 4.3 =
 * Fixed html and css
 = 4.2.7 =

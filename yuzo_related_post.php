@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.3
+Version: 4.3.1
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -470,6 +470,13 @@ function create_post_related( $content ){
                 $css_title_center = "text-align:center;";
             }
 
+            // rel='nofollow'
+            $rel_link = "";
+            if( isset($yuzo_options->rel_nofollow) && $yuzo_options->rel_nofollow ){
+                $rel_link = "rel='nofollow'";    
+            }
+            
+
      
             $count = 1;
             if( isset($yuzo_options->top_text) && $yuzo_options->top_text ){
@@ -540,7 +547,7 @@ function create_post_related( $content ){
                           $_html .= '
                           <div class="relatedthumb '.$class_box_shadow.'" style="width:'.$width.'px;float:left;overflow:hidden;'.$css_title_center.'">  
                               
-                              <a rel="external" href="'.get_permalink().'" '.$target_link.' >
+                              <a '.$rel_link.' href="'.get_permalink().'" '.$target_link.' >
                                       <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.$width.'px;height:'.$height.'px;">
                                         '.$css_shine_effect2.'
                                         <div class="yuzo-img" style="background:url(\''.$image['src'].'\') 50% 50% no-repeat;width: '.$width.'px;height:'.$height.'px;margin-bottom: 5px;background-size: '.$css_background_size.'; '.$css_border.'"></div>
@@ -574,13 +581,13 @@ function create_post_related( $content ){
                         $image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID() );
                         $_html .= '
                         <div class="relatedthumb yuzo-list  '.$class_box_shadow.'" style="'.$css_title_center.'"  >  
-                          <a rel="external" href="'.get_permalink().'" class="image-list" '.$target_link.' >
+                          <a '.$rel_link.' href="'.get_permalink().'" class="image-list" '.$target_link.' >
                           <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.$width.'px;height:'.$height.'px;">
                                     '.$css_shine_effect2.'
                                      <div class="yuzo-img" style="background:url(\''.$image['src'].'\') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.$height.'px;margin-bottom: 5px;background-size:  '.$css_background_size.'; '.$css_border.' "></div>
                           </div>
                           </a>
-                          <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).'  '.$my_array_views['bottom'].'</a></h3>
+                          <a '.$rel_link.' class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).'  '.$my_array_views['bottom'].'</a>
                                 '.$text2_extract .'
                            
                         </div>';
@@ -597,7 +604,7 @@ function create_post_related( $content ){
                     //$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
                     $_html .= '
                     <div class="relatedthumb yuzo-list"  >  
-                        <a class="link-list" href="'.get_permalink().'"  '.$target_link.'  style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).' '.$my_array_views['bottom'].'</a>   </h3>
+                        <a '.$rel_link.' class="link-list" href="'.get_permalink().'"  '.$target_link.'  style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).' '.$my_array_views['bottom'].'</a>
                               '.$text2_extract .'
                     </div>';
                     $style="<style>
@@ -611,7 +618,7 @@ function create_post_related( $content ){
                     //$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
                     $_html .= '
                     <div class="relatedthumb yuzo-list-color color-'.$count.'"  >  
-                        <a class="link-list" href="'.get_permalink().'"  '.$target_link.'  style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).' '.$my_array_views['bottom'].'</a>  </h3>
+                        <a '.$rel_link.' class="link-list" href="'.get_permalink().'"  '.$target_link.'  style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).' '.$my_array_views['bottom'].'</a>
                               '.$text2_extract .'
                     </div>';
                     $style="<style>
@@ -769,7 +776,7 @@ function create_post_related( $content ){
                                  <div class="yuzo-img" style="background:url(\''.$image['src'].'\') 50% 50% no-repeat;width: '.((int)$yuzo_options->height_image+20).'px;height:'.$height.'px;margin-bottom: 5px;background-size:  '.$css_background_size.'; '.$css_border.' "></div>
                       </div>
                       </a>
-                      <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).'  '.$my_array_views['bottom'].'</a></h3>
+                      <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).'  '.$my_array_views['bottom'].'</a>
                             '.$text2_extract .'
                            
                   </div>';
@@ -786,7 +793,7 @@ function create_post_related( $content ){
                         //$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
                         $_html .= '
                         <div class="relatedthumb yuzo-list"  >  
-                            <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).' '.$my_array_views['bottom'].'</a>  </h3>
+                            <a class="link-list" href="'.get_permalink().'" style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).' '.$my_array_views['bottom'].'</a>
                                   '.$text2_extract .'
                         </div>';
                         $style="<style>
@@ -800,7 +807,7 @@ function create_post_related( $content ){
                         //$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
                         $_html .= '
                         <div class="relatedthumb yuzo-list-color color-'.$count.'"  >  
-                            <a class="link-list" href="'.get_permalink().'"  '.$target_link.'  style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).' '.$my_array_views['bottom'].'</a>  </h3>
+                            <a class="link-list" href="'.get_permalink().'"  '.$target_link.'  style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';line-height:'.( (int)$yuzo_options->font_size + 8).'px;">'.$my_array_views['top'].' '.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).' '.$my_array_views['bottom'].'</a>
                                   '.$text2_extract .'
                         </div>';
                         $style="<style>
