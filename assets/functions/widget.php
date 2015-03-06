@@ -134,7 +134,7 @@ function form($instance){
     // set header widget
     $widget_conf = array(
                         'id'          => 'yuzo_widget',
-                        'description' => 'Yuzo Widget is created by <a href="#">iLen</a>',
+                        'description' => 'Yuzo Widget is created by <a href="http://ilentheme.com">iLen</a>',
                         'color'       => '#96C7E2', // #96E2B2
                         'width'       => '200',
                         );

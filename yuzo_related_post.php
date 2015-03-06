@@ -3,9 +3,9 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.2.6
+Version: 4.2.7
 Author: iLen
-Author URI: http://es.ilentheme.com
+Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
 */
 
@@ -91,6 +91,9 @@ class yuzo_related_post extends yuzo_related_post_make{
 
             // add scripts & styles
             add_action( 'wp_enqueue_scripts', array( &$this,'script_and_style_front' ) );
+
+            // add custom css
+            add_action( 'wp_footer', array( &$this,'add_custom_css' ) );
      
         }
  
@@ -1517,6 +1520,21 @@ function yuzo_redirect_welcome( $plugin ) {
 
         update_option( $this->parameter["name_option"].'_present_version' , $this->parameter["present_version"] );
         exit( wp_redirect( admin_url( 'options-general.php?page=yuzo-welcome&install_data=true' ) ) );
+
+    }
+
+}
+
+
+
+
+function add_custom_css(){
+
+    global $yuzo_options;
+
+    if( isset($yuzo_options->css_and_style) && $yuzo_options->css_and_style ){
+
+        echo "<style>$yuzo_options->css_and_style</style>";
 
     }
 

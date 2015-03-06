@@ -1,15 +1,15 @@
 <?php 
 /**
- * iLenFramework 2.0
+ * iLenFramework 2.1
  * @package ilentheme
  * 
  * live as if it were the last day of your life
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_2_0') ) {
+if ( !class_exists('ilen_framework_2_1') ) {
 
-class ilen_framework_2_0 {
+class ilen_framework_2_1 {
 
 		var $options          = array();
 		var $parameter        = array();
@@ -1844,7 +1844,7 @@ jQuery(".iaccordion-header").on("click",function(){
 
 							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
 							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?>" <?php if(isset( $value['style'] )){ echo $value['style'];} ?>> 
-								<div class="a"><strong><?php echo $value['title']; ?></strong><div class="help"><?php echo $value['help']; ?></div></div>
+								<div class="a  <?php if( $side_two == 'c'){ echo "a_line"; } ?>"><strong><?php echo $value['title']; ?></strong><div class="help"><?php echo $value['help']; ?></div></div>
 								<div class="<?php echo $side_two; ?> component_enhancing_css">
 
 									<?php 
@@ -1858,7 +1858,7 @@ jQuery(".iaccordion-header").on("click",function(){
 
 									  jQuery(document).ready(function(){
 									  	var editor_<?php echo $value['id'] ?> = CodeMirror.fromTextArea(document.getElementById("code_<?php echo $value['id'] ?>"), {
-									  		lineNumbers: true,
+									  		lineNumbers: <?php if( isset($value['lineNumbers']) && $value['lineNumbers'] ){ echo $value['lineNumbers']; }else{ echo "true"; } ?>,
 							    			styleActiveLine: true,
 							    			matchBrackets: true
 							    	   });
@@ -3604,5 +3604,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_2_0;
+$IF = new ilen_framework_2_1;
 ?>

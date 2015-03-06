@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'4.2.6',
+                                 'version'        =>'4.2.7',
                                  'db_version'     =>'1.3',
                                  'present_version'=>'1.2',
                                  'url'            =>'',
@@ -43,7 +43,7 @@ class yuzo_related_post_make extends IF_utils{
                                  'method'         =>'free',
                                  'themeadmin'     =>'fresh',
                                  'metabox'        =>1,
-                                 'scripts_admin'  =>array('page'        => array('yuzo-related-post' => array('nouislider','date','jquery_ui_reset','list_categories','tag')),
+                                 'scripts_admin'  =>array('page'        => array('yuzo-related-post' => array('nouislider','date','jquery_ui_reset','list_categories','tag','enhancing_code')),
                                                           //'edit.php'    => array('select2','date','range2'),
                                                           //'post.php'    => array('select2','date','range2'),
                                                           'post_type'   => array('page' => array('select2','jquery_ui_reset'),
@@ -768,6 +768,17 @@ class yuzo_related_post_make extends IF_utils{
                                                                                 'name'  =>$this->parameter['name_option'].'_'.'title_center', //name
                                                                                 'class' =>'', //class
                                                                                 'row'   =>array('a','b')),
+
+                                                                        array(  'title' =>__('Add custom css',$this->parameter['name_option']),
+                                                                                'help'  =>__('',$this->parameter['name_option']),
+                                                                                'type'  =>'component_enhancing_code',
+                                                                                'lineNumbers' =>'false',
+                                                                                'value' =>".yuzo_related_post{}\n.yuzo_related_post .relatedthumb{}",
+                                                                                //'mini_callback' => 'editor_bubble_seo_preview.setValue( jQuery("#ilen_seo_preview").html() );',
+                                                                                'id'    =>$this->parameter['name_option'].'_'.'css_and_style',
+                                                                                'name'  =>$this->parameter['name_option'].'_'.'css_and_style',
+                                                                                'class' =>'',
+                                                                                'row'   =>array('a','c')),
      
                                                                 )
                                             ),
