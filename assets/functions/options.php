@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'4.3.1',
+                                 'version'        =>'4.3.3',
                                  'db_version'     =>'1.4',
                                  'present_version'=>'1.2',
                                  'url'            =>'',
@@ -545,6 +545,7 @@ class yuzo_related_post_make extends IF_utils{
                                                                                 'row'   =>array('a','b')),
                                                               ),
                     ),
+                    
                     'f'=>array(                'title'      => __('Show visits in related post',$this->parameter['name_option']), 
                                                'title_large'=> __('',$this->parameter['name_option']), 
                                                'description'=> '',  
@@ -630,7 +631,26 @@ class yuzo_related_post_make extends IF_utils{
                                             ),
                     
                    
-                    
+                    'f1'=>array(               'title'      => __('Shortcodes',$this->parameter['name_option']), 
+                                               'title_large'=> __('',$this->parameter['name_option']), 
+                                               'description'=> '',  
+                                               'icon'       => '',
+                                               'tab'        => 'tab03',
+
+                                                'options'    => array( 
+                                                                        array(  'title' =>__('',$this->parameter['name_option']),
+                                                                                'help'  =>__('',$this->parameter['name_option']),
+                                                                                'type'  =>'html', 
+                                                                                'html1' =>'',
+                                                                                'html2' =>'You can put the <br /><code>[yuzo_views]</code> or for template <code>&lt;?php echo do_shortcode( "[yuzoviews]" ); ?&gt;</code><br />
+                                                                                          With this option you can put the hit counter anywhere via a shortcode.
+                                                                                         ',
+                                                                                'id'    =>$this->parameter['name_option'].'_'.'yuzo_html_shortcode',
+                                                                                'name'  =>$this->parameter['name_option'].'_'.'yuzo_html_shortcode',
+                                                                                'class' =>'yuzo_message_html',
+                                                                                'row'   =>array('a','c')),
+                                                              ),
+                    ),
                     'h'=>array(                'title'      => __('Template',$this->parameter['name_option']), 
                                                'title_large'=> __('',$this->parameter['name_option']), 
                                                'description'=> '',  
