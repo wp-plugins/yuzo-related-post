@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.2.7
+Version: 4.2.8
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -969,11 +969,6 @@ function hits_ajax(){
 
     global $wpdb;
 
-    if(!is_singular()) return;
-
-
-    $post_ID = get_the_ID();
-
     $table_name = $wpdb->prefix . 'yuzoviews';
 
     if( ! $wpdb->query("UPDATE $table_name  SET views =views+1,last_viewed = '".date("Y-m-d H:m:i")."',modified=".time()." WHERE post_id = $post_ID") ){
@@ -1415,9 +1410,9 @@ function yuzo_install_db(){
         $sql = "CREATE TABLE $table_name (
                     ID int(11) NOT NULL AUTO_INCREMENT,
                     post_id int(15) NOT NULL,
-                    views int(15) NOT NULL,
+                    views int(14) NOT NULL,
                     last_viewed datetime NOT NULL,
-                    modified int(11) NULL,
+                    modified int(12) NULL,
                 UNIQUE KEY ID (ID)
         ) $charset_collate;";
         
@@ -1454,20 +1449,34 @@ function yuzo_install_db(){
 
             $remove_meta = 0;
 
-            $args = array( 'fields' => 'ids' );
+            //$args = array( 'fields' => 'ids' );
 
-            $all_post_ids = get_posts( $args );
+            $sql_fetch = "SELECT ID
+                        FROM {$prefix}posts AS wposts
+                        WHERE post_type =  'post'
+                        AND EXISTS (
+
+                        SELECT * 
+                        FROM {$prefix}postmeta
+                        WHERE wposts.ID = post_id
+                        AND meta_key =  'yuzo_views'
+                        )
+                        ORDER BY post_date DESC";
+
+            $all_post_ids = $wpdb->get_results($sql_fetch);
+
+            //$all_post_ids = get_posts( $args );
 
             if( $all_post_ids ){
                 foreach ( $all_post_ids as $post_id ) {
 
                     $count = null;
 
-                    if( ! $wpdb->get_row( "select 1 from $table_name WHERE post_id = $post_id" ) ){
+                    if( ! $wpdb->get_row( "select 1 from $table_name WHERE post_id = $post_id->ID" ) ){
 
-                        if( $count = get_post_meta( $post_id, 'yuzo_views' , true) ){
+                        if( $count = get_post_meta( $post_id->ID, 'yuzo_views' , true) ){
 
-                            if( @$wpdb->query("insert into $table_name values(0,$post_id,$count,'".date("Y-m-d H:m:i")."',".time().")" ) ){
+                            if( @$wpdb->query("insert into $table_name values(0,$post_id->ID,$count,'".date("Y-m-d H:m:i")."',".time().")" ) ){
                                 $remove_meta = 1;
                             }
 
