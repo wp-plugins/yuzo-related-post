@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.2.8
+Version: 4.3
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -397,7 +397,7 @@ function create_post_related( $content ){
                 $css_border = " border-radius: {$yuzo_options->thumbnail_border_radius}% ";
 
                 if(  $yuzo_options->thumbnail_border_radius == 50 ){
-                    $css_border = " border-radius: {$yuzo_options->thumbnail_border_radius}%; margin:0 auto; width:".$height."px";
+                    $css_border = " border-radius: {$yuzo_options->thumbnail_border_radius}%; margin:0 auto; width:".$height."px;";
                 }
             }
 
@@ -502,7 +502,7 @@ function create_post_related( $content ){
                 $bold_title = "";
                 $text2_extract = "";
                 if( $yuzo_options->title_bold =='1'){
-                    $bold_title = "font-weight:bold";
+                    $bold_title = "font-weight:bold;";
                 }
 
 
@@ -527,6 +527,15 @@ function create_post_related( $content ){
 
      
                 if( $yuzo_options->style == 1 ){
+
+                    // counter
+                    if( isset($my_array_views['top']) && $my_array_views['top'] ){
+                        $my_array_views['top'] = '<div>'.$my_array_views['top'].'</div>';
+                    }
+                    if( isset($my_array_views['bottom']) && $my_array_views['bottom'] ){
+                        $my_array_views['bottom'] = '<div>'.$my_array_views['bottom'].'</div>';
+                    }
+
                         $image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID() );
                           $_html .= '
                           <div class="relatedthumb '.$class_box_shadow.'" style="width:'.$width.'px;float:left;overflow:hidden;'.$css_title_center.'">  
@@ -536,10 +545,10 @@ function create_post_related( $content ){
                                         '.$css_shine_effect2.'
                                         <div class="yuzo-img" style="background:url(\''.$image['src'].'\') 50% 50% no-repeat;width: '.$width.'px;height:'.$height.'px;margin-bottom: 5px;background-size: '.$css_background_size.'; '.$css_border.'"></div>
                                       </div>
-                                        <div>'.$my_array_views['top'].'</div>
-                                   <span style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.';">'.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).'</span>
+                                      '.$my_array_views['top'].'
+                                   <span style="font-size:'.$yuzo_options->font_size.'px;'.$bold_title.'">'.$if_utils->IF_setHtml( $if_utils->IF_cut_text( get_the_title(), $yuzo_options->text_length , true ) ).'</span>
                               '.$text2_extract .'
-                              <div>'.$my_array_views['bottom'].'</div>
+                              '.$my_array_views['bottom'].'
                               </a>
 
                           </div>';
