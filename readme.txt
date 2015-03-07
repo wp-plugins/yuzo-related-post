@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.1.1
 Stable tag: 4.3.1
-Version: 4.3.3 
+Version: 4.3.4
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -60,6 +60,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.3.4 =
+* Update shortcode: if you want to display the counter of a specific post you can use this <code>[yuzo_views id=123]</code>
 = 4.3.3 =
 * Add shortcode for views
 = 4.3.1 =

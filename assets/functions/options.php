@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'4.3.3',
+                                 'version'        =>'4.3.4',
                                  'db_version'     =>'1.4',
                                  'present_version'=>'1.2',
                                  'url'            =>'',
@@ -642,9 +642,9 @@ class yuzo_related_post_make extends IF_utils{
                                                                                 'help'  =>__('',$this->parameter['name_option']),
                                                                                 'type'  =>'html', 
                                                                                 'html1' =>'',
-                                                                                'html2' =>'You can put the <br /><code>[yuzo_views]</code> or for template <code>&lt;?php echo do_shortcode( "[yuzoviews]" ); ?&gt;</code><br />
-                                                                                          With this option you can put the hit counter anywhere via a shortcode.
-                                                                                         ',
+                                                                                'html2' =>'You can put the  <code>[yuzo_views]</code> or for template <code>&lt;?php echo do_shortcode( "[yuzoviews]" ); ?&gt;</code><br />
+                                                                                          With this option you can put the hit counter anywhere via a shortcode.<br />
+                                                                                          And if you want to display the counter of a specific post you can use this <code>[yuzo_views id=123]</code>',
                                                                                 'id'    =>$this->parameter['name_option'].'_'.'yuzo_html_shortcode',
                                                                                 'name'  =>$this->parameter['name_option'].'_'.'yuzo_html_shortcode',
                                                                                 'class' =>'yuzo_message_html',
