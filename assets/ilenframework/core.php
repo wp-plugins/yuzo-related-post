@@ -2771,10 +2771,8 @@ if( $value_stored ){
             foreach ($mb_header as $key => $value) {
 
                 $html_data = $this->create_ilenMetabox( $key , $mb_header , $mb_body,  $stored_meta );
-                $function_meta_dinamyc = create_function( '',  "echo ".var_export($html_data,TRUE).";" );
-
-				add_action('admin_head', create_function( '', "add_meta_box( '{$value['id']}', '{$value['title']}', '$function_meta_dinamyc', '$post_type' , '{$value['context']}', '{$value['priority']}' );" ), $priority );	
-
+                $function_meta_dinamyc = create_function( '',  "echo ".@var_export($html_data,TRUE).";" );
+				add_action('admin_head',  @create_function( '', "add_meta_box( '{$value['id']}', '{$value['title']}', '$function_meta_dinamyc', '$post_type' , '{$value['context']}', '{$value['priority']}' );" ), $priority );
                 
                 $priority = $priority + 1;
 
