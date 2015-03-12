@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.3.7
+Version: 4.3.8
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -487,6 +487,17 @@ function create_post_related( $content ){
                 $_html .= "<div class='yuzo_clearfixed'>". $this->IF_setHtml( $yuzo_options->top_text ) ."</div>";
             }
 
+            // set colors text and title
+            $css_text_color="";$css_text_color_hover="";
+            $css_title_color="";$css_title_color_hover="";
+            if( isset( $yuzo_options->text_color->color ) && $yuzo_options->text_color->color ){ $css_text_color=$yuzo_options->text_color->color; }
+            if( isset( $yuzo_options->text_color->hover ) && $yuzo_options->text_color->hover ){ $css_text_color_hover=$yuzo_options->text_color->hover; }
+            if( isset( $yuzo_options->title_color->color ) && $yuzo_options->title_color->color ){ $css_title_color=$yuzo_options->title_color->color; }
+            if( isset( $yuzo_options->title_color->hover ) && $yuzo_options->title_color->hover ){ $css_title_color_hover=$yuzo_options->title_color->hover; }
+
+
+
+
             //while ( have_posts() ) : the_post();
 
             while ( $the_query_yuzo->have_posts()  ) :
@@ -565,10 +576,13 @@ function create_post_related( $content ){
                           </div>';
                       $style="<style>
                                 .yuzo_related_post img{width:".((int)$yuzo_options->height_image + 10 )."px !important; height:{$yuzo_options->height_image}px !important;}
-                                .yuzo_related_post .relatedthumb{line-height:".((int)$yuzo_options->font_size +2 )."px;background:{$yuzo_options->bg_color->color} !important;}
-                                .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;$css_transitions}
-                                .yuzo_related_post .relatedthumb a{color:{$yuzo_options->title_color};}
-                                .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                                .yuzo_related_post .relatedthumb{line-height:".((int)$yuzo_options->font_size +2 )."px;background:{$yuzo_options->bg_color->color} !important;color:{$css_text_color}!important;}
+                                .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;$css_transitions;color:{$css_text_color_hover}!important;}
+                                .yuzo_related_post .relatedthumb a{color:{$css_title_color}!important;}
+                                .yuzo_related_post .relatedthumb a:hover{ color:$css_title_color_hover}!important;}
+                                .yuzo_related_post .relatedthumb:hover a{ color:{$css_title_color_hover}!important;}
+                                .yuzo_related_post .yuzo_text {color:{$css_text_color}!important;}
+                                .yuzo_related_post .relatedthumb:hover .yuzo_text {color:{$css_text_color_hover}!important;}
                                 .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
                                 $css_effects
                                 </style>";
@@ -596,10 +610,13 @@ function create_post_related( $content ){
                            
                         </div>';
                             $style="<style>
-                        .yuzo_related_post .relatedthumb { background:{$yuzo_options->bg_color->color} !important;$css_transitions }
-                        .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;}
-                        .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
-                        .yuzo_related_post .relatedthumb a{color:{$yuzo_options->title_color};}
+                        .yuzo_related_post .relatedthumb { background:{$yuzo_options->bg_color->color} !important;$css_transitions;color:{$css_text_color}!important; }
+                        .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;color:{$css_text_color_hover}!important;}
+                        .yuzo_related_post .yuzo_text {color:{$css_text_color}!important;}
+                        .yuzo_related_post .relatedthumb:hover .yuzo_text {color:{$css_text_color_hover}!important;}
+                        .yuzo_related_post .relatedthumb a{color:{$css_title_color}!important;}
+                        .yuzo_related_post .relatedthumb a:hover{color:{$css_title_color_hover}!important;}
+                        .yuzo_related_post .relatedthumb:hover a{ color:{$css_title_color_hover}!important;}
                         .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
                         $css_effects
                         </style>";
@@ -612,9 +629,13 @@ function create_post_related( $content ){
                               '.$text2_extract .'
                     </div>';
                     $style="<style>
-                            .yuzo_related_post .relatedthumb{background:{$yuzo_options->bg_color->color} !important;$css_transitions}
-                            .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;$css_transitions}
-                            .yuzo_related_post .yuzo_text {color:{$yuzo_options->text_color};}
+                            .yuzo_related_post .relatedthumb{background:{$yuzo_options->bg_color->color} !important;$css_transitions;color:{$css_text_color}!important;}
+                            .yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;$css_transitions;color:{$css_text_color_hover}!important;}
+                            .yuzo_related_post .yuzo_text {color:{$css_text_color}!important;}
+                            .yuzo_related_post .relatedthumb:hover .yuzo_text {color:{$css_text_color_hover}!important;}
+                            .yuzo_related_post .relatedthumb a{color:{$css_title_color}!important;}
+                            .yuzo_related_post .relatedthumb a:hover{color:{$css_title_color_hover}!important;}
+                            .yuzo_related_post .relatedthumb:hover a{ color:{$css_title_color_hover}!important;}
                             .yuzo_related_post .relatedthumb{ $css_margin $css_padding }
                             </style>";
                                     
