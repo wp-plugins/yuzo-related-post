@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2
 Stable tag: 4.3.5
-Version: 4.3.9
+Version: 4.3.9.1
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -60,6 +60,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.3.9.1 =
+* Tested error login for array not object
 = 4.3.9 =
 * Add options text color and hover colors
 * Add options title color and hover colors

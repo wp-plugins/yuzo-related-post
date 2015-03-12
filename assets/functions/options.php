@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
                                  'name_option'    =>'yuzo_related_post',
                                  'name_plugin_url'=>'yuzo-related-post',
                                  'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-                                 'version'        =>'4.3.9',
+                                 'version'        =>'4.3.9.1',
                                  'db_version'     =>'1.4',
                                  'present_version'=>'1.2',
                                  'url'            =>'',
@@ -66,8 +66,12 @@ class yuzo_related_post_make extends IF_utils{
         $categories = '';
         $categories = get_categories();
         $categories_array = array();
-        foreach ($categories as $cats_key => $cats_value) {
-            $categories_array[]=array('value'=>$cats_value->cat_ID,'id'=>$this->parameter['name_option'].'_exca','text'=>$cats_value->name,'help'=>'');
+        if($categories){
+            foreach ($categories as $cats_key => $cats_value) {
+                if($cats_value){
+                    $categories_array[]=array('value'=>$cats_value->cat_ID,'id'=>$this->parameter['name_option'].'_exca','text'=>$cats_value->name,'help'=>'');
+                }
+            }
         }
 
         return array('a'=>array(                'title'      => __('Basic',$this->parameter['name_option']), 
