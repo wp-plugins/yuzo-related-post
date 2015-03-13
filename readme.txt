@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2
 Stable tag: 4.4
-Version: 4.4
+Version: 4.4.1
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -60,6 +60,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.4.1 =
+* Fixed css code
 = 4.4 =
 * Fixed customize.php: When the person would perzonalizar your theme options are not displayed, this part is corrected him in the <code>core.php</code> of <code>ilenframework</code>
 * Update core <code>iLenFramework 2.2</code>
