@@ -106,6 +106,8 @@ ERRORES:
  ✔ En el widget cuando lo pone lo mas visto ese sql no esta bien hecho ay que hacerlo para que filtre ahora desde la tabla nueva que se creo, ese parte ay que arreglar @done (15-02-09 02:13)
  ☐ Hay un error en los aceptos donde salen un rombo raro, este error en el foro un man lo pudo corregir ay que ver la funcion y tratar de aplicarlo en la funcion padre que envie el titulo y el texto.
    mb_substr($utfstring,0,10,'utf-8');
+ ☐ Dicen que al poner el custom del theme este plugin hace que no aparezca, revisar eso
+ ☐ 
 
  CORE:
  ☐ Cuando tengas tiempo tienes que hacer que los metabox al moverlos se adapten perfectamente de una lado para el otro, es jodido pero ay que hacerlo

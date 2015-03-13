@@ -2,40 +2,34 @@
 /* NO REMOVE **********************************************************/
 class yuzo_widget extends WP_Widget  {
 
-  // always variables
-  var $default          = array();
-  var $default_validate = array();
-  var $widget_ops       = array();
+	// always variables
+	var $default          = array();
+	var $default_validate = array();
+	var $widget_ops       = array();
 
-  var $parameter        = null;
-  var $ME               = null;
+	var $parameter        = null;
+	var $ME               = null;
 
 
 function print_script_footer_widget(){ $this->ME->ilen_print_script_footer_widget( array('color','range2','input4','jtumbler'), $this->widget_ops['classname'], (int)$this->number  ); }
 function __construct(){
 
 
-  // always variables
-  global $IF;
-  $this->parameter  = isset($IF->parameter)?(array)$IF->parameter:null;
-  $this->ME = $IF;
+	// always variables
+	global $IF;
+	$this->parameter  = isset($IF->parameter)?(array)$IF->parameter:null;
+	$this->ME = $IF;
 
 
-  // Script need for widgets
-  add_action( 'admin_footer-widgets.php', array( $this, 'print_script_footer_widget' ), 9999 );
-  /* NO REMOVE **********************************************************/
+	// Script need for widgets
+	add_action( 'admin_footer-widgets.php', array( $this, 'print_script_footer_widget' ), 9999 );
+	/* NO REMOVE **********************************************************/
 
+	// Widget Builder.
+	$this->widget_ops = array('classname'     => 'yuzo_widget',
+	                        'description'   => 'Show related and more...' );
 
-
-
-
-
-
-  // Widget Builder.
-  $this->widget_ops = array('classname'     => 'yuzo_widget',
-                            'description'   => 'Show related and more...' );
-
-  $this->WP_Widget('yuzo_widget', "Yuzo", $this->widget_ops);
+	$this->WP_Widget('yuzo_widget', "Yuzo", $this->widget_ops);
 
 
 
@@ -136,7 +130,7 @@ function form($instance){
                         'id'          => 'yuzo_widget',
                         'description' => 'Yuzo Widget is created by <a href="http://ilentheme.com">iLen</a>',
                         'color'       => '#96C7E2', // #96E2B2
-                        'width'       => '200',
+                        'width'       => '90',
                         );
   
     // validate if new widget or not
