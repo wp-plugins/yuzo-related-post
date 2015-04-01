@@ -76,3 +76,7 @@ jQuery(document).ready(function( $ ){
 
 
 });
+
+function delete_meta_yuzo(){
+ 
+}

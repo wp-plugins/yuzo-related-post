@@ -250,9 +250,68 @@
   bottom: 0;
 }
 .page--yuzo__new{
-  width: 800px;
+  width: 100%;
   margin: 0 auto;
-
+  overflow: hidden;
+}
+.page--yuzo__new .changelog{
+  width: 300px;
+  float: left;
+  margin-left: 10px;
+  overflow: hidden;
+  margin-right: 75px;
+  min-height: 500px;
+  height: auto;
+  padding: 10px;
+  background: #fff;
+}
+.page--yuzo__new .changelog article{
+  width:100%;
+}
+.page--yuzo__new .changelog article ul{
+  margin: 0;
+  padding: 0;
+}
+.page--yuzo__new .changelog article li{
+  overflow: hidden;
+  border-bottom: 1px solid rgb(241, 241, 241);
+  min-height: 31px;
+}
+.page--yuzo__new .changelog article li div{
+  display: inline-block;
+  height: 25px;
+  margin-right: 20px;
+  background: #D9E0E4;
+  text-align: center;
+  line-height: 25px;
+}
+.page--yuzo__new .changelog article li div.two{
+  width: 70%;
+  float: left;
+}
+.page--yuzo__new .changelog article li.fixed > div{
+  background:#F0FFE1;
+  color: #444;
+  border-right:1px solid #5cb85c;
+  width: 20%;
+}
+.page--yuzo__new .changelog article li.fixed div.two:before{
+  content:"\f00c";
+  font-family: "Fontawesome";
+  color:#5CB85C;
+  margin-right: 5px;
+}
+.page--yuzo__new .changelog article li.add > div{
+  background:#FFEED0;
+  color: #444;
+  border-right:1px solid #EFA537;
+  width: 20%;
+}
+.page--yuzo__new .changelog article li.add div.two:before{
+  content:"\f005";
+  font-family: "Fontawesome";
+  color:#EFA537;
+  margin-right: 5px;
 }
 .page--yuzo__compare{
   width: 800px;

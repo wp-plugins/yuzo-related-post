@@ -4,6 +4,7 @@ global $IF_CONFIG;
 <!-- used for the media query -->
 <meta name="viewport" content="width=device-width" />
 <link rel="stylesheet" type="text/css" href="<?php echo $IF_CONFIG->parameter["url_framework"] ?>/assets/css/animate.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $IF_CONFIG->parameter["url_framework"] ?>/assets/css/font-awesome.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type='text/javascript' src='<?php echo $IF_CONFIG->parameter["url_framework"] ?>/assets/js/wow.min.js' ></script>
 
@@ -21,7 +22,7 @@ global $IF_CONFIG;
     <div class="page--body">
         <h2 class="nav-tab-wrapper">
             <a class='nav-tab <?php if( !isset($_GET['tab']) || !$_GET['tab'] ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome' ); ?>'>Welcome</a>
-            <a class='nav-tab <?php if( isset($_GET['tab']) && $_GET['tab'] == 'new' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=new' ); ?>'>New 4.0</a>
+            <a class='nav-tab <?php if( isset($_GET['tab']) && $_GET['tab'] == 'new' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=new' ); ?>'>New 4.5</a>
             <a class='nav-tab <?php if( isset($_GET['tab']) && $_GET['tab'] == 'compare' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=compare' ); ?>'>Compare (VS)</a>
             <a class='nav-tab  <?php if( isset($_GET['tab']) && $_GET['tab'] == 'ilenframework' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=ilenframework' ); ?>'>iLenFramework</a>
             <a class='nav-tab <?php if( isset($_GET['tab']) && $_GET['tab'] == 'support' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=support' ); ?>'>Happy Support</a>
@@ -135,7 +136,22 @@ global $IF_CONFIG;
 
         <?php elseif( isset($_GET['tab']) && $_GET['tab']=='new' ): ?>
         <div class="page--yuzo__new">
-            <div class="col-group wow flipInX animated" data-wow-duration="0.8s" data-wow-delay="0.2s">
+            <div class="changelog">
+                <article>
+                    <strong>CHANGELOG</strong>
+                    <h4>V4.5 - 31. Mar 2015</h4>
+                    <ul class="changelog_list">
+                        <li class="add"><div class="two">Add</div>The 'shortcode' is added to display related that way</li>
+                        <li class="add"><div class="two">Add</div>The 'Clear transient database' button was added to remove expired cache data in the database.</li>
+                        <li class="add"><div class="two">Add</div>The option 'Use transient?' Added so that user can control if you want Yuzo either cache or not.</li>
+                        <li class="add"><div class="two">Add</div>The 'Clear old Meta_Key' button was added to remove old meta.</li>
+                        <li class="add"><div class="two">Add</div> Yuzo Widget: It was added to exclude post by tags.</li>
+                        <li class="fixed"><div class="two">Fix</div> Yuzo Widget: time interval was corrected for post 'most commented'.</li>
+                        <li class="fixed"><div class="two">Fix</div> Corrections minimum code</li>
+                    </ul>
+                </article>
+            </div>
+            <div class="col-group wow flipInX animated" data-wow-duration="0.8s" data-wow-delay="0.2s" style="width:680px;float:left;">
                 <div>
                     <h2>The fastest</h2>
                     <p>Yuzo is considered one of the faster and less load on the PC.</p>
@@ -376,7 +392,7 @@ global $IF_CONFIG;
 
 
         <hr />
-        <div><p  style="text-align:center"><strong style="font-weight:bold;">Possibly the best WordPress Related Post ;)</strong></p><p style="text-align:center;maring:0 auto;"><span class="ilen_shine" style="display:inline-block;width:114px;height:51px;"><span class="shine-effect"></span><img  src="<?php echo $IF_CONFIG->parameter["theme_imagen"] ?>/wordpress-and-love.png" /></span> <BR /><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/yuzo-related-post?filter=5">Vote for this plugin</a></p></div>
+        <div style="clear:both;width:100%;"><p  style="text-align:center"><strong style="font-weight:bold;">Possibly the best WordPress Related Post ;)</strong></p><p style="text-align:center;maring:0 auto;"><span class="ilen_shine" style="display:inline-block;width:114px;height:51px;"><span class="shine-effect"></span><img  src="<?php echo $IF_CONFIG->parameter["theme_imagen"] ?>/wordpress-and-love.png" /></span> <BR /><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/yuzo-related-post?filter=5">Vote for this plugin</a></p></div>
 
 
     </div>

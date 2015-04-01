@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.4.5
+Version: 4.5
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -81,12 +81,15 @@ class yuzo_related_post extends yuzo_related_post_make{
 			add_action( 'activated_plugin', array( &$this,'yuzo_redirect_welcome' ) );
 			//register_activation_hook( __FILE__ , array( &$this, 'yuzo_redirect_welcome' ));
 
-
+			// load functions ajax in admin
+			add_action( 'admin_enqueue_scripts', 'add_ajax_javascript_file' );
+			add_action( 'wp_ajax_ajax_delete_yuzo_data_admin', 'ajax_delete_yuzo_data_admin' );
 
 
 		}elseif( ! is_admin() ) {
 
 			add_shortcode( 'yuzoviews', array( &$this,'yuzo_shortcode' ) );
+			add_shortcode( 'yuzo_related', array( &$this,'yuzo_shortcode_related' ) );
 
 
 			if( isset($yuzo_options->automatically_append) &&  $yuzo_options->automatically_append =='1' ){
@@ -118,7 +121,7 @@ function create_post_related( $content ){
 	$script         = "";
 	$transient_name = "yuzo_query_cache_".$post->ID;
 	$cacheTime      = 20; // minutes
-	$rebuilt_query  = false;
+	$rebuilt_query  = isset($yuzo_options->transient) && $yuzo_options->transient?false:true; //false;
 
 
 	if( is_archive() && ( isset($yuzo_options->no_show_archive_page) && $yuzo_options->no_show_archive_page ) ){ return $content; };
@@ -142,9 +145,11 @@ function create_post_related( $content ){
 
 
 	// verify cache query
-	include_once(ABSPATH . 'wp-includes/pluggable.php');
-	if( false === ($the_query_yuzo = get_transient($transient_name) ) || ( current_user_can( 'manage_options' )  && !isset($_GET['P3_NOCACHE']) )  ){
-		$rebuilt_query  = true;
+	if(  isset($yuzo_options->transient) && $yuzo_options->transient ){
+		include_once(ABSPATH . 'wp-includes/pluggable.php');
+		if( false === ($count = get_transient($transient_name) ) || ( current_user_can( 'manage_options' )  && !isset($_GET['P3_NOCACHE']) )  ){
+			$rebuilt_query  = true;
+		}
 	}
 
 	  
@@ -385,11 +390,13 @@ function create_post_related( $content ){
 
 
 		// cache query
-		//var_dump( $args );
 		if( $rebuilt_query ){
-
 			$the_query_yuzo = new WP_Query( $args );
-			set_transient( $transient_name , $the_query_yuzo, 60 * $cacheTime );
+
+			if(  isset($yuzo_options->transient) && $yuzo_options->transient ){
+				set_transient( $transient_name , $the_query_yuzo, 60 * $cacheTime );
+			}
+
 		}
 
 		$my_array_views = array();
@@ -738,7 +745,7 @@ function create_post_related( $content ){
 	 
 			$count = 1;
 			if( isset($yuzo_options->top_text) && $yuzo_options->top_text ){
-			  $_html .= "<div class='yuzo_clearfixed'>". IF_setHtml( $yuzo_options->top_text ) ."</div>";
+			  $_html .= "<div class='yuzo_clearfixed'>". $if_utils->IF_setHtml( $yuzo_options->top_text ) ."</div>";
 			}
 
 			//while ( have_posts() ) : the_post();
@@ -1056,13 +1063,15 @@ function yuzo_get_PostViews($post_ID, $count_key = '',$format = true){
 	global $yuzo_options;
 	$transient_name      = "yuzo_view_cache_$post_ID";
 	$cacheTime           = 20; // minutes
-	$the_cache_yuzo_view = false;
+	$the_cache_yuzo_view = isset($yuzo_options->transient) && $yuzo_options->transient?false:true; //false;
 
 
 	// verify cache query
-	include_once(ABSPATH . 'wp-includes/pluggable.php');
-	if( false === ($count = get_transient($transient_name) ) || ( current_user_can( 'manage_options' )  && !isset($_GET['P3_NOCACHE']) )  ){
-		$the_cache_yuzo_view  = true;
+	if(  isset($yuzo_options->transient) && $yuzo_options->transient ){
+		include_once(ABSPATH . 'wp-includes/pluggable.php');
+		if( false === ($count = get_transient($transient_name) ) || ( current_user_can( 'manage_options' )  && !isset($_GET['P3_NOCACHE']) )  ){
+			$the_cache_yuzo_view  = true;
+		}
 	}
  
 	if( $the_cache_yuzo_view == true ){
@@ -1082,7 +1091,9 @@ function yuzo_get_PostViews($post_ID, $count_key = '',$format = true){
 			$count = get_post_meta($post_ID, $count_key , true); // other custom views
 		}
 
-		set_transient( $transient_name , $count, 60 * $cacheTime); // set cache
+		if(  isset($yuzo_options->transient) && $yuzo_options->transient ){
+			set_transient( $transient_name , $count, 60 * $cacheTime); // set cache
+		}
  
 
 	}else{
@@ -1097,7 +1108,7 @@ function yuzo_get_PostViews($post_ID, $count_key = '',$format = true){
 		if( isset( $yuzo_options->cut_hit ) && $yuzo_options->cut_hit ){
 			$count = $this->cut_counter($count);
 		}elseif( isset($yuzo_options->format_count) && $yuzo_options->format_count ){
-			$count = number_format((int)$count, 0, '', "$yuzo_options->format_count", "");
+			$count = number_format( (int)$count, 0, '', "$yuzo_options->format_count");
 		}
 	}
 
@@ -1617,6 +1628,12 @@ function yuzo_shortcode( $atts, $content = null ){
 }
 
 
+function yuzo_shortcode_related( $atts, $content = null ){
+
+	return self::create_post_related( $content );
+
+}
+
 
 
 
@@ -1685,11 +1702,49 @@ function yuzo_redirect_welcome_upgrade() {
 	if( isset($IF_CONFIG->parameter["present_version"]) && $present_version != $IF_CONFIG->parameter["present_version"] ) {
 
 		update_option( $IF_CONFIG->parameter["name_option"].'_present_version' , $IF_CONFIG->parameter["present_version"] );
-		exit( wp_redirect( admin_url( 'options-general.php?page=yuzo-welcome&install_data=true' ) ) );
+		exit( wp_redirect( admin_url( 'options-general.php?page=yuzo-welcome&tab=new&install_data=true' ) ) );
 
 	}
 
 }
+
+
+/* AJAX DELETE METADATA AND TRANSIENT */
+function add_ajax_javascript_file(){
+    wp_enqueue_script( 'yuzo_ajax_custom_script_admin', plugin_dir_url( __FILE__ ) . 'assets/js/admin-ajax.js', array('jquery') );
+}
+
+
+function ajax_delete_yuzo_data_admin() {
+
+	global $wpdb;
+
+    if( !empty($_POST['yuzo_actions']) && $_POST['yuzo_actions'] == "meta" ){
+
+		$meta_type  = 'post';
+		$user_id    = 0; // This will be ignored, since we are deleting for all users.
+		$meta_key   = 'yuzo_views';
+		$meta_value = ''; // Also ignored. The meta will be deleted regardless of value.
+		$delete_all = true;
+		//delete_metadata( $meta_type, $user_id, $meta_key, $meta_value, $delete_all );
+		//if($remove_meta){
+		delete_post_meta_by_key( 'yuzo_views' );
+        
+    }elseif( !empty($_POST['yuzo_actions']) && $_POST['yuzo_actions'] == "transient"  ){
+
+    	$wpdb->query(  "DELETE FROM $wpdb->options WHERE option_name LIKE '%\_transient_yuzo_view\_%'" );
+    	$wpdb->query(  "DELETE FROM $wpdb->options WHERE option_name LIKE '%\_transient_yuzo_widget\_%'" );
+    	$wpdb->query(  "DELETE FROM $wpdb->options WHERE option_name LIKE '%\_transient_yuzo_query\_%'" );
+    	$wpdb->query(  "DELETE FROM $wpdb->options WHERE option_name LIKE '%\_transient_timeout_yuzo_view\_%'" );
+    	$wpdb->query(  "DELETE FROM $wpdb->options WHERE option_name LIKE '%\_transient_timeout_yuzo_widget\_%'" );
+    	$wpdb->query(  "DELETE FROM $wpdb->options WHERE option_name LIKE '%\_transient_timeout_yuzo_query\_%'" );
+
+    }
+
+    die();
+}
+
+
 
 
 
