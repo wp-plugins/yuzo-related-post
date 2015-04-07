@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2
 Stable tag: 4.5.1
-Version: 4.5.2
+Version: 4.5.3
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -60,6 +60,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.5.3 =
+* Fixed add code in line 777 <code>$this->IF_get_image</code>
 = 4.5.2 =
 * Clear Notice: Undefined variable: category_plugin in 
 = 4.5.1 =

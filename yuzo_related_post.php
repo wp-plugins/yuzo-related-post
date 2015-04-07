@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.5.2
+Version: 4.5.3
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -776,7 +776,7 @@ function create_post_related( $content ){
 				}
 	 
 				if( $yuzo_options->style == 1 ){
-						$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
+						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
 				  $_html .= '
 				  <div class="relatedthumb " style="width:'.$width.'px;float:left;overflow:hidden;">  
 					  
@@ -810,7 +810,7 @@ function create_post_related( $content ){
 						  </script>";
 						}
 				}elseif( $yuzo_options->style == 2 ){
-						$image = IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
+						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image );
 						$_html .= '
 				  <div class="relatedthumb yuzo-list"  >  
 					  <a rel="external" href="'.get_permalink().'" class="image-list"  '.$target_link.' >
