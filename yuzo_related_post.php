@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.5.4
+Version: 4.5.5
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -152,10 +152,10 @@ function create_post_related( $content ){
 		}
 	}
 
-
+	//var_dump( $wp_query );
 	$_html = "";
 	$_html .= "<div class='yuzo_related_post style-$yuzo_options->style'  data-version='{$this->parameter["version"]}'>";
-	if( $the_query_yuzo->post_count != 0 ){ // if have result in loop post
+	if( $wp_query->post_count != 0 ){ // if have result in loop post
 
 
 
@@ -405,7 +405,7 @@ function create_post_related( $content ){
 		$metabox_add_post_first = 0;
 		//if( have_posts() && $wp_query->post_count != 0 ){
 		// The Loop
-		if ( $the_query_yuzo->have_posts() && $the_query_yuzo->post_count != 0 ) {
+		if ( $the_query_yuzo->have_posts() && $wp_query->post_count != 0 ) {
 
 			// set transitions
 			$css_transitions = null;
@@ -1801,6 +1801,7 @@ function get_Yuzo_Views(){
 
 
 function yuzo_redirect_welcome_upgrade() {
+
 	global $IF_CONFIG;
 	$present_version  = get_option($IF_CONFIG->parameter["name_option"].'_present_version' );
 	if( isset($IF_CONFIG->parameter["present_version"]) && $present_version != $IF_CONFIG->parameter["present_version"] ) {

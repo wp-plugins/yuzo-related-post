@@ -8,8 +8,8 @@ Author URI: http://ilentheme.com
 Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2
-Stable tag: 4.5.1
-Version: 4.5.4
+Stable tag: 4.5.5
+Version: 4.5.5
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -60,6 +60,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.5.5 =
+* Fixed query fast
 = 4.5.4 =
 * Fixed code in line 799
 = 4.5.3 =
