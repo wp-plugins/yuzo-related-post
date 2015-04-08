@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.5.5
+Version: 4.5.6
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -123,8 +123,7 @@ function create_post_related( $content ){
 	$cacheTime      = 20; // minutes
 	$rebuilt_query  = isset($yuzo_options->transient) && $yuzo_options->transient?false:true; //false;
 
-
-	if( is_archive() && ( isset($yuzo_options->no_show_archive_page) && $yuzo_options->no_show_archive_page ) ){ return $content; };
+	if( ( is_archive() || is_search() ) && ( isset($yuzo_options->no_show_archive_page) && $yuzo_options->no_show_archive_page ) ){ return $content; };
 
 	$meta_yuzo = get_post_meta( $post->ID, $this->parameter['name_option']."_metabox" );
 
