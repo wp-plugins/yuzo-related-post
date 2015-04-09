@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2
 Stable tag: 4.5.5
-Version: 4.5.6
+Version: 4.5.7
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
