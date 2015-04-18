@@ -41,7 +41,7 @@ class my_meta_yuzo{
                                                                 'position'   => 'vertical', // vertical or horizontal
                                                                 'tabs'       => array(
                                                                                     array('id'=>'tab02','name'=>'View','icon'=>'<i class="el-icon-eye-open"></i>','width'=>'200'),
-                                                                                    array('id'=>'tab01','name'=>'Include/Exclude','icon'=>'<i class="fa fa-wrench"></i>','width'=>'200'),
+                                                                                    array('id'=>'tab01','name'=>'Include / Exclude','icon'=>'<i class="fa fa-wrench"></i>','width'=>'200'),
                                                                                 )
                                                           );
 
@@ -217,7 +217,9 @@ class my_meta_yuzo{
             $_html = "<i class='el-icon-fire  color_flare_hot4'></i> <span class='color_flare_normal'>$counter</span>";
         }
  
-        echo "<script>
+
+        /* Remove acoddion metabox and drag/drop */
+        /*echo "<script>
                 jQuery(document).ready(function($){
                     if( jQuery('#active_yuzo_views').length ){
     
@@ -243,7 +245,7 @@ class my_meta_yuzo{
                     } );
  
                 });
-              </script>";
+              </script>";*/
 
     }
  
