@@ -61,7 +61,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 == Changelog ==
 = 4.6.2 =
-* Fixed html and css
+* Fixed html and css...
 = 4.6.1 =
 * Fixed css 'alusive fonts'
 = 4.6 =
