@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2
 Stable tag: 4.6
-Version: 4.6.1
+Version: 4.6.2
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -60,6 +60,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.6.2 =
+* Fixed html and css
 = 4.6.1 =
 * Fixed css 'alusive fonts'
 = 4.6 =
