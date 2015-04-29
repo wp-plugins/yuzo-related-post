@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.6.7
+Version: 4.6.8
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -501,7 +501,7 @@ function create_post_related( $content ){
 	 
 			$count = 1;
 			if( isset($yuzo_options->top_text) && $yuzo_options->top_text ){
-				$_html .= "<div class='yuzo_clearfixed'>". $this->IF_setHtml( $yuzo_options->top_text ) ."</div>";
+				$_html .= "<div class='yuzo_clearfixed yuzo__title'>". $this->IF_setHtml( $yuzo_options->top_text ) ."</div>";
 			}
 
 			// set colors text and title
@@ -793,7 +793,7 @@ function create_post_related( $content ){
 	 
 			$count = 1;
 			if( isset($yuzo_options->top_text) && $yuzo_options->top_text ){
-				$_html .= "<div class='yuzo_clearfixed'>". $this->IF_setHtml( $yuzo_options->top_text ) ."</div>";
+				$_html .= "<div class='yuzo_clearfixed yuzo__title yuzo__title'>". $this->IF_setHtml( $yuzo_options->top_text ) ."</div>";
 			}
 
 			// set colors text and title
