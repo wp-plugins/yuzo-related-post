@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.1
 Stable tag: 4.6
-Version: 4.6.9
+Version: 4.7
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -60,6 +60,9 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.7 =
+* Add options: Disabled Magnificent views counter
+If you enable this option, Yuzo stop counting visits by post to your wordpress site.
 = 4.6.9 =
 * Add Minimum number of posts to relate to: 1
 = 4.6.8 =

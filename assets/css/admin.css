@@ -452,3 +452,11 @@
     width: 33.3333333%;
   }
 }
+
+/* Setting - Active views counter */
+.ilencontentwrapelements #box_e,
+.ilencontentwrapelements #box_g{
+    width: 70%;
+    float: right;
+    margin-top: 0;
+}

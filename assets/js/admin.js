@@ -1,5 +1,33 @@
 jQuery(document).ready(function( $ ){
 
+
+  $('#yuzo_related_post_disabled_counter').change(function() {
+      if($(this).is(":checked")) {
+          $( ".ilencontentwrapelements #box_e,.ilencontentwrapelements #box_g" ).fadeOut( 300, function() {
+              //$(this).css("display","none");
+          });
+          //$(this).parent().parent().parent().addClass("active_fb");
+      }else{
+          $( ".ilencontentwrapelements #box_e,.ilencontentwrapelements #box_g" ).fadeIn( "slow", function() {
+              $(this).css("display","block");
+          });
+      }
+  });
+
+  if($('#yuzo_related_post_disabled_counter').is(":checked")) {
+      $( ".ilencontentwrapelements #box_e,.ilencontentwrapelements #box_g" ).fadeOut( 300, function() {
+          //$(this).css("display","none");
+      });
+      //$('#wp_social_popup_button_fb').parent().parent().parent().removeClass("active_fb");
+
+  }else{
+      $( ".ilencontentwrapelements #box_e,.ilencontentwrapelements #box_g" ).fadeIn( "slow", function() {
+          $(this).css("display","block");
+      });
+      //$('#wp_social_popup_button_fb').parent().parent().parent().addClass("active_fb");
+  }
+
+
 	$(".class_yuzo_meta_custom").css("display","none");
 	$(".class_yuzo_meta_custom").css("background","#F9F9F9");
 	

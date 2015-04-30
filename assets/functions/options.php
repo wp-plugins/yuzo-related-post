@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
 								 'name_option'    =>'yuzo_related_post',
 								 'name_plugin_url'=>'yuzo-related-post',
 								 'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-								 'version'        =>'4.6.9',
+								 'version'        =>'4.7',
 								 'db_version'     =>'1.4',
 								 'present_version'=>'1.3',
 								 'url'            =>'',
@@ -509,6 +509,26 @@ class yuzo_related_post_make extends IF_utils{
 
 																)
 											),
+					'e0'=>array(                'title'      => __('Magnificent views counter',$this->parameter['name_option']), 
+											   'title_large'=> __('',$this->parameter['name_option']), 
+											   'description'=> '',  
+											   'icon'       => '',
+											   'tab'        => 'tab03',
+
+												'options'    => array( 
+
+																	array(  'title' =>__('Disabled',$this->parameter['name_option']),
+																			'help'  =>__('If you enable this option, Yuzo stop counting visits by post to your wordpress site.',$this->parameter['name_option']),
+																			'type'  =>'checkbox', 
+																			'value' =>'0',
+																			'value_check'=>'1',
+																			'id'    =>$this->parameter['name_option'].'_'.'disabled_counter',
+																			'name'  =>$this->parameter['name_option'].'_'.'disabled_counter',
+																			'class' =>'',
+																			'row'   =>array('a','b')),
+	 
+																)
+											),
 					'e'=>array(                'title'      => __('Dashboard (Post)',$this->parameter['name_option']), 
 											   'title_large'=> __('',$this->parameter['name_option']), 
 											   'description'=> '',  
@@ -530,26 +550,8 @@ class yuzo_related_post_make extends IF_utils{
 	 
 																)
 											),
-					'g'=>array(                'title'      => __('Widgets',$this->parameter['name_option']), 
-											   'title_large'=> __('',$this->parameter['name_option']), 
-											   'description'=> '',  
-											   'icon'       => '',
-											   'tab'        => 'tab03',
-
-												'options'    => array( 
-																		array(  'title' =>__('Active Yuzo Widget',$this->parameter['name_option']),
-																				'help'  =>__('If you select this option, activate the powerful Yuzo Widget.',$this->parameter['name_option']),
-																				'type'  =>'checkbox', 
-																				'value' =>'1',
-																				'value_check'=>'1',
-																				'id'    =>$this->parameter['name_option'].'_'.'active_widget',
-																				'name'  =>$this->parameter['name_option'].'_'.'active_widget',
-																				'class' =>'',
-																				'row'   =>array('a','b')),
-															  ),
-					),
 					
-					'f'=>array(                'title'      => __('Show visits in related post',$this->parameter['name_option']), 
+					'g'=>array(                'title'      => __('Show visits in related post',$this->parameter['name_option']), 
 											   'title_large'=> __('',$this->parameter['name_option']), 
 											   'description'=> '',  
 											   'icon'       => '',
@@ -632,6 +634,24 @@ class yuzo_related_post_make extends IF_utils{
 	 
 																)
 											),
+					'f'=>array(                'title'      => __('Widgets',$this->parameter['name_option']), 
+											   'title_large'=> __('',$this->parameter['name_option']), 
+											   'description'=> '',  
+											   'icon'       => '',
+											   'tab'        => 'tab03',
+
+												'options'    => array( 
+																		array(  'title' =>__('Active Yuzo Widget',$this->parameter['name_option']),
+																				'help'  =>__('If you select this option, activate the powerful Yuzo Widget.',$this->parameter['name_option']),
+																				'type'  =>'checkbox', 
+																				'value' =>'1',
+																				'value_check'=>'1',
+																				'id'    =>$this->parameter['name_option'].'_'.'active_widget',
+																				'name'  =>$this->parameter['name_option'].'_'.'active_widget',
+																				'class' =>'',
+																				'row'   =>array('a','b')),
+															  ),
+					),
 					'k'=>array(                'title'      => __('Faster',$this->parameter['name_option']), 
 											   'title_large'=> __('',$this->parameter['name_option']), 
 											   'description'=> '',  

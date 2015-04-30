@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.6.9
+Version: 4.7
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -37,15 +37,23 @@ class yuzo_related_post extends yuzo_related_post_make{
 		$this->plugin_options = $yuzo_options;
 
 
-		// ajax nonce for count visits in cache plugin
-		if(  defined( 'WP_CACHE' ) && WP_CACHE ){
-			add_action( 'wp_enqueue_scripts',  array( &$this, 'wp_yuzo_postview_cache_count_enqueue') );
-			add_action( 'wp_ajax_nopriv_yuzo-plus-views', array( &$this, 'hits_ajax' ) );
-			add_action( 'wp_ajax_yuzo-plus-views', array( &$this, 'hits_ajax' ) );
+		// if disabled hits
+		if( isset($yuzo_options->disabled_counter) && $yuzo_options->disabled_counter ){
+			null;
 		}else{
-			// count normal
-			add_action('wp_head',array( &$this,'hits'), 12 );
+
+			// ajax nonce for count visits in cache plugin
+			if(  defined( 'WP_CACHE' ) && WP_CACHE ){
+				add_action( 'wp_enqueue_scripts',  array( &$this, 'wp_yuzo_postview_cache_count_enqueue') );
+				add_action( 'wp_ajax_nopriv_yuzo-plus-views', array( &$this, 'hits_ajax' ) );
+				add_action( 'wp_ajax_yuzo-plus-views', array( &$this, 'hits_ajax' ) );
+			}else{
+				// count normal
+				add_action('wp_head',array( &$this,'hits'), 12 );
+			}
+
 		}
+		
 
 		if( is_admin() ){
 
@@ -56,23 +64,29 @@ class yuzo_related_post extends yuzo_related_post_make{
 
 			add_action( 'admin_enqueue_scripts', array( &$this,'script_and_style_admin' ) );
 
-			if( isset($yuzo_options->show_columns_dashboard) && $yuzo_options->show_columns_dashboard ){
 
-				//Hooks a function to a specific filter action.
-				//applied to the list of columns to print on the manage posts screen.
-				add_filter('manage_posts_columns', array( &$this,'yuzo_post_column_views') );
+			if( isset($yuzo_options->disabled_counter) && $yuzo_options->disabled_counter ){
+				null;
+			}else{
+				if( isset($yuzo_options->show_columns_dashboard) && $yuzo_options->show_columns_dashboard ){
 
-				//Hooks a function to a specific action. 
-				//allows you to add custom columns to the list post/custom post type pages.
-				//'10' default: specify the function's priority.
-				//and '2' is the number of the functions' arguments.
-				add_action('manage_posts_custom_column', array( &$this,'yuzo_post_custom_column_views'),10,2 );
+					//Hooks a function to a specific filter action.
+					//applied to the list of columns to print on the manage posts screen.
+					add_filter('manage_posts_columns', array( &$this,'yuzo_post_column_views') );
+
+					//Hooks a function to a specific action. 
+					//allows you to add custom columns to the list post/custom post type pages.
+					//'10' default: specify the function's priority.
+					//and '2' is the number of the functions' arguments.
+					add_action('manage_posts_custom_column', array( &$this,'yuzo_post_custom_column_views'),10,2 );
 
 
-				// Add labels of hits
-				add_action( 'admin_head',  array( &$this,'add_labes_hits_tablelist' ) );
+					// Add labels of hits
+					add_action( 'admin_head',  array( &$this,'add_labes_hits_tablelist' ) );
 
+				}
 			}
+			
 
 			// when active plugin verify db
 			//register_activation_hook( __FILE__ , array( &$this,'yuzo_install_db' ) );
@@ -88,7 +102,12 @@ class yuzo_related_post extends yuzo_related_post_make{
 
 		}elseif( ! is_admin() ) {
 
-			add_shortcode( 'yuzoviews', array( &$this,'yuzo_shortcode' ) );
+			if( isset($yuzo_options->disabled_counter) && $yuzo_options->disabled_counter ){
+				null;
+			}else{
+				add_shortcode( 'yuzoviews', array( &$this,'yuzo_shortcode' ) );
+			}
+
 			add_shortcode( 'yuzo_related', array( &$this,'yuzo_shortcode_related' ) );
 
 
@@ -1260,6 +1279,8 @@ function yuzo_post_custom_column_views($column_name, $id){
 function getViewsPost_to_yuzo(){
 
 	global $yuzo_options;
+
+	if( isset($yuzo_options->disabled_counter) && $yuzo_options->disabled_counter ) return;
 
 	// Display Views
 	$counts            = 0;
