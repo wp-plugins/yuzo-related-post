@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
 								 'name_option'    =>'yuzo_related_post',
 								 'name_plugin_url'=>'yuzo-related-post',
 								 'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-								 'version'        =>'4.7',
+								 'version'        =>'4.7.1',
 								 'db_version'     =>'1.4',
 								 'present_version'=>'1.3',
 								 'url'            =>'',
@@ -484,6 +484,16 @@ class yuzo_related_post_make extends IF_utils{
 																				'name'  =>$this->parameter['name_option'].'_'.'exclude_tag', //name
 																				'class' =>'',
 																				'placeholder' => 'Write the tags...',
+																				'row'   =>array('a','b')),
+
+																		array(  'title' =>__('Show only post specific:',$this->parameter['name_option']), //title section
+																				'help'  =>'Place the id of the post you just want to leave the "related post", by placing the plugin not show id post linking except whatever you put your.',
+																				'type'  =>'tag',
+																				'value' =>'',
+																				'id'    =>$this->parameter['name_option'].'_'.'only_in_post', //id
+																				'name'  =>$this->parameter['name_option'].'_'.'only_in_post', //name
+																				'class' =>'',
+																				'placeholder' => 'Write the ID...',
 																				'row'   =>array('a','b')),
 
 	 

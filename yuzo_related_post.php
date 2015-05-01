@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that ever have to install on your page Wordpress.
-Version: 4.7
+Version: 4.7.1
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -101,7 +101,7 @@ class yuzo_related_post extends yuzo_related_post_make{
 
 
 		}elseif( ! is_admin() ) {
-
+ 
 			if( isset($yuzo_options->disabled_counter) && $yuzo_options->disabled_counter ){
 				null;
 			}else{
@@ -134,6 +134,9 @@ function create_post_related( $content ){
 	global $post,$yuzo_options,$wp_query,$if_utils;  
 	$orig_post = $post;
 
+
+	// verify
+	if( self::only_specific_post() == false ) return $content;
 
 
 	$style          = "";
@@ -1760,6 +1763,32 @@ function yuzo_shortcode_related( $atts, $content = null ){
 
 
 
+function only_specific_post(){
+
+	global $yuzo_options,$post;
+
+	$only_post = array();
+	// validate if tags exclude custom
+	if( isset($yuzo_options->only_in_post) && $yuzo_options->only_in_post ){
+
+		//  verify
+		$only_post = explode(",",$yuzo_options->only_in_post);
+
+		if( in_array( $post->ID, $only_post  ) ){
+			return true;
+		}else{
+			return false;
+		}
+
+	}else{
+		return true;
+	}
+
+
+
+}
+
+
 
 
 } // end class
@@ -1868,9 +1897,7 @@ function ajax_delete_yuzo_data_admin() {
 
     die();
 }
-
-
-
+ 
 
 
 if( is_admin() ){

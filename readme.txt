@@ -8,8 +8,8 @@ Author URI: http://ilentheme.com
 Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.1
-Stable tag: 4.6
-Version: 4.7
+Stable tag: 4.7
+Version: 4.7.1
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -43,6 +43,7 @@ Displays related post your stories with different features of text and image siz
 <li>Height & Width image. </li>
 <li>Background Color. </li>
 <li>Displays your post visits (visits counter by post)</li>
+<li>Show related only in a specific page/post</li>
 <li>And more options. </li>
 </ul>
 
@@ -60,6 +61,9 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.7.1 =
+* Add options: Show only post specific
+Place the id of the post you just want to leave the "related post", by placing the plugin not show id post linking except whatever you put your
 = 4.7 =
 * Add options: Disabled Magnificent views counter
 If you enable this option, Yuzo stop counting visits by post to your wordpress site.
