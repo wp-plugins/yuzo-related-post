@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.1
 Stable tag: 4.7
-Version: 4.7.1
+Version: 4.7.2
 License: GPLv2 or later
 
 The first plugin that ever have to install on your page Wordpress.
@@ -61,6 +61,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.7.2 =
+* Fixed counter in metabox in post admin
 = 4.7.1 =
 * Add options: Show only post specific
 Place the id of the post you just want to leave the "related post", by placing the plugin not show id post linking except whatever you put your

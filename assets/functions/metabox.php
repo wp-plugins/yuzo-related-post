@@ -219,14 +219,16 @@ class my_meta_yuzo{
  
 
         /* Remove acoddion metabox and drag/drop */
-        /*echo "<script>
+        echo "<script>
                 jQuery(document).ready(function($){
                     if( jQuery('#active_yuzo_views').length ){
     
                         jQuery('#view_in_meta_yuzo_views').html(\"$_html\");
 
                     }
-
+                  });
+              </script>";
+        /*
                     var NonDragMetaboxes = ['main_metabox'];
         
                     // For each item in the JS array created by the localize call
