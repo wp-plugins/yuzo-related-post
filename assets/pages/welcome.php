@@ -22,7 +22,7 @@ global $IF_CONFIG;
     <div class="page--body">
         <h2 class="nav-tab-wrapper">
             <a class='nav-tab <?php if( !isset($_GET['tab']) || !$_GET['tab'] ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome' ); ?>'>Welcome</a>
-            <a class='nav-tab <?php if( isset($_GET['tab']) && $_GET['tab'] == 'new' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=new' ); ?>'>New 4.5</a>
+            <a class='nav-tab <?php if( isset($_GET['tab']) && $_GET['tab'] == 'new' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=new' ); ?>'>New 4.8</a>
             <a class='nav-tab <?php if( isset($_GET['tab']) && $_GET['tab'] == 'compare' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=compare' ); ?>'>Compare (VS)</a>
             <a class='nav-tab  <?php if( isset($_GET['tab']) && $_GET['tab'] == 'ilenframework' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=ilenframework' ); ?>'>iLenFramework</a>
             <a class='nav-tab <?php if( isset($_GET['tab']) && $_GET['tab'] == 'support' ){ echo "nav-tab-active"; } ?>' href='<?php echo admin_url( 'options-general.php?page=yuzo-welcome&tab=support' ); ?>'>Happy Support</a>
@@ -139,7 +139,16 @@ global $IF_CONFIG;
             <div class="changelog">
                 <article>
                     <strong>CHANGELOG</strong>
-                    <h4>V4.5 - 31. Mar 2015</h4>
+                    <h4>V4.8 - 04. April 2015</h4>
+                    <ul class="changelog_list">
+                        <li class="add"><div class="two">Add</div>Add Theme based in css!</li>
+                        <li class="add"><div class="two">Add</div>Add class in elements html of Yuzo for manipulate css</li>
+                        <li class="fixed"><div class="two">Fix</div>Fixed <code>admin.css</code> in class</li>
+                        <li class="fixed"><div class="two">Fix</div>Modify css in core framework</li>
+                        <li class="fixed"><div class="two">Fix</div>Modify core class in editor</li>
+                        <li class="fixed"><div class="two">Fix</div>Code js in yuzo functions</li>
+                    </ul>
+                    <!--<h4>V4.5 - 31. Mar 2015</h4>
                     <ul class="changelog_list">
                         <li class="add"><div class="two">Add</div>The 'shortcode' is added to display related that way</li>
                         <li class="add"><div class="two">Add</div>The 'Clear transient database' button was added to remove expired cache data in the database.</li>
@@ -148,7 +157,7 @@ global $IF_CONFIG;
                         <li class="add"><div class="two">Add</div> Yuzo Widget: It was added to exclude post by tags.</li>
                         <li class="fixed"><div class="two">Fix</div> Yuzo Widget: time interval was corrected for post 'most commented'.</li>
                         <li class="fixed"><div class="two">Fix</div> Corrections minimum code</li>
-                    </ul>
+                    </ul>-->
                 </article>
             </div>
             <div class="col-group wow flipInX animated" data-wow-duration="0.8s" data-wow-delay="0.2s" style="width:680px;float:left;">
