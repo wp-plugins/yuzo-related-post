@@ -103,8 +103,135 @@ jQuery(document).ready(function( $ ){
   }
 
 
+  // manipulate select theme
+  $('.yuzo_chosse_theme_select select').appendTo('#chosse_yuzo_theme');
+  $('.yuzo_chosse_theme_select').remove();
+  
+
+
+
 });
 
-function delete_meta_yuzo(){
+jQuery('#yuzo_related_post_theme').change(function() {
+    if( jQuery(this).val() == "default") {
+        //alert("selecciono default");
+        jQuery("#code_yuzo_related_post_css_and_style").next().remove();
+        var textArea2 = document.getElementById('code_yuzo_related_post_css_and_style');
+        var editor2 = CodeMirror.fromTextArea(textArea2);
+        editor2.getDoc().setValue( jQuery('#yuzo_css_default').text() );
+    }else if( jQuery(this).val() == "magazine-alfa" ){
+        jQuery("#code_yuzo_related_post_css_and_style").next().remove();
+        var textArea2 = document.getElementById('code_yuzo_related_post_css_and_style');
+        var editor2 = CodeMirror.fromTextArea(textArea2);
+        editor2.getDoc().setValue( ".yuzo_wraps{\n \
+            box-shadow: 0px 0px 8px -2px #333; \n \
+            border-radius: 3px;\n \
+  background: #ffffff;\n \
+  padding: 10px;\n \
+  background: -moz-linear-gradient(top, #ffffff 1%, #ffffff 27%, #e8e8e8 100%);\n \
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(27%,#ffffff), color-stop(100%,#e8e8e8));\n \
+  background: -webkit-linear-gradient(top, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);\n \
+  background: -o-linear-gradient(top, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);\n \
+  background: -ms-linear-gradient(top, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);\n \
+  background: linear-gradient(to bottom, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);\n \
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e8e8e8',GradientType=0 );\n \
+  height: auto!important;\n \
+  float: left;\n \
+  width: 98%;\n \
+  margin-left: 1%;\n \
+  box-sizing: border-box;\n \
+  -moz-box-sizing: border-box;\n \
+  -webkit-box-sizing: border-box;\n \
+  -o-box-sizing: border-box;\n \
+  -ms-box-sizing: border-box;\n \
+}\n \
+a.yuzo__text--title,\n \
+.yuzo__text--title,\n \
+.yuzo-list a.yuzo__text--title{\n \
+  font-weight:bolder;\n \
+  color:#000!important;\n \
+}\n \
+.yuzo__title::before{\n \
+   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAphAAAKYQH8zEolAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAEtQTFRF////AAAAAAAAAAAAAAAAAAAAAAAEAAADAAADAAACAAACAgACAgACAgACAgACAQABAQADAQADAQADAQACAQACAQACAQACAQACAQACjwA2xwAAABh0Uk5TAAIEIDA/QFFkeX2Ago2dvcDBwtDZ4OT+yEuE8AAAAHNJREFUKFOtkVkOgCAMREfFFRdc4f4ntWjUSG2Mie+PvswQKPAZ84QXbmbj2W1CsxItC99GIrtDgvDC3bmEmNjPCuq5ysCEVYcQE39XJRCqNIR3nAlbs0+saG4x9lEoUhITCreEixpINEDeshWarozZBa+sC18XgoSOCdYAAAAASUVORK5CYII71a91eb3cbaabc2cd8b11cc616e0253d);\n \
+   width: 32px;\n \
+   height: 32px;\n \
+   display: inline-block;\n \
+   position: relative;\n \
+   top: 6px;\n \
+   opacity: 0.6;\n \
+}\n \
+.yuzo__title h3,.yuzo__title{\n \
+  display: inline-block;\n \
+}" );
+    }
+
+});
+
+jQuery(document).ready(function( $ ){
+
+    if( jQuery("#yuzo_related_post_theme").val() == "magazine-alfa" ){
  
+setTimeout(function(){
+    jQuery("#yuzo_related_post_theme").val('default');
+    jQuery("#yuzo_related_post_theme").val('magazine-alfa');
+    jQuery("#code_yuzo_related_post_css_and_style").next().css("display","none");
+        var textArea3 = document.getElementById('code_yuzo_related_post_css_and_style');
+        var editor3 = CodeMirror.fromTextArea(textArea3);
+        editor3.getDoc().setValue( "" );
+        editor3.getDoc().setValue( ".yuzo_wraps{\n \
+  box-shadow: 0px 0px 8px -2px #333; \n \
+  border-radius: 3px;\n \
+  background: #ffffff;\n \
+  padding: 10px;\n \
+  background: -moz-linear-gradient(top, #ffffff 1%, #ffffff 27%, #e8e8e8 100%);\n \
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(27%,#ffffff), color-stop(100%,#e8e8e8));\n \
+  background: -webkit-linear-gradient(top, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);\n \
+  background: -o-linear-gradient(top, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);\n \
+  background: -ms-linear-gradient(top, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);\n \
+  background: linear-gradient(to bottom, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);\n \
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e8e8e8',GradientType=0 );\n \
+  height: auto!important;\n \
+  float: left;\n \
+  width: 98%;\n \
+  margin-left: 1%;\n \
+  box-sizing: border-box;\n \
+  -moz-box-sizing: border-box;\n \
+  -webkit-box-sizing: border-box;\n \
+  -o-box-sizing: border-box;\n \
+  -ms-box-sizing: border-box;\n \
+}\n \
+a.yuzo__text--title,\n \
+.yuzo__text--title,\n \
+.yuzo-list a.yuzo__text--title{\n \
+  font-weight:bolder;\n \
+  color:#000!important;\n \
+}\n \
+.yuzo__title::before{\n \
+   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAphAAAKYQH8zEolAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAEtQTFRF////AAAAAAAAAAAAAAAAAAAAAAAEAAADAAADAAACAAACAgACAgACAgACAgACAQABAQADAQADAQADAQACAQACAQACAQACAQACAQACjwA2xwAAABh0Uk5TAAIEIDA/QFFkeX2Ago2dvcDBwtDZ4OT+yEuE8AAAAHNJREFUKFOtkVkOgCAMREfFFRdc4f4ntWjUSG2Mie+PvswQKPAZ84QXbmbj2W1CsxItC99GIrtDgvDC3bmEmNjPCuq5ysCEVYcQE39XJRCqNIR3nAlbs0+saG4x9lEoUhITCreEixpINEDeshWarozZBa+sC18XgoSOCdYAAAAASUVORK5CYII71a91eb3cbaabc2cd8b11cc616e0253d);\n \
+   width: 32px;\n \
+   height: 32px;\n \
+   display: inline-block;\n \
+   position: relative;\n \
+   top: 6px;\n \
+   opacity: 0.6;\n \
+}\n \
+.yuzo__title h3,.yuzo__title{\n \
+  display: inline-block;\n \
+}" ); 
+    jQuery(".ilenplugin-yuzo_related_post #yuzo_related_post_theme").click();
+    jQuery(".ilenplugin-yuzo_related_post #yuzo_related_post_theme").click();
+    jQuery(".ilenplugin-yuzo_related_post .CodeMirror-code").click();
+    jQuery(".ilenplugin-yuzo_related_post .CodeMirror-lines").click();
+    jQuery(".ilenplugin-yuzo_related_post .CodeMirror").click();
+    jQuery(".ilenplugin-yuzo_related_post .CodeMirror-scroll").click();
+    
+    
 }
+    , 1000);
+
+
+    }
+
+
+
+});

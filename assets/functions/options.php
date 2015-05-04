@@ -23,9 +23,9 @@ class yuzo_related_post_make extends IF_utils{
 								 'name_option'    =>'yuzo_related_post',
 								 'name_plugin_url'=>'yuzo-related-post',
 								 'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-								 'version'        =>'4.7.2',
+								 'version'        =>'4.8',
 								 'db_version'     =>'1.4',
-								 'present_version'=>'1.3',
+								 'present_version'=>'1.4',
 								 'url'            =>'',
 								 'logo'           =>'<i class="el-icon-fire"></i>', // or image .jpg,png
 								 'logo_text'      =>'', // alt of image
@@ -55,7 +55,13 @@ class yuzo_related_post_make extends IF_utils{
 
 	function getOptionsPlugin(){
 
+		global $if_utils;
 		global ${'tabs_plugin_' . $this->parameter['name_option']};
+
+
+		// get options
+		$yuzo_options_temp = $if_utils->IF_get_option( $this->parameter['name_option'] );
+
 		${'tabs_plugin_' . $this->parameter['name_option']} = array();
 		${'tabs_plugin_' . $this->parameter['name_option']}['tab01']=array('id'=>'tab01','name'=>'Main Settings','icon'=>'<i class="fa fa-circle-o"></i>','width'=>'200'); 
 		${'tabs_plugin_' . $this->parameter['name_option']}['tab02']=array('id'=>'tab02','name'=>'Styling','icon'=>'<i class="fa fa-pencil"></i>','width'=>'200'); // ,'fix'=>1
@@ -884,15 +890,6 @@ class yuzo_related_post_make extends IF_utils{
 																				'name'  =>$this->parameter['name_option'].'_'.'text_show',
 																				'class' =>'',
 																				'row'   =>array('a','b')),
-
-																		/*array(  'title' =>__('Date',$this->parameter['name_option']),
-																				'help'  =>__('Number of text lettering post',$this->parameter['name_option']),
-																				'type'  =>'date',
-																				'value' =>'2014-12-30',
-																				'id'    =>$this->parameter['name_option'].'_'.'date',
-																				'name'  =>$this->parameter['name_option'].'_'.'date',
-																				'class' =>'',
-																				'row'   =>array('a','b')),*/
 																		
 																		array(  'title' =>__('Text center:',$this->parameter['name_option']), //title section
 																				'help'  =>'Place your title text centered',
@@ -904,15 +901,88 @@ class yuzo_related_post_make extends IF_utils{
 																				'class' =>'', //class
 																				'row'   =>array('a','b')),
 
-																		array(  'title' =>__('Add custom css',$this->parameter['name_option']),
-																				'help'  =>__('',$this->parameter['name_option']),
+																		array(  'title' =>__('Theme',$this->parameter['name_option']),
+																				'help'  =>__('Select the theme made to choose one to your liking',$this->parameter['name_option']),
+																				'type'  =>'select',
+																				'value' =>'default',
+																				'items' =>array('default'=>'My Custom theme css','magazine-alfa'=>'Magazine Alfa'),
+																				'id'    =>$this->parameter['name_option'].'_'.'theme',
+																				'name'  =>$this->parameter['name_option'].'_'.'theme',
+																				'class' =>'yuzo_chosse_theme_select',
+																				'row'   =>array('a','b')),
+
+																		array(  'title' =>__('Add custom css or chosse theme <span id="chosse_yuzo_theme"></span>',$this->parameter['name_option']),
+																				'help'  =>__('1) At the moment there is one theme and is "Magazine Alfa"<br />
+2) If you want to edit a theme you can do it is copy and paste the option to "My Custom theme css" code of theme and there you can edit<br />
+3) In future versions will come new "themes", if you want to add a theme send me the link to the page on my site support to simulate the theme for you.',$this->parameter['name_option']),
 																				'type'  =>'component_enhancing_code',
 																				'lineNumbers' =>'false',
 																				'value' =>".yuzo_related_post{}\n.yuzo_related_post .relatedthumb{}",
 																				//'mini_callback' => 'editor_bubble_seo_preview.setValue( jQuery("#ilen_seo_preview").html() );',
 																				'id'    =>$this->parameter['name_option'].'_'.'css_and_style',
 																				'name'  =>$this->parameter['name_option'].'_'.'css_and_style',
+																				'class' =>'yuzo_my_custom_theme',
+																				'row'   =>array('a','c')),
+
+																		array(  'title' =>__('',$this->parameter['name_option']),
+																				'help'  =>__('',$this->parameter['name_option']),
+																				'type'  =>'html', 
+																				'html1' =>'',
+																				'html2' =>"<span id='yuzo_css_default'>".nl2br($yuzo_options_temp->css_and_style)."</span>",
+																				'id'    =>$this->parameter['name_option'].'_'.'yuzo_html_custom_css',
+																				'name'  =>$this->parameter['name_option'].'_'.'yuzo_html_custom_css',
 																				'class' =>'',
+																				'style' =>'style="display:none;"',
+																				'row'   =>array('a','c')),
+
+																		array(  'title' =>__('',$this->parameter['name_option']),
+																				'help'  =>__('',$this->parameter['name_option']),
+																				'type'  =>'html', 
+																				'html1' =>'',
+																				'html2' =>"<span id='yuzo_css_magazine-alfa'>".nl2br(".yuzo_wraps{
+   box-shadow: 0px 0px 8px -2px #333; 
+   border-radius: 3px;
+   background: #ffffff;
+   padding: 10px;
+   background: -moz-linear-gradient(top, #ffffff 1%, #ffffff 27%, #e8e8e8 100%);
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(27%,#ffffff), color-stop(100%,#e8e8e8));
+   background: -webkit-linear-gradient(top, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);
+   background: -o-linear-gradient(top, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);
+   background: -ms-linear-gradient(top, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);
+   background: linear-gradient(to bottom, #ffffff 1%,#ffffff 27%,#e8e8e8 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e8e8e8',GradientType=0 );
+   height: auto!important;
+   float: left;
+   width: 98%;
+   margin-left: 1%;
+   box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -o-box-sizing: border-box;
+   -ms-box-sizing: border-box;
+ }
+ a.yuzo__text--title,
+ .yuzo__text--title,
+ .yuzo-list a.yuzo__text--title{
+   font-weight:bolder;
+   color:#000!important;
+ }
+ .yuzo__title::before{
+    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAphAAAKYQH8zEolAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAEtQTFRF////AAAAAAAAAAAAAAAAAAAAAAAEAAADAAADAAACAAACAgACAgACAgACAgACAQABAQADAQADAQADAQACAQACAQACAQACAQACAQACjwA2xwAAABh0Uk5TAAIEIDA/QFFkeX2Ago2dvcDBwtDZ4OT+yEuE8AAAAHNJREFUKFOtkVkOgCAMREfFFRdc4f4ntWjUSG2Mie+PvswQKPAZ84QXbmbj2W1CsxItC99GIrtDgvDC3bmEmNjPCuq5ysCEVYcQE39XJRCqNIR3nAlbs0+saG4x9lEoUhITCreEixpINEDeshWarozZBa+sC18XgoSOCdYAAAAASUVORK5CYII71a91eb3cbaabc2cd8b11cc616e0253d);
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+    top: 6px;
+    opacity: 0.6;
+ }
+ .yuzo__title h3,.yuzo__title{
+   display: inline-block;
+ }")."</span>",
+																				'id'    =>$this->parameter['name_option'].'_'.'yuzo_css_theme_magazine-alfa',
+																				'name'  =>$this->parameter['name_option'].'_'.'yuzo_css_theme_magazine-alfa',
+																				'class' =>'',
+																				'style' =>'style="display:none;"',
 																				'row'   =>array('a','c')),
 	 
 																)

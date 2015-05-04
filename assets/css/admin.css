@@ -454,9 +454,12 @@
 }
 
 /* Setting - Active views counter */
-.ilencontentwrapelements #box_e,
-.ilencontentwrapelements #box_g{
+.ilenplugin-yuzo_related_post .ilencontentwrapelements #box_e,
+.ilenplugin-yuzo_related_post .ilencontentwrapelements #box_g{
     width: 70%;
     float: right;
     margin-top: 0;
+}
+.ilenplugin-yuzo_related_post .yuzo_my_custom_theme .a_line{
+    width: 100%!important;
 }

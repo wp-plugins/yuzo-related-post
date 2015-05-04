@@ -1876,20 +1876,20 @@ jQuery(".iaccordion-header").on("click",function(){
 										<textarea id="code_<?php echo $value['id'] ?>" name="<?php echo $value['name'] ?>"><?php echo isset($options_theme[ $value['name'] ])?$options_theme[ $value['name'] ]:$value['value']; ?></textarea>
 									</div>
 									<script>
+										var editor_<?php echo $value['id'] ?>;
+										jQuery(document).ready(function(){
+												editor_<?php echo $value['id'] ?> = CodeMirror.fromTextArea(document.getElementById("code_<?php echo $value['id'] ?>"), {
+												lineNumbers: <?php if( isset($value['lineNumbers']) && $value['lineNumbers'] ){ echo $value['lineNumbers']; }else{ echo "true"; } ?>,
+												styleActiveLine: true,
+												matchBrackets: true
+											});
 
-									  jQuery(document).ready(function(){
-										var editor_<?php echo $value['id'] ?> = CodeMirror.fromTextArea(document.getElementById("code_<?php echo $value['id'] ?>"), {
-											lineNumbers: <?php if( isset($value['lineNumbers']) && $value['lineNumbers'] ){ echo $value['lineNumbers']; }else{ echo "true"; } ?>,
-											styleActiveLine: true,
-											matchBrackets: true
-									   });
-										editor_<?php echo $value['id'] ?>.setOption("theme", "xq-light");
+											editor_<?php echo $value['id'] ?>.setOption("theme", "xq-light");
 
-										<?php if( isset($value['mini_callback'])  && $value['mini_callback'] ): ?>
-											<?php echo $value['mini_callback']; ?>
-										<?php endif; ?>
-									  });
-									  
+											<?php if( isset($value['mini_callback'])  && $value['mini_callback'] ): ?>
+												<?php echo $value['mini_callback']; ?>
+											<?php endif; ?>
+										});
 									</script>
 								</div>
 							</div>

@@ -46,12 +46,12 @@ a:hover{text-decoration: none!important;}
   font-weight: bold;
 }
 .ilenplugin-options .row .a {
-  width: 48%!important;
+  width: 48%;
   float: left;
   text-align: right;
 }
 .ilenplugin-options .row .b {
-  width: 50%!important;
+  width: 50%;
   float: right;
 }
 .ilenplugin-options .postbox{
@@ -183,6 +183,7 @@ a:hover{text-decoration: none!important;}
 .ilenplugin-options   .a_line{
   text-align: left!important;
   margin-bottom: 13px!important;
+  width: 100%!important;
 }
 .ilenplugin-options  .a_line .help{
   width: 100%!important;
