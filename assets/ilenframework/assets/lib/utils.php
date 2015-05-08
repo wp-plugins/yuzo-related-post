@@ -101,6 +101,8 @@ function IF_get_image_post_attachment( $size = "medium", $post_id=null ){
        'post_parent' => $post_id
     );
 
+    $args = apply_filters( 'yuzo_attachment_query' , $args );
+
     $image['alt'] = $this->get_ALTImage($post_id);
     $attachments = get_posts( $args );
     //wp_reset_postdata();
@@ -114,6 +116,8 @@ function IF_get_image_post_attachment( $size = "medium", $post_id=null ){
 
     return $image;
 }
+
+
 
 
 
