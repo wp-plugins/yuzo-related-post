@@ -1,15 +1,15 @@
 <?php 
 /**
- * iLenFramework 2.5.1
+ * iLenFramework 2.5.2
  * @package ilentheme
  * 
  * live as if it were the last day of your life
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_2_5_1') ) {
+if ( !class_exists('ilen_framework_2_5_2') ) {
 
-class ilen_framework_2_5_1 {
+class ilen_framework_2_5_2 {
 
 		var $options          = array();
 		var $parameter        = array();
@@ -181,8 +181,9 @@ class ilen_framework_2_5_1 {
 				if(  $key2 != 'last_update' ){
 					foreach ($value2['options'] as $key => $value) {
 
-						if( isset($value['name']) )
+						if( isset($value['name']) && $value['type'] != "html" ){
 							$defaults[$value['name']] = $value['value'];
+						}
 
 					}
 				}
@@ -3637,5 +3638,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_2_5_1;
+$IF = new ilen_framework_2_5_2;
 ?>
