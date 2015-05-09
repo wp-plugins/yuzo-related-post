@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
 								 'name_option'    =>'yuzo_related_post',
 								 'name_plugin_url'=>'yuzo-related-post',
 								 'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-								 'version'        =>'4.8.4',
+								 'version'        =>'4.8.5',
 								 'db_version'     =>'1.4',
 								 'present_version'=>'1.4',
 								 'url'            =>'',
@@ -61,6 +61,11 @@ class yuzo_related_post_make extends IF_utils{
 
 		// get options
 		$yuzo_options_temp = $if_utils->IF_get_option( $this->parameter['name_option'] );
+		if(!$yuzo_options_temp){
+			$yuzo_options_temp = new stdClass;
+			$yuzo_options_temp->css_and_style = null;
+		}
+
 
 		${'tabs_plugin_' . $this->parameter['name_option']} = array();
 		${'tabs_plugin_' . $this->parameter['name_option']}['tab01']=array('id'=>'tab01','name'=>'Main Settings','icon'=>'<i class="fa fa-circle-o"></i>','width'=>'200'); 
