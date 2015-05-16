@@ -9,10 +9,11 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.1
 Stable tag: 4.8
-Version: 4.8.9
+Version: 4.9
 License: GPLv2 or later
 
-The first plugin that ever have to install on your page Wordpress.
+The first plugin that you must install on your wordpress site.
+
 == Description ==
 <blockquote>
   <p>Support only <a href="http://support.ilentheme.com" target="_blank">HERE</a></p>
@@ -61,6 +62,10 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9 =
+* New eye icon (counter views)
+= 4.8.9.1 =
+* Change text for presentation
 = 4.8.9 =
 * Minor change in code
 = 4.8.8 =
