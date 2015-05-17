@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
 								 'name_option'    =>'yuzo_related_post',
 								 'name_plugin_url'=>'yuzo-related-post',
 								 'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-								 'version'        =>'4.9',
+								 'version'        =>'4.9.1',
 								 'db_version'     =>'1.4',
 								 'present_version'=>'1.4',
 								 'url'            =>'',
@@ -445,6 +445,16 @@ class yuzo_related_post_make extends IF_utils{
 																				'value_check'=>1, // value data
 																				'id'    =>$this->parameter['name_option'].'_'.'show_only_home',  
 																				'name'  =>$this->parameter['name_option'].'_'.'show_only_home',  
+																				'class' =>'', 
+																				'row'   =>array('a','b')),
+
+																		array(  'title' =>__('Show only the same type:',$this->parameter['name_option']), //title section
+																				'help'  =>'If you enable this option displays related posts Yuzo only the type of publication, example: If you are in a "type page" display related but only "page".',
+																				'type'  =>'checkbox', 
+																				'value' =>'0', // default
+																				'value_check'=>1, // value data
+																				'id'    =>$this->parameter['name_option'].'_'.'show_only_type',  
+																				'name'  =>$this->parameter['name_option'].'_'.'show_only_type',  
 																				'class' =>'', 
 																				'row'   =>array('a','b')),
 
