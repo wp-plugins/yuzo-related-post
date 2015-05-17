@@ -7,9 +7,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Author URI: http://ilentheme.com
 Author: iLen
 Requires at least: 3.9
-Tested up to: 4.2.1
-Stable tag: 4.8
-Version: 4.9.1
+Tested up to: 4.2.2
+Stable tag: 4.9
+Version: 4.9.2
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site.
@@ -61,8 +61,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
-= 4.9.1 =
-* add option: Show only the same type
+= 4.9.2 =
+* add option: Show only the same type<br />
 If you enable this option displays related posts Yuzo only the type of publication, example: If you are in a "type page" display related but only "page"
 = 4.9 =
 * New eye icon (counter views)
