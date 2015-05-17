@@ -13,7 +13,6 @@ Version: 4.9.1
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site.
-
 == Description ==
 <blockquote>
   <p>Support only <a href="http://support.ilentheme.com" target="_blank">HERE</a></p>
