@@ -2065,6 +2065,7 @@ input[type="range"]::-webkit-slider-thumb {
   padding:6px 0;
   border-bottom: 1px dashed #e7eaec;
   margin-bottom: 0!important;
+  margin-left: 2px;
 }
 .ilenmetabox-options .row .a{
   width: 30%;
@@ -2223,7 +2224,7 @@ input[type="range"]::-webkit-slider-thumb {
 .ilenmetabox-options .ui-widget-header .ui-state-default i{
   font-size: 16px;
   position: relative;
-  top: 3px;
+  top: 1px;
 }
 .ilenmetabox-options #wpbody-content .metabox-holder{
   margin: 0;
