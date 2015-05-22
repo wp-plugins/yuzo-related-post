@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.2
 Stable tag: 4.9.1
-Version: 4.9.4
+Version: 4.9.5
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site.
@@ -61,6 +61,12 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.5 =
+* Add check list in core
+* Update <code>iLenFramework</code> in version 2.5.3
+* Add new option in yuzo widget 'Post Type': Type related post where is displayed
+* Add new option in yuzo widget 'Show only the same type':If you enable this option displays related posts Yuzo Widget only the type of publication, example: If you are in a "type page" display related but only "page"
+* 
 = 4.9.4 =
 * Fixed query fast
 = 4.9.3 =

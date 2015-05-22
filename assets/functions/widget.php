@@ -11,7 +11,7 @@ class yuzo_widget extends WP_Widget  {
 	var $ME               = null;
 
 
-function print_script_footer_widget(){ $this->ME->ilen_print_script_footer_widget( array('color','range2','input4','jtumbler','tag'), $this->widget_ops['classname'], (int)$this->number  ); }
+function print_script_footer_widget(){ $this->ME->ilen_print_script_footer_widget( array('color','range2','input4','jtumbler','tag','check_list'), $this->widget_ops['classname'], (int)$this->number  ); }
 function __construct(){
 
 
@@ -26,8 +26,8 @@ function __construct(){
 	/* NO REMOVE **********************************************************/
 
 	// Widget Builder.
-	$this->widget_ops = array('classname'     => 'yuzo_widget',
-							'description'   => 'Show related and more...' );
+	$this->widget_ops = array(	'classname'     => 'yuzo_widget',
+								'description'   => 'Show related and more...' );
 
 	$this->WP_Widget('yuzo_widget', "Yuzo", $this->widget_ops);
 
@@ -68,7 +68,9 @@ function __construct(){
 											'yuzo_widget_as'            => 'list-post',
 											'show_list'                 => 'last-post',
 											'interval'                  => 'all-along',
-											'exclude_tag'               => '',);
+											'exclude_tag'               => '',
+											'show_only_type'			=> '0',
+											'post_type'					=> array('post'));
 
 
 
@@ -109,7 +111,9 @@ function __construct(){
 								  'yuzo_widget_as'             => 's',
 								  'show_list'                  => 's',
 								  'interval'                   => 's',
-								  'exclude_tag'                => 's',);
+								  'exclude_tag'                => 's',
+								  'show_only_type'			   => 's',
+								  'post_type'				   => 'a');
 
 
 
@@ -286,9 +290,29 @@ function form($instance){
 																			  'after' =>'</div>',
 																			  'row'   =>array('a','b')),
 
+																	array(  	'title'			=>__('Post Type:',$this->parameter['name_option']), //title section
+																				'help'          =>__('Type related post where is displayed',$this->parameter['name_option']), //descripcion section
+																				'type'          =>'checkbox', 
+																				'value'         =>(array)$post_type,
+																				//'value_check'   =>array('post'),
+																				'display'       =>'types_post', 
+																				'id'            =>$this->get_field_id('post_type'),
+																				'name'          =>$this->get_field_name('post_type'), //name
+																				'class'         =>'', //class
+																				'row'           =>array('a','b')),
+
+																	array(  	'title' =>__('Show only the same type:',$this->parameter['name_option']), //title section
+																				'help'  =>'If you enable this option displays related posts Yuzo Widget only the type of publication, example: If you are in a "type page" display related but only "page".',
+																				'type'  =>'checkbox', 
+																				'value' =>( isset($show_only_type) && $show_only_type )?$show_only_type:0,
+																				'id'            =>$this->get_field_id('show_only_type'),
+																				'name'          =>$this->get_field_name('show_only_type'), //name
+																				'class' =>'', 
+																				'row'   =>array('a','b')),
+
 																	),
-									  ),
-						  'b'=>array(       'title'      => __('Styling',$this->parameter['name_option']), 
+									  )
+,						  'b'=>array(       'title'      => __('Styling',$this->parameter['name_option']), 
 											'title_large'=> __('',$this->parameter['name_option']), 
 											'description'=> '', 
 											'icon'       => '',
@@ -741,13 +765,16 @@ function form($instance){
 
 function update($new_instance, $old_instance){
 
-  $update = array();
+	$update = array();
 
-  //In the examples of what fields checkbox come without that key, then you can not parse the defects since it back on and it makes you save them wrong.
-  foreach ($new_instance as $key => $value)  $update[$key] = $this->ME->ilenwidget_validate_inputs_ext( ($value),$this->default_validate[$key] ); 
-
-
-  return $update;
+	//var_dump( $new_instance );
+	
+	//In the examples of what fields checkbox come without that key, then you can not parse the defects since it back on and it makes you save them wrong.
+	foreach ($new_instance as $key => $value)  $update[$key] = $this->ME->ilenwidget_validate_inputs_ext( ($value),$this->default_validate[$key] ); 
+	//var_dump(  $update );
+	//exit;
+	
+	return $update;
   
 }
 
@@ -782,6 +809,14 @@ function widget($args,$instance){
 		}
 	}
 
+	// verify type page
+	$post_type_v = get_post_type( $post->ID );
+	if( $post_type_v ){
+		if( ! in_array($post_type_v, (array)$yuzo_option_widget->post_type ) ){
+			return;
+		}
+	}
+
 
 
 
@@ -807,15 +842,7 @@ function widget($args,$instance){
 				}
 
 			}
-
-			// verify type page
-			$post_type = get_post_type( $post->ID );
-			if( is_array($post_type) ){
-				if( ! in_array($post_type, (array)$yuzo_option_widget->post_type ) ){
-					return $content;
-				}
-			}
-
+ 
 			// is show home
 			if( isset($yuzo_option_widget->show_home) && !$yuzo_option_widget->show_home  && is_home() ){
 				return $content;
@@ -901,6 +928,11 @@ function widget($args,$instance){
 								  'category__not_in'    => $array_no_category,
 						);
 
+
+			// validate if only show 1 type
+			if( isset($yuzo_option_widget->show_only_type) && $yuzo_option_widget->show_only_type ){
+				$args_sql['post_type'] = (array)$post_type_v;
+			}
 
 			// validate post current
 			$post__not_in[] = $post->ID;

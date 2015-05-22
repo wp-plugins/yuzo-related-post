@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
 								 'name_option'    =>'yuzo_related_post',
 								 'name_plugin_url'=>'yuzo-related-post',
 								 'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-								 'version'        =>'4.9.4',
+								 'version'        =>'4.9.5',
 								 'db_version'     =>'1.4',
 								 'present_version'=>'1.4',
 								 'url'            =>'',
@@ -48,7 +48,7 @@ class yuzo_related_post_make extends IF_utils{
 														  //'post.php'    => array('select2','date','range2'),
 														  'post_type'   => array('page' => array('select2','jquery_ui_reset'),
 																				 'post' => array('select2','jquery_ui_reset')),
-														  'widgets'     => array('select2','nouislider','jtumbler','tag',),
+														  'widgets'     => array('select2','nouislider','jtumbler','tag','check_list'),
 														)
 					);
 	}
