@@ -9,10 +9,10 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.2
 Stable tag: 4.9.1
-Version: 4.9.7.1
+Version: 4.9.7.2
 License: GPLv2 or later
 
-The first plugin that you must install on your wordpress site.
+The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
 == Description ==
 <blockquote>
   <p>Support only <a href="http://support.ilentheme.com" target="_blank">HERE</a></p>
@@ -61,6 +61,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.7.2 =
+* Remove code, clear inline
 = 4.9.7.1 =
 * Fixed code in line 500
 = 4.9.7 =
