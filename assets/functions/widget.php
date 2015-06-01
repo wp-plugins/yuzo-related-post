@@ -1276,10 +1276,11 @@ function widget($args,$instance){
 					$css_effects
 					</style>";
 
-				if ( ! isset($yuzo_option_widget->yuzo_conflict) || ! $yuzo_option_widget->yuzo_conflict ) {
-				  $script="<script>
-				  jQuery(function() {
-					jQuery('.yuzo_related_post_widget').equalizer({ overflow : 'relatedthumb2' });
+				if ( ! isset($yuzo_options->yuzo_conflict) || ! $yuzo_options->yuzo_conflict ) {
+				  $script.="<script>
+				  jQuery(document).ready(function() {
+					//jQuery('.yuzo_related_post_widget').equalizer({ overflow : 'relatedthumb2' });
+					jQuery('.yuzo_related_post_widget').equalizer({ columns : '> div' });
 				  });
 				  </script>";
 				}
