@@ -1215,6 +1215,15 @@ function widget($args,$instance){
 			$_html .= "<div class='yuzo_clearfixed'>". $if_utils->IF_setHtml( $yuzo_option_widget->top_text ) ."</div>";
 		}
 
+
+		if ( ! isset($yuzo_options->yuzo_conflict) || ! $yuzo_options->yuzo_conflict ) {
+		  $script.="<script>
+jQuery(document).ready(function() {
+	jQuery('.yuzo_related_post_widget').equalizer({ columns : '> div' });
+});
+</script>";
+		}
+
 	  
 		while ( $the_query_yuzo->have_posts()  ) : $the_query_yuzo->the_post();
 
@@ -1276,14 +1285,7 @@ function widget($args,$instance){
 					$css_effects
 					</style>";
 
-				if ( ! isset($yuzo_options->yuzo_conflict) || ! $yuzo_options->yuzo_conflict ) {
-				  $script.="<script>
-				  jQuery(document).ready(function() {
-					//jQuery('.yuzo_related_post_widget').equalizer({ overflow : 'relatedthumb2' });
-					jQuery('.yuzo_related_post_widget').equalizer({ columns : '> div' });
-				  });
-				  </script>";
-				}
+				
 
 			}elseif( $yuzo_option_widget->style == 2 ){
 					$image = $if_utils->IF_get_image(  $yuzo_option_widget->thumbnail_size, $yuzo_options->default_image, get_the_ID() );
