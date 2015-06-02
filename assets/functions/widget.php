@@ -822,10 +822,10 @@ function widget($args,$instance){
 
 	$_html = "";
 	$_html = "<div class='widget yuzo_widget_wrap'><h3 class='widget-title'><span>".$instance["title"]."</span></h3>";
-	$_html .= "<div class='yuzo_related_post_widget style-$yuzo_option_widget->style' >";
+	$_html .= "<div class='yuzo_related_post_widget style-$yuzo_option_widget->style'  data-version='{$this->parameter["version"]}' >";
 
 	//if( $wp_query->post_count != 0 ){ // if have result in loop post
-
+	
 	if( $rebuilt_query ){
 
 		if( $yuzo_option_widget->yuzo_widget_as == 'related' ){
