@@ -1216,12 +1216,15 @@ function widget($args,$instance){
 		}
 
 
-		if ( ! isset($yuzo_options->yuzo_conflict) || ! $yuzo_options->yuzo_conflict ) {
-		  $script.="<script>
+		// Check if the equalizer plugin is used
+		if( $yuzo_option_widget->style == 1 ){
+			if ( ! isset($yuzo_options->yuzo_conflict) || ! $yuzo_options->yuzo_conflict ) {
+		  	$script.="<script>
 jQuery(document).ready(function() {
 	jQuery('.yuzo_related_post_widget').equalizer({ columns : '> div' });
 });
 </script>";
+			}
 		}
 
 	  
