@@ -1227,7 +1227,13 @@ jQuery(document).ready(function() {
 			}
 		}
 
-	  
+		$css_text_color="";$css_text_color_hover="";
+		$css_title_color="";$css_title_color_hover="";
+		if( isset( $yuzo_option_widget->text_color->color ) && $yuzo_option_widget->text_color->color ){ $css_text_color=$yuzo_option_widget->text_color->color; }
+		if( isset( $yuzo_option_widget->text_color->hover ) && $yuzo_option_widget->text_color->hover ){ $css_text_color_hover=$yuzo_option_widget->text_color->hover; }
+		if( isset( $yuzo_option_widget->title_color->color ) && $yuzo_option_widget->title_color->color ){ $css_title_color=$yuzo_option_widget->title_color->color; }
+		if( isset( $yuzo_option_widget->title_color->hover ) && $yuzo_option_widget->title_color->hover ){ $css_title_color_hover=$yuzo_option_widget->title_color->hover; }
+
 		while ( $the_query_yuzo->have_posts()  ) : $the_query_yuzo->the_post();
 
 			// get array views
@@ -1283,7 +1289,8 @@ jQuery(document).ready(function() {
 				}
 				$style .="
 					.yuzo_related_post_widget .relatedthumb a{color:{$yuzo_option_widget->title_color};}
-					.yuzo_related_post_widget .yuzo_text {color:{$yuzo_option_widget->text_color};}
+					.yuzo_related_post_widget .yuzo_text, .yuzo_related_post .yuzo_views_post {color:{$css_text_color}!important;}
+					.yuzo_related_post_widget .relatedthumb:hover .yuzo_text, .yuzo_related_post:hover .yuzo_views_post {color:{$css_text_color_hover}!important;}
 					.yuzo_related_post_widget .relatedthumb{ $css_margin $css_padding }
 					$css_effects
 					</style>";
@@ -1310,7 +1317,8 @@ jQuery(document).ready(function() {
 					$style .=".yuzo_related_post_widget .relatedthumb:hover{background:{$yuzo_option_widget->bg_color_hover} !important;$css_transitions}";
 				}
 				$style .=".yuzo_related_post_widget .relatedthumb:hover{background:{$yuzo_option_widget->bg_color_hover} !important;;}
-				.yuzo_related_post_widget .yuzo_text {color:{$yuzo_option_widget->text_color};}
+				.yuzo_related_post_widget .yuzo_text, .yuzo_related_post .yuzo_views_post {color:{$css_text_color}!important;}
+				.yuzo_related_post_widget .relatedthumb:hover .yuzo_text, .yuzo_related_post:hover .yuzo_views_post {color:{$css_text_color_hover}!important;}
 				.yuzo_related_post_widget .relatedthumb a{color:{$yuzo_option_widget->title_color};}
 				.yuzo_related_post_widget .relatedthumb{ $css_margin $css_padding }
 				$css_effects

@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that you must install on your wordpress site.
-Version: 4.9.7.7
+Version: 4.9.7.8
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -433,9 +433,12 @@ function create_post_related( $content ){
 
 		$my_array_views = array();
 		$metabox_add_post_first = 0;
+
+		$counter_manual_post = is_array($post_in)?count($post_in):0;
+		//var_dump( $metabox_add_post_first < $counter_manual_post );
 		//if( have_posts() && $wp_query->post_count != 0 ){
 		// The Loop
-		if ( $the_query_yuzo->have_posts() && $wp_query->post_count != 0 ) {
+		if ( ($the_query_yuzo->have_posts() && $wp_query->post_count != 0) || $metabox_add_post_first < $counter_manual_post ) {
 
 			// set transitions
 			$css_transitions = null;
@@ -548,14 +551,16 @@ function create_post_related( $content ){
 
 			//while ( have_posts() ) : the_post();
 			$_html .="<div class='yuzo_wraps'>";
-			while ( $the_query_yuzo->have_posts()  ) :
+			while ( $the_query_yuzo->have_posts() || $metabox_add_post_first < $counter_manual_post ) :
 
 				// $the_query_yuzo->request; // view query sql
 				// START custom first post
 				// link: http://wordpress.stackexchange.com/questions/76877/include-a-specific-post-to-the-query-posts-and-remove-it-if-it-is-already-in-the
 				if ( isset($post_in) && count($post_in) >  $metabox_add_post_first ) {
 					$post_id = $post_in[$metabox_add_post_first]; // This is the ID of the first post to be displayed on slider
-					$the_query_yuzo->the_post(); // END custom first post
+					if($the_query_yuzo->have_posts() && $wp_query->post_count != 0){
+						$the_query_yuzo->the_post(); // END custom first post
+					}
 					$post = get_post( $post_id );
 				}else{
 					//the_post(); // END custom first post
@@ -630,8 +635,8 @@ function create_post_related( $content ){
 								.yuzo_related_post .relatedthumb a:hover{ color:$css_title_color_hover}!important;}
 								.yuzo_related_post .relatedthumb:hover a{ color:{$css_title_color_hover}!important;}
 								.yuzo_related_post .relatedthumb:hover .yuzo__text--title{ color:{$css_title_color_hover}!important;}
-								.yuzo_related_post .yuzo_text {color:{$css_text_color}!important;}
-								.yuzo_related_post .relatedthumb:hover .yuzo_text {color:{$css_text_color_hover}!important;}
+								.yuzo_related_post .yuzo_text, .yuzo_related_post .yuzo_views_post {color:{$css_text_color}!important;}
+								.yuzo_related_post .relatedthumb:hover .yuzo_text, .yuzo_related_post:hover .yuzo_views_post {color:{$css_text_color_hover}!important;}
 								.yuzo_related_post .relatedthumb{ $css_margin $css_padding }
 								$css_effects
 								</style>";
@@ -662,12 +667,13 @@ function create_post_related( $content ){
 							$style="<style>
 						.yuzo_related_post .relatedthumb { background:{$yuzo_options->bg_color->color} !important;$css_transitions;color:{$css_text_color}!important; }
 						.yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;color:{$css_text_color_hover}!important;}
-						.yuzo_related_post .yuzo_text {color:{$css_text_color}!important;}
-						.yuzo_related_post .relatedthumb:hover .yuzo_text {color:{$css_text_color_hover}!important;}
+						.yuzo_related_post .yuzo_text, .yuzo_related_post .yuzo_views_post {color:{$css_text_color}!important;}
+						.yuzo_related_post .relatedthumb:hover .yuzo_text, .yuzo_related_post:hover .yuzo_views_post {color:{$css_text_color_hover}!important;}
 						.yuzo_related_post .relatedthumb a{color:{$css_title_color}!important;}
 						.yuzo_related_post .relatedthumb a:hover{color:{$css_title_color_hover}!important;}
 						.yuzo_related_post .relatedthumb:hover a{ color:{$css_title_color_hover}!important;}
 						.yuzo_related_post .relatedthumb{ $css_margin $css_padding }
+
 						$css_effects
 						</style>";
 						
@@ -681,8 +687,8 @@ function create_post_related( $content ){
 					$style="<style>
 							.yuzo_related_post .relatedthumb{background:{$yuzo_options->bg_color->color} !important;$css_transitions;color:{$css_text_color}!important;}
 							.yuzo_related_post .relatedthumb:hover{background:{$yuzo_options->bg_color->hover} !important;$css_transitions;color:{$css_text_color_hover}!important;}
-							.yuzo_related_post .yuzo_text {color:{$css_text_color}!important;}
-							.yuzo_related_post .relatedthumb:hover .yuzo_text {color:{$css_text_color_hover}!important;}
+							.yuzo_related_post .yuzo_text, .yuzo_related_post .yuzo_views_post {color:{$css_text_color}!important;}
+							.yuzo_related_post .relatedthumb:hover .yuzo_text, .yuzo_related_post:hover .yuzo_views_post {color:{$css_text_color_hover}!important;}
 							.yuzo_related_post .relatedthumb a{color:{$css_title_color}!important;}
 							.yuzo_related_post .relatedthumb a:hover{color:{$css_title_color_hover}!important;}
 							.yuzo_related_post .relatedthumb:hover a{ color:{$css_title_color_hover}!important;}
@@ -1009,7 +1015,10 @@ function create_post_related( $content ){
 	//wp_reset_query(); 
 
 	// Reset Post Data
-	wp_reset_postdata();
+	if( $the_query_yuzo->have_posts() && $wp_query->post_count != 0 ){
+		wp_reset_postdata();
+	}
+	
   
 	return $content.$_html;
   }

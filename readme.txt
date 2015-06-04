@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.2
 Stable tag: 4.9.1
-Version: 4.9.7.7
+Version: 4.9.7.8
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
@@ -61,6 +61,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.7.8 =
+Before you could not add otherwise be manually post before a related, now if you can, with the new changes can be added manually post so that post has no relationship with the new algorithm Yuzo.
 = 4.9.7.7 =
 * Fixed widget height post
 * Fixed code in <code>home post</code>
