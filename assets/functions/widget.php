@@ -70,7 +70,10 @@ function __construct(){
 											'interval'                  => 'all-along',
 											'exclude_tag'               => '',
 											'show_only_type'			=> '0',
-											'post_type'					=> array('post'));
+											'post_type'					=> array('post'),
+											'exclude_id'               	=> '',
+											'no_appear'               	=> '',
+											);
 
 
 
@@ -113,7 +116,10 @@ function __construct(){
 								  'interval'                   => 's',
 								  'exclude_tag'                => 's',
 								  'show_only_type'			   => 's',
-								  'post_type'				   => 'a');
+								  'post_type'				   => 'a',
+								  'exclude_id'				   => 's',
+								  'no_appear'				   => 's',
+								 );
 
 
 
@@ -553,6 +559,26 @@ function form($instance){
 																			'placeholder' => 'Write the tags...',
 																			'row'   =>array('a','b')),
 
+																	array(  'title' =>__('Exclude by ID:',$this->parameter['name_option']), //title section
+																			'help'  =>'Write the IDs separated by a comma which you do not want to be related to the post.',
+																			'type'  =>'tag',
+																			'value' =>$exclude_id,
+																			'id'    =>$this->get_field_id('exclude_id'),
+																			'name'  =>$this->get_field_name('exclude_id'),
+																			'class' =>'',
+																			'placeholder' => 'Write the IDs...',
+																			'row'   =>array('a','b')),
+
+																	array(  'title' =>__('Not appear inside:',$this->parameter['name_option']), //title section
+																			'help'  =>'Write for ID separated by commas "," Posts you want to Yuzo not appear (You can also disable within the Post, it appears to clear Yuzo at that specific post)',
+																			'type'  =>'tag',
+																			'value' =>$no_appear,
+																			'id'    =>$this->get_field_id('no_appear'),
+																			'name'  =>$this->get_field_name('no_appear'),
+																			'class' =>'',
+																			'placeholder' => 'Write the IDs...',
+																			'row'   =>array('a','b')),
+
 																	array(  'title' =>__('Meta view',$this->parameter['name_option']),
 																			'help'  =>__('You can use the meta "Yuzo Views" (key: yuzo_views) or other meta you use to visit the counter.',$this->parameter['name_option']),
 																			'type'  =>'select',
@@ -817,15 +843,21 @@ function widget($args,$instance){
 		}
 	}
 
-
-
+	// validate no appear in IDs
+	if( isset($yuzo_option_widget->no_appear) && $yuzo_option_widget->no_appear ){
+		// if exclude IDs
+		$no_ids = explode(",",$yuzo_option_widget->no_appear);
+		if( in_array( $post->ID, $no_ids  ) ){
+			return;
+		}
+	}
+ 
 
 	$_html = "";
 	$_html = "<div class='widget yuzo_widget_wrap'><h3 class='widget-title'><span>".$instance["title"]."</span></h3>";
 	$_html .= "<div class='yuzo_related_post_widget style-$yuzo_option_widget->style'  data-version='{$this->parameter["version"]}' >";
 
 	//if( $wp_query->post_count != 0 ){ // if have result in loop post
-	
 	if( $rebuilt_query ){
 
 		if( $yuzo_option_widget->yuzo_widget_as == 'related' ){
@@ -927,12 +959,6 @@ function widget($args,$instance){
 								  'category__in'        => $string_cate,
 								  'category__not_in'    => $array_no_category,
 						);
-
-
-			// validate if only show 1 type
-			if( isset($yuzo_option_widget->show_only_type) && $yuzo_option_widget->show_only_type ){
-				$args_sql['post_type'] = (array)$post_type_v;
-			}
 
 			// validate post current
 			$post__not_in[] = $post->ID;
@@ -1132,6 +1158,34 @@ function widget($args,$instance){
 
 			$args_sql['tag__not_in'] =  $no_tag_values;
 		}
+
+
+		// validate if only show 1 type
+		if( isset($yuzo_option_widget->show_only_type) && $yuzo_option_widget->show_only_type ){
+			$args_sql['post_type'] = (array)$post_type_v;
+		}
+
+		// validate exclude IDs in related
+		if( isset($yuzo_option_widget->exclude_id) && $yuzo_option_widget->exclude_id ){
+			$new_no_in_post = explode(",",$yuzo_option_widget->exclude_id);
+			if( isset( $args_sql['post__not_in'] ) && $args_sql['post__not_in'] ){
+				
+				if( is_array( $new_no_in_post ) ){
+					foreach($new_no_in_post as $posts_no_in2 => $post_no_in2) {
+						array_push($args_sql['post__not_in'], $post_no_in2);
+					}
+				}
+
+			}else{
+				if( is_array( $new_no_in_post ) ){
+					$args_sql['post__not_in'] = array();
+					foreach($new_no_in_post as $posts_no_in2 => $post_no_in2) {
+						array_push($args_sql['post__not_in'], $post_no_in2);
+					}
+				}
+			}
+		}
+
 
 	} // rebuilt query
 

@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
 								 'name_option'    =>'yuzo_related_post',
 								 'name_plugin_url'=>'yuzo-related-post',
 								 'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-								 'version'        =>'4.9.7.8',
+								 'version'        =>'4.9.7.9',
 								 'db_version'     =>'1.4',
 								 'present_version'=>'1.4',
 								 'url'            =>'',
@@ -505,6 +505,26 @@ class yuzo_related_post_make extends IF_utils{
 																				'name'  =>$this->parameter['name_option'].'_'.'exclude_tag', //name
 																				'class' =>'',
 																				'placeholder' => 'Write the tags...',
+																				'row'   =>array('a','b')),
+
+																		array(  'title' =>__('Exclude by ID:',$this->parameter['name_option']), //title section
+																				'help'  =>'Write the IDs separated by a comma which you do not want to be related to the post.',
+																				'type'  =>'tag',
+																				'value' =>'',
+																				'id'    =>$this->parameter['name_option'].'_'.'exclude_id', //id
+																				'name'  =>$this->parameter['name_option'].'_'.'exclude_id', //name
+																				'class' =>'',
+																				'placeholder' => 'Write the IDs...',
+																				'row'   =>array('a','b')),
+
+																		array(  'title' =>__('Not appear inside:',$this->parameter['name_option']), //title section
+																				'help'  =>'Write for ID separated by commas "," Posts you want to Yuzo not appear (You can also disable within the Post, it appears to clear Yuzo at that specific post)',
+																				'type'  =>'tag',
+																				'value' =>'',
+																				'id'    =>$this->parameter['name_option'].'_'.'no_appear', //id
+																				'name'  =>$this->parameter['name_option'].'_'.'no_appear', //name
+																				'class' =>'',
+																				'placeholder' => 'Write the IDs...',
 																				'row'   =>array('a','b')),
 
 																		array(  'title' =>__('Show only post specific:',$this->parameter['name_option']), //title section

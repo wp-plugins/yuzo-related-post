@@ -7,9 +7,9 @@
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_2_5_3') ) {
+if ( !class_exists('ilen_framework_2_5_4') ) {
 
-class ilen_framework_2_5_3 {
+class ilen_framework_2_5_4 {
 
 		var $options          = array();
 		var $parameter        = array();
@@ -737,7 +737,7 @@ function ilentheme_options_wrap_for_plugin_tabs(){  ?>
 			<div class="gray ilenwidget-accordion"  id="ilenwidget_id_<?php echo isset($config['id'])?$config['id'].'_'.$widget_unique_id_generate:'_none'; ?>">
 				<div id='iaccordion-container'>
 			<?php 
-
+			//var_dump( $full_options['d'] );
 			if( is_array($full_options) ){
 				$i = 0;
  
@@ -830,9 +830,10 @@ jQuery(".iaccordion-header").on("click",function(){
 
 	function ilen_print_script_footer_widget( $data, $class_widget_name, $id_widget ){ ?>
  
-		<script>
-		( function( $ ){ 
-		<?php 
+	<script>
+	( function( $ ){ 
+		<?php
+
 		if(  in_array( 'color', $data )  ){ ?>
 
 		function initColorPicker( widget ) {
@@ -958,7 +959,7 @@ jQuery(".iaccordion-header").on("click",function(){
 
 		<?php
 		if(  in_array( 'tag', $data )  ){ ?>
-
+ 
 			function initTag( widget ) {
 				widget.find( '.ilen_tag' ).tagEditor({ placeholder: '',forceLowercase:false });
 			}
@@ -970,10 +971,10 @@ jQuery(".iaccordion-header").on("click",function(){
 			$( document ).on( 'widget-added widget-updated', onFormUpdate_tag );
 
 			$( document ).ready( function() {
-			  $( '#widgets-right .widget:has(.ilen_tags)' ).each( function () {
+			  $( '#widgets-right .widget:has(.ilen_tag)' ).each( function () {
 				initTag( $( this ) );
-			  });
-			} );
+			});
+		} );
 
 		<?php } ?>
 
@@ -994,11 +995,11 @@ jQuery(".iaccordion-header").on("click",function(){
 				
 			}
 
-			function onFormUpdate_tag( event, widget ) {
+			function onFormUpdate_CheckList( event, widget ) {
 				initCheckList( widget );
 			}
 
-			$( document ).on( 'widget-added widget-updated', onFormUpdate_tag );
+			$( document ).on( 'widget-added widget-updated', onFormUpdate_CheckList );
 
 			$( document ).ready( function() {
 				$( '#widgets-right .widget:has(.ilen_tags)' ).each( function () {
@@ -2245,7 +2246,8 @@ jQuery(".iaccordion-header").on("click",function(){
 								</div>
 								<script>
 									jQuery(document).ready(function($){
-										jQuery('#<?php echo $value['id']; ?>').tagEditor({ placeholder: '<?php if(isset($value['placeholder']) && $value['placeholder']){ echo $value['placeholder']; } ?>',forceLowercase:false });
+										jQuery('.ilen_tag').tagEditor({ placeholder: '<?php if(isset($value['placeholder']) && $value['placeholder']){ echo $value['placeholder']; } ?>',forceLowercase:false });
+										alert(jQuery(".ilen_tag").length);
 									});
 								</script>
 							</div>
@@ -3677,5 +3679,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_2_5_3;
+$IF = new ilen_framework_2_5_4;
 ?>

@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that you must install on your wordpress site.
-Version: 4.9.7.8
+Version: 4.9.7.9
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -150,9 +150,20 @@ function create_post_related( $content ){
 
 	$meta_yuzo = get_post_meta( $post->ID, $this->parameter['name_option']."_metabox" );
 
- 
+ 	// validate if Yuzo is disabled in the post
 	if( isset($meta_yuzo[0]['yuzo_disabled_related']) && $meta_yuzo[0]['yuzo_disabled_related'] ){
 		return $content;
+	}
+
+	// validate no appear in IDs
+	if( isset($yuzo_options->no_appear) && $yuzo_options->no_appear ){
+		// if exclude IDs
+		$no_ids = explode(",",$yuzo_options->no_appear);
+		if( in_array( $post->ID, $no_ids  ) ){
+
+			return $content;
+
+		}
 	}
 
 	// validate show in feed or no
@@ -389,6 +400,27 @@ function create_post_related( $content ){
 					}
 				}
 				$args['post__not_in'] =  (array)$post__not_in;
+			}
+
+			// validate exclude IDs in related
+			if( isset($yuzo_options->exclude_id) && $yuzo_options->exclude_id ){
+				$new_no_in_post = explode(",",$yuzo_options->exclude_id);
+				if( isset( $args['post__not_in'] ) && $args['post__not_in'] ){
+					
+					if( is_array( $new_no_in_post ) ){
+						foreach($new_no_in_post as $posts_no_in2 => $post_no_in2) {
+							array_push($args['post__not_in'], $post_no_in2);
+						}
+					}
+
+				}else{
+					if( is_array( $new_no_in_post ) ){
+						$args['post__not_in'] = array();
+						foreach($new_no_in_post as $posts_no_in2 => $post_no_in2) {
+							array_push($args['post__not_in'], $post_no_in2);
+						}
+					}
+				}
 			}
 
 
