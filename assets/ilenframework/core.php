@@ -2247,7 +2247,6 @@ jQuery(".iaccordion-header").on("click",function(){
 								<script>
 									jQuery(document).ready(function($){
 										jQuery('.ilen_tag').tagEditor({ placeholder: '<?php if(isset($value['placeholder']) && $value['placeholder']){ echo $value['placeholder']; } ?>',forceLowercase:false });
-										alert(jQuery(".ilen_tag").length);
 									});
 								</script>
 							</div>

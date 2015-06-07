@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.2
 Stable tag: 4.9.1
-Version: 4.9.7.9
+Version: 4.9.8
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
@@ -61,10 +61,11 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
-= 4.9.7.9 =
+= 4.9.8 =
 * Add option: Widget 'Exclude post by ID'
 * Add option: Widget 'No appear by ID'
 * Fixed Widget: Not Working The option 'Show only the same type' and this was corrected
+= 4.9.7.9 =
 * Update core <code>iLenFramework 2.5.4</code>
 = 4.9.7.8 =
 Before you could not add otherwise be manually post before a related, now if you can, with the new changes can be added manually post so that post has no relationship with the new algorithm Yuzo.
