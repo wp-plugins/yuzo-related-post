@@ -62,7 +62,7 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 == Changelog ==
 = 4.9.8.1 =
-* Widget title: now you can put HTML version, example: <pre><code><h2>title widget</h2></code></pre>
+* Widget title: now you can put HTML version, example: <code>< h2>title widget< /h2></code>
 = 4.9.8 =
 * Add option: Widget 'Exclude post by ID'
 * Add option: Widget 'No appear by ID'
