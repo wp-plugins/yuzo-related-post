@@ -81,7 +81,7 @@ function __construct(){
 
 
   // validate inputs
-  $this->default_validate =array( 'title'                      => 't',
+  $this->default_validate =array( 'title'                      => 's',
 								  'number_post'                => 'i',
 								  'related_based'              => 'i',
 								  'order_by'                   => 's',
@@ -854,7 +854,7 @@ function widget($args,$instance){
  
 
 	$_html = "";
-	$_html = "<div class='widget yuzo_widget_wrap'><h3 class='widget-title'><span>".$instance["title"]."</span></h3>";
+	$_html = "<div class='widget yuzo_widget_wrap'><h3 class='widget-title'><span>".$if_utils->IF_setHtml($yuzo_option_widget->title)."</span></h3>";
 	$_html .= "<div class='yuzo_related_post_widget style-$yuzo_option_widget->style'  data-version='{$this->parameter["version"]}' >";
 
 	//if( $wp_query->post_count != 0 ){ // if have result in loop post
