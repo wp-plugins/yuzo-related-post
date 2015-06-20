@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that you must install on your wordpress site.
-Version: 4.9.8.1
+Version: 4.9.8.2
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -190,7 +190,9 @@ function create_post_related( $content ){
 	$_html .= "<div class='yuzo_related_post style-$yuzo_options->style'  data-version='{$this->parameter["version"]}'>";
 	if( $wp_query->post_count != 0 ){ // if have result in loop post
 
-
+		$__in_post   = null; // for array
+		$post_in     = null;
+		$post_not_in = null;
 
 
 		if( $rebuilt_query ){
@@ -1894,10 +1896,10 @@ function only_specific_post(){
 } // end if
 
  
-global $IF_CONFIG, $yuzo_options;
+global $IF_CONFIG, $yuzo_options, $YUZO_CORE;
 unset($IF_CONFIG);
 $IF_CONFIG = null;
-$IF_CONFIG = new yuzo_related_post;
+$IF_CONFIG = $YUZO_CORE = new yuzo_related_post;
 require_once "assets/ilenframework/core.php";
 
 

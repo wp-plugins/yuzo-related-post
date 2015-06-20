@@ -10,21 +10,22 @@ class my_meta_yuzo{
 
     public function __construct(){
  
-        // always variables
-        global $IF;
-        $this->parameter  = isset($IF->parameter)?(array)$IF->parameter:null;
-        $this->ME = $IF;
-        
-        self::_builder();
+        global $post_type,$post;   
 
-        add_action( 'admin_head',  array( &$this , '_add' ) , 5 );
-        add_action( 'save_post' ,  array( &$this->ME , 'IF_save_metabox' ) , 10 , 1 );
-        // ---------------
+            // always variables
+            global $IF;
+            $this->parameter  = isset($IF->parameter)?(array)$IF->parameter:null;
+            $this->ME = $IF;
+            
+            self::_builder();
+
+            add_action( 'admin_head',  array( &$this , '_add' ) , 5 );
+            add_action( 'save_post' ,  array( &$this->ME , 'IF_save_metabox' ) , 10 , 1 );
+            // ---------------
 
 
-        // set custom script for metabox
-        add_action( 'in_admin_footer',  array( &$this, 'script_and_style_metabox_custom') );
- 
+            // set custom script for metabox
+            add_action( 'in_admin_footer',  array( &$this, 'script_and_style_metabox_custom') );
 
     }
 
@@ -199,10 +200,10 @@ class my_meta_yuzo{
 
     function script_and_style_metabox_custom(){
  
-        global $IF_CONFIG;
+        global $YUZO_CORE;
 
         $post_id = isset($_GET['post'])?$_GET['post']:0;
-        $counter = $IF_CONFIG->yuzo_get_views($post_id);
+        $counter = $YUZO_CORE->yuzo_get_views($post_id);
 
         $_html = "";
         if( $counter < 1000 ){

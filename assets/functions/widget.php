@@ -809,15 +809,21 @@ function update($new_instance, $old_instance){
 
 function widget($args,$instance){
 
-	global $post, $wp_query, $yuzo_option_widget, $if_utils, $wpdb, $yuzo_options;
+	global $post, $wp_query, $yuzo_option_widget, $if_utils, $wpdb, $yuzo_options, $YUZO_CORE;
 
 
 	// get Yuzo Option Main
-	$yuzo_options = $if_utils->IF_get_option( $this->parameter['name_option'] );
+	$yuzo_options = $if_utils->IF_get_option( $YUZO_CORE->parameter['name_option'] );
 	$yuzo_option_widget = json_decode (json_encode ($instance), FALSE);
 
 	// Yuzo widget as 'related' only in singular, no show homepage or archive page
 	if( ( is_home() || is_archive() || is_category() ) && $yuzo_option_widget->yuzo_widget_as == 'related' ) return;
+
+	if( (is_404() || $wp_query->found_posts == 0) && !isset($post->ID) && $yuzo_option_widget->yuzo_widget_as == 'list-post' ){
+		$post->ID = rand(100000,200000);
+	}elseif( is_404() && $yuzo_option_widget->yuzo_widget_as == 'related' ){
+		 return;
+	}
 
 	$style          = "";
 	$script         = "";
@@ -855,7 +861,7 @@ function widget($args,$instance){
 
 	$_html = "";
 	$_html = "<div class='widget yuzo_widget_wrap'><h3 class='widget-title'><span>".$if_utils->IF_setHtml($yuzo_option_widget->title)."</span></h3>";
-	$_html .= "<div class='yuzo_related_post_widget style-$yuzo_option_widget->style'  data-version='{$this->parameter["version"]}' >";
+	$_html .= "<div class='yuzo_related_post_widget style-$yuzo_option_widget->style'  data-version='{$YUZO_CORE->parameter["version"]}' >";
 
 	//if( $wp_query->post_count != 0 ){ // if have result in loop post
 	if( $rebuilt_query ){
@@ -1429,6 +1435,7 @@ jQuery(document).ready(function() {
 
 function effects( $yuzo_w ){
 
+	global $YUZO_CORE;
  
    $css_effects = null;
    if( isset( $yuzo_w->effect_related ) ){
@@ -1461,7 +1468,7 @@ transform: scale(1.1)
 }
 .yuzo_related_post_widget .relatedthumb .yuzo-img-wrap{
   overflow:hidden;
-  background: url(".$this->parameter['theme_imagen']."/link-overlay.png) no-repeat center;
+  background: url(".$YUZO_CORE->parameter['theme_imagen']."/link-overlay.png) no-repeat center;
 }
 .yuzo_related_post_widget .relatedthumb:hover .yuzo-img {
   opacity: 0.7;
