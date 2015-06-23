@@ -1737,7 +1737,10 @@ input[type="range"]::-webkit-slider-thumb {
   margin-left:0;
   padding: 4px 5px;
 }
-
+.ilentheme-options .separate{
+  padding: 10px 0 0 10px;
+  background: #F4F4F4;
+}
 
 
 

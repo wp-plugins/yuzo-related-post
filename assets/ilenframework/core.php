@@ -1,15 +1,15 @@
 <?php 
 /**
- * iLenFramework 2.5.3
+ * iLenFramework 2.6.1
  * @package ilentheme
  * 
  * live as if it were the last day of your life
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_2_6') ) {
+if ( !class_exists('ilen_framework_2_6_1') ) {
 
-class ilen_framework_2_6 {
+class ilen_framework_2_6_1 {
 
 		var $options          = array();
 		var $parameter        = array();
@@ -1522,7 +1522,7 @@ jQuery(".iaccordion-header").on("click",function(){
 									<?php
 										//$initial_data='What you want to appear in the text box initially';
 										$id = $value['id'];//has to be lower case
-										wp_editor($options_theme[ $value['name'] ],$id,$value['setting']);
+										wp_editor( html_entity_decode( $options_theme[ $value['name'] ] , ENT_QUOTES, 'UTF-8' ),$id,$value['setting']);
 									?>
 								</div>
 								<div class="help"><?php echo $value['help']; ?></div>
@@ -3748,5 +3748,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_2_6;
+$IF = new ilen_framework_2_6_1;
 ?>
