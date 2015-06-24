@@ -8,8 +8,8 @@ Author URI: http://ilentheme.com
 Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 4.9.8.2
-Version: 4.9.8.3
+Stable tag: 4.9.8.3
+Version: 4.9.8.4
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
@@ -64,6 +64,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.8.4 =
+* Fixed: add "div clear both" under widget, performance
 = 4.9.8.3 =
 * Change 'substr' to 'mb_substr' for simbol (symbol � in excerpt).
 = 4.9.8.2 =

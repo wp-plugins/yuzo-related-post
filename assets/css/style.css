@@ -12,8 +12,8 @@ Yuzo in post
   clear: both;
 
 }
-.yuzo_related_post .yuzo_clearfixed{
-	clear: both;
+.yuzo_related_post .yuzo_clearfixed, .yuzo_widget_wrap .yuzo_clearfixed{
+  clear: both;
   display: block;
   margin: 5px 0;
 }

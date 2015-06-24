@@ -1422,7 +1422,7 @@ jQuery(document).ready(function() {
 
 
 	// set last script and css for this widget
-	$_html .= "</div> \n $style $script \n</div>";
+	$_html .= "</div> \n $style $script \n <div class='yuzo_clearfixed'></div>\n</div>";
 
 	// Reset Post Data
 	wp_reset_postdata();
