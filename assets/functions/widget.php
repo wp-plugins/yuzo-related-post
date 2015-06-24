@@ -16,7 +16,7 @@ function __construct(){
 
 
 	// always variables
-	global $IF;
+	global $IF; 
 	$this->parameter  = isset($IF->parameter)?(array)$IF->parameter:null;
 	$this->ME = $IF;
 
@@ -128,6 +128,7 @@ function __construct(){
 
 function form($instance){
 
+	global $YUZO_CORE;
 
 	if( ! $instance ){ // only validate once (when widget is added)
 		$instance = wp_parse_args( (array) $instance, $this->default ); 
@@ -333,19 +334,19 @@ function form($instance){
 
 																								array('value'=>2,
 																									  'text' =>'Vertical',
-																									  'image'=>$this->parameter['theme_imagen'].'/2-.png'),
+																									  'image'=>$YUZO_CORE->parameter['theme_imagen'].'/2-.png'),
 
 																								array('value'=>1,
 																									  'text' =>'Horizontal',
-																									  'image'=>$this->parameter['theme_imagen'].'/1-.png'),
+																									  'image'=>$YUZO_CORE->parameter['theme_imagen'].'/1-.png'),
 
 																								array('value'=>3,
 																									  'text' =>'List',
-																									  'image'=>$this->parameter['theme_imagen'].'/3-.png'),
+																									  'image'=>$YUZO_CORE->parameter['theme_imagen'].'/3-.png'),
 
 																								array('value'=>4,
 																									  'text' =>'Experimental',
-																									  'image'=>$this->parameter['theme_imagen'].'/4-.png'),
+																									  'image'=>$YUZO_CORE->parameter['theme_imagen'].'/4-.png'),
  
 																							),
 

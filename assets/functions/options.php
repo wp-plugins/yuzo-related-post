@@ -23,7 +23,7 @@ class yuzo_related_post_make extends IF_utils{
 								 'name_option'    =>'yuzo_related_post',
 								 'name_plugin_url'=>'yuzo-related-post',
 								 'descripcion'    =>'Gets the related post on your blog with any design characteristics.',
-								 'version'        =>'4.9.8.5',
+								 'version'        =>'4.9.8.6',
 								 'db_version'     =>'1.4',
 								 'present_version'=>'1.4',
 								 'url'            =>'',
@@ -56,6 +56,7 @@ class yuzo_related_post_make extends IF_utils{
 	function getOptionsPlugin(){
 
 		global $if_utils;
+		//$this->yuzo_parameter = $this->parameter;
 		global ${'tabs_plugin_' . $this->parameter['name_option']};
 
 
@@ -1034,7 +1035,6 @@ class yuzo_related_post_make extends IF_utils{
 
 
 	function parameters(){
-
 		$this->parameter = self::getHeaderPlugin();
 	}
 
