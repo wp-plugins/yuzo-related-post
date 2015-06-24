@@ -15,13 +15,13 @@ License: GPLv2 or later
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
 == Description ==
 <blockquote>
-  <h2>THE BEST PLUGIN 2015</h2>
+  <p><h3>THE BEST PLUGIN 2015</h3></p>
 </blockquote>
 <blockquote>
   <p>Support only <a href="http://support.ilentheme.com" target="_blank">HERE</a></p>
 </blockquote>
 <h4>Minimalist, productive and Fast..!</h4>
-Yuzo is intended to show related post plugin as accurate as possible, also has multiple features with more customization options +50 much as estrutura as design.
+Yuzo is intended to show related post plugin as accurate as possible, also has multiple features with more customization options +60 much as structure as design.
 Also in this new version features a super widget to display related or the best post your wordpress blog. This fast to use and configure intuitive and the best thing is free.
 Displays related post your stories with different features of text and image size.
 
