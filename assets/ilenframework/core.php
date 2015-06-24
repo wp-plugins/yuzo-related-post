@@ -7,9 +7,9 @@
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_2_6_1') ) {
+if ( !class_exists('ilen_framework_2_6_2') ) {
 
-class ilen_framework_2_6_1 {
+class ilen_framework_2_6_2 {
 
 		var $options          = array();
 		var $parameter        = array();
@@ -2306,7 +2306,7 @@ jQuery(".iaccordion-header").on("click",function(){
 								</div>
 								<script>
 									jQuery(document).ready(function($){
-										jQuery('.ilen_tag').tagEditor({ placeholder: '<?php if(isset($value['placeholder']) && $value['placeholder']){ echo $value['placeholder']; } ?>',forceLowercase:false });
+										jQuery('#<?php echo $value['id']; ?>').tagEditor({ placeholder: '<?php if(isset($value['placeholder']) && $value['placeholder']){ echo $value['placeholder']; } ?>',forceLowercase:false });
 									});
 								</script>
 							</div>
@@ -3748,5 +3748,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_2_6_1;
+$IF = new ilen_framework_2_6_2;
 ?>
