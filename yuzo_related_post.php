@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that you must install on your wordpress site.
-Version: 4.9.8.6
+Version: 4.9.8.7
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -178,6 +178,7 @@ function create_post_related( $content ){
 
 
 	// verify cache query
+	$the_query_yuzo = null;
 	if(  isset($yuzo_options->transient) && $yuzo_options->transient ){
 		include_once(ABSPATH . 'wp-includes/pluggable.php');
 		if( false === ($the_query_yuzo = get_transient($transient_name) ) || ( current_user_can( 'manage_options' )  && !isset($_GET['P3_NOCACHE']) )  ){
@@ -745,12 +746,16 @@ function create_post_related( $content ){
 				$count++;
 			endwhile;
 			$_html .= '</div> <!-- end wrap -->';
+
 		}
+
+		// Reset Post Data
+		if( $the_query_yuzo->have_posts() && $wp_query->post_count != 0 ){
+			wp_reset_postdata();
+		}
+
 	}else{
 	  
-		
-
-
 		if( $yuzo_options->display_random  ){
 
 			$args = array(
@@ -1038,7 +1043,13 @@ function create_post_related( $content ){
 				}
 				$count++;
 			endwhile;
+
+			// Reset Post Data
+			if( $the_query_yuzo->have_posts() && $wp_query->post_count != 0 ){
+				wp_reset_postdata();
+			}
 		}
+
 	}
 	  
 	$_html .= "\n $style $script \n</div>";
@@ -1048,11 +1059,6 @@ function create_post_related( $content ){
 	// Reset Query
 	//wp_reset_query(); 
 
-	// Reset Post Data
-	if( $the_query_yuzo->have_posts() && $wp_query->post_count != 0 ){
-		wp_reset_postdata();
-	}
-	
   
 	return $content.$_html;
   }

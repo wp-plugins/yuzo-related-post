@@ -94,6 +94,8 @@ function IF_get_featured_image( $size = "medium", $post_id=null ){
 /* get attachment image */
 function IF_get_image_post_attachment( $size = "medium", $post_id=null ){
  
+    if( !$post_id ) return;
+
     $image = array();
     $args  = array(
        'post_type' => 'attachment',
@@ -151,8 +153,10 @@ function IF_get_image( $size = 'medium' , $default = '', $post_id=null ) {
     $img = $this->IF_catch_that_image( $post_id );
 
     if( isset($img['src']) ){
+
         return $img;
     }else{
+
         return $this->IF_get_image_default2( $default );
     }
 
@@ -182,8 +186,10 @@ function IF_get_result_post_via_ajax(){
 
     $args = array(
         //'post_type' => $post_types,
+        'post_type' => array('post','page'),
         'post_status' => 'publish',
-        'posts_per_page' => 15,
+        'posts_per_page' => 30,
+        'showposts'      =>  30,
         's' => $term,
         //'fields' => 'ids'
     );

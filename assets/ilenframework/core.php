@@ -1,15 +1,15 @@
 <?php 
 /**
- * iLenFramework 2.6.1
+ * iLenFramework 2.6.3
  * @package ilentheme
  * 
  * live as if it were the last day of your life
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_2_6_2') ) {
+if ( !class_exists('ilen_framework_2_6_3') ) {
 
-class ilen_framework_2_6_2 {
+class ilen_framework_2_6_3 {
 
 		var $options          = array();
 		var $parameter        = array();
@@ -1312,17 +1312,20 @@ jQuery(".iaccordion-header").on("click",function(){
 						case "select": ?>
 
 							<?php if(isset( $value['before'] )){ echo $value['before'];} ?>
-							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?> ilentheme_row_select" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
+							<div class="row aa <?php if(isset( $value['class'] )){ echo $value['class'];} ?> ilentheme_row_select" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
 								<div class="a"><h3><?php echo $value['title']; ?></h3></div>
 								<div class="<?php echo $side_two; ?>">
 									<div class="select-wrapper">
 									<select name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>">
 										<?php 
-											if( is_array( $value['items'] ) ){
-												foreach ( $value['items'] as $item_key => $item_value ): ?>
-												
-													<option value="<?php echo $item_key ?>" <?php selected( $options_theme[ $value['name'] ] ,   $item_key ); ?>><?php echo $item_value ?></option> 
 
+											if( is_array( $value['items'] ) ){
+												foreach ( $value['items'] as $item_key => $item_value ): $value_item_select_current = isset($options_theme[ $value['name'] ]) && $options_theme[ $value['name'] ]?$options_theme[ $value['name'] ]:$value['value'];   ?>
+													
+													<option value="<?php echo $item_key; ?>" 
+													<?php selected( $value_item_select_current ,   $item_key ); ?>>
+													<?php echo $item_value ?></option> 
+   
 												<?php
 												endforeach;
 											}
@@ -3748,5 +3751,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_2_6_2;
+$IF = new ilen_framework_2_6_3;
 ?>
