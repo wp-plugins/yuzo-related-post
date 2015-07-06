@@ -28,8 +28,8 @@ Displays related post your stories with different features of text and image siz
 
 <strong>Here are some of its main features: </strong>
 <ul>
+<li>The fastest: Yuzo is considered one of the fastest of all time plugins in Wordpress.</li>
 <li>RTL ready!</li>
-<li>The fastest: Yuzo is considered one of the faster and less load on the PC</li>
 <li>Cache: Now Yuzo cache uses the images and sql to make your site faster.</li>
 <li>Post related manually: With this you can add a post that you want to be related to another post.</li>
 <li>Minimalist: It has a minimalist design with interesting effects.</li>
