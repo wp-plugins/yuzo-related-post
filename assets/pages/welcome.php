@@ -401,7 +401,7 @@ global $YUZO_CORE;
 
 
         <hr />
-        <div style="clear:both;width:100%;"><p  style="text-align:center"><strong style="font-weight:bold;">Possibly the best WordPress Related Post ;)</strong></p><p style="text-align:center;maring:0 auto;"><span class="ilen_shine" style="display:inline-block;width:114px;height:51px;"><span class="shine-effect"></span><img  src="<?php echo $YUZO_CORE->parameter["theme_imagen"] ?>/wordpress-and-love.png" /></span> <BR /><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/yuzo-related-post?filter=5">Vote for this plugin</a></p></div>
+        <div style="clear:both;width:100%;"><p  style="text-align:center"><strong style="font-weight:bold;">The best WordPress Related Post ;)</strong></p><p style="text-align:center;maring:0 auto;"><span class="ilen_shine" style="display:inline-block;width:114px;height:51px;"><span class="shine-effect"></span><img  src="<?php echo $YUZO_CORE->parameter["theme_imagen"] ?>/wordpress-and-love.png" /></span> <BR /><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/yuzo-related-post?filter=5">Vote for this plugin</a></p></div>
 
 
     </div>
