@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.2
 Stable tag: 4.9.8.6
-Version: 4.9.8.7
+Version: 4.9.9
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
@@ -64,6 +64,9 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.9 =
+* Add option 'Image order': If you have multiple attachment images you can use this option to display the first or last image placed in your post.
+* Update core <code>iLenFramework 2.6.4</code>
 = 4.9.8.7 =
 * Metabox: search type post (post,page)
 * Fixed reset query

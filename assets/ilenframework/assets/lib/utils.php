@@ -92,22 +92,23 @@ function IF_get_featured_image( $size = "medium", $post_id=null ){
 
 
 /* get attachment image */
-function IF_get_image_post_attachment( $size = "medium", $post_id=null ){
+function IF_get_image_post_attachment( $size = "medium", $post_id=null, $order = 'DESC' ){
  
-    if( !$post_id ) return;
-
     $image = array();
     $args  = array(
        'post_type' => 'attachment',
-       'numberposts' => -1,
-       'post_parent' => $post_id
+       'numberposts' => 5,
+       'post_parent' => $post_id,
+       'order' => $order, 
     );
+
 
     $args = apply_filters( 'yuzo_attachment_query' , $args );
 
     $image['alt'] = $this->get_ALTImage($post_id);
     $attachments = get_posts( $args );
     //wp_reset_postdata();
+    //var_dump( count($attachments) );exit;
     if ( $attachments ) {
         foreach ( $attachments as $attachment ) {
            $_array_img = wp_get_attachment_image_src( $attachment->ID , $size );
@@ -135,7 +136,7 @@ function IF_get_image_default2( $default_src="" ){
 
 
 
-function IF_get_image( $size = 'medium' , $default = '', $post_id=null ) {
+function IF_get_image( $size = 'medium' , $default = '', $post_id=null, $order = 'DESC' ) {
 
     $img = array();
     $img = $this->IF_get_featured_image($size,$post_id);
@@ -144,7 +145,7 @@ function IF_get_image( $size = 'medium' , $default = '', $post_id=null ) {
         return $img;
     }
 
-    $img = $this->IF_get_image_post_attachment($size,$post_id);
+    $img = $this->IF_get_image_post_attachment($size, $post_id, $order);
 
     if( isset($img['src']) ){
         return $img;
@@ -153,10 +154,8 @@ function IF_get_image( $size = 'medium' , $default = '', $post_id=null ) {
     $img = $this->IF_catch_that_image( $post_id );
 
     if( isset($img['src']) ){
-
         return $img;
     }else{
-
         return $this->IF_get_image_default2( $default );
     }
 
@@ -186,10 +185,8 @@ function IF_get_result_post_via_ajax(){
 
     $args = array(
         //'post_type' => $post_types,
-        'post_type' => array('post','page'),
         'post_status' => 'publish',
-        'posts_per_page' => 30,
-        'showposts'      =>  30,
+        'posts_per_page' => 15,
         's' => $term,
         //'fields' => 'ids'
     );
@@ -476,7 +473,7 @@ function IF_getyoutubeThumbnail( $id_youtube ){
 */
 function IF_setHtml( $s ){
 
-    return html_entity_decode( $s, ENT_QUOTES, 'UTF-8' );
+    return html_entity_decode( stripslashes($s), ENT_QUOTES, 'UTF-8' );
 
 }
 

@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that you must install on your wordpress site.
-Version: 4.9.8.7
+Version: 4.9.9
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -184,6 +184,12 @@ function create_post_related( $content ){
 		if( false === ($the_query_yuzo = get_transient($transient_name) ) || ( current_user_can( 'manage_options' )  && !isset($_GET['P3_NOCACHE']) )  ){
 			$rebuilt_query  = true;
 		}
+	}
+
+	// order image post
+	$order_image = "DESC";
+	if( isset($yuzo_options->image_order) ){
+		$order_image = $yuzo_options->image_order;
 	}
 
 	//var_dump( $wp_query );
@@ -646,7 +652,7 @@ function create_post_related( $content ){
 						$my_array_views['bottom'] = '<div>'.$my_array_views['bottom'].'</div>';
 					}
 
-						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID() );
+						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID(), $order_image );
 						  $_html .= '
 						  <div class="relatedthumb '.$class_box_shadow.'" style="width:'.$width.'px;float:left;overflow:hidden;'.$css_title_center.'">  
 							  
@@ -686,7 +692,7 @@ function create_post_related( $content ){
 						}
 
 				}elseif( $yuzo_options->style == 2 ){
-						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID() );
+						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID(), $order_image );
 						$_html .= '
 						<div class="relatedthumb yuzo-list  '.$class_box_shadow.'" style="'.$css_title_center.'"  >  
 						  <a '.$rel_link.' href="'.get_permalink().'" class="image-list" '.$target_link.' >
@@ -946,7 +952,7 @@ function create_post_related( $content ){
 						$my_array_views['bottom'] = '<div>'.$my_array_views['bottom'].'</div>';
 					}
 
-						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID() );
+						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID(), $order_image );
 						  $_html .= '
 						  <div class="relatedthumb '.$class_box_shadow.'" style="width:'.$width.'px;float:left;overflow:hidden;'.$css_title_center.'">  
 							  
@@ -985,7 +991,7 @@ function create_post_related( $content ){
 						}
 
 				}elseif( $yuzo_options->style == 2 ){
-						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID() );
+						$image = $this->IF_get_image(  $yuzo_options->thumbnail_size, $yuzo_options->default_image, get_the_ID(), $order_image );
 						$_html .= '
 						<div class="relatedthumb yuzo-list  '.$class_box_shadow.'" style="'.$css_title_center.'"  >  
 						  <a '.$rel_link.' href="'.get_permalink().'" class="image-list" '.$target_link.' >

@@ -7,9 +7,9 @@
  */
 
 // REQUIRED FILES TO RUN
-if ( !class_exists('ilen_framework_2_6_3') ) {
+if ( !class_exists('ilen_framework_2_6_4') ) {
 
-class ilen_framework_2_6_3 {
+class ilen_framework_2_6_4 {
 
 		var $options          = array();
 		var $parameter        = array();
@@ -1492,7 +1492,7 @@ jQuery(".iaccordion-header").on("click",function(){
 							<div class="row <?php if(isset( $value['class'] )){ echo $value['class'];} ?> ilentheme_row_textarea" <?php if(isset( $value['style'] )){ echo $value['style'];} ?> >
 								<div class="a"><h3><?php echo $value['title']; ?></h3></div>
 								<div class="<?php echo $side_two; ?>">
-									<textarea name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>" style="width:100%;height:120px;" <?php if(isset($value['placeholder'])){ echo "placeholder='{$value['placeholder']}'"; } ?>><?php if( isset( $options_theme[ $value['name'] ] )) { echo $options_theme[ $value['name'] ]; } ?></textarea>
+									<textarea name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>" style="width:100%;height:120px;" <?php if(isset($value['placeholder'])){ echo "placeholder='{$value['placeholder']}'"; } ?>><?php if( isset( $options_theme[ $value['name'] ] )) { echo _wp_specialchars( stripslashes($options_theme[ $value['name'] ]) ); } ?></textarea>
 									<div class="help"><?php echo $value['help']; ?></div>
 								</div>
 
@@ -1773,7 +1773,7 @@ jQuery(".iaccordion-header").on("click",function(){
 										<div style="width:7%;float:left">
 											<span  id="<?php echo $value['id'] ?>-value" style="padding: 5px 10px;background: #FAFAFA;color: #444;border: 1px solid #F1F1F1;"></span>
 										</div>
-										<div style="width: 93%;float: left;padding: 0;border-radius: 5px;" >
+										<div style="width: 91%;float: right;padding: 0;border-radius: 5px;" >
 											<div id="<?php echo $value['id'] ?>-range" <?php if( isset($value['color']) && $value['color'] == 1 ){ echo "class='noUi-connect'"; } ?>></div> 
 										</div>
 										<input type="hidden" name="<?php echo $value['name'] ?>" id="<?php echo $value['id'] ?>" value="<?php if(isset( $options_theme[ $value['name'] ] )){ echo (int)$options_theme[ $value['name'] ]; }else{ echo 0; } ?>" />
@@ -3270,6 +3270,10 @@ function fields_update($data,$is_tab = 1){
 
 				$options_update[$value['name']]    = $input_2_array; 
 
+			}elseif(  $value['type'] == 'component_enhancing_code' ){
+
+				$options_update[$value['name']] =  $_POST[$value['name']];
+
 			}else{
 
 
@@ -3277,7 +3281,7 @@ function fields_update($data,$is_tab = 1){
 				// set values normal
 				$value_final = '';
 				if( isset( $_POST ) && isset( $value['name'] ) && isset( $_POST[$value['name']] ) ){
-					$value_final = (string)$_POST[$value['name']];
+					$value_final = mysql_real_escape_string( stripslashes($_POST[$value['name']]) );
 				}
 
 				if( isset( $value['name'] ) ){
@@ -3751,5 +3755,5 @@ if( isset($IF_CONFIG->components) && ! is_array($IF_CONFIG->components) ){
 
 global $IF;
 $IF = null;
-$IF = new ilen_framework_2_6_3;
+$IF = new ilen_framework_2_6_4;
 ?>

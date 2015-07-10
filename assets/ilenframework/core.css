@@ -5,7 +5,7 @@ Author URI: http://ilentheme.com
 */
 
 @import url('assets/css/font-awesome.css');
-@import url('assets/css/elusive-webfont.css');    
+@import url('assets/css/elusive-icons.css');
 @import url('assets/css/tooltip.css');
 
 @import url('assets/css/jquery.nouislider.min.css'); 
@@ -754,7 +754,7 @@ Author URI: http://ilentheme.com
   font-style: normal;
 }
 
-@font-face {
+/*@font-face {
   font-family: 'Elusive-Icons';
   src:url('assets/css/fonts/elusive/Elusive-Icons.eot');
   src:url('assets/css/fonts/elusive/Elusive-Icons.eot?#iefix') format('embedded-opentype'),
@@ -763,7 +763,7 @@ Author URI: http://ilentheme.com
     url('assets/css/fonts/elusive/Elusive-Icons.svg#Elusive-Icons') format('svg');
   font-weight: normal;
   font-style: normal;
-}
+}*/
 
 
 

@@ -12,19 +12,19 @@
 .color_flare_hot2{ color:#DF5003;}
 .color_flare_hot3{ color:#DFC903;}
 .color_flare_hot4{ color:#0383DF;}
-.column-yuzo_post_views .el-icon-fire:before { font-size: 18px;}
+.column-yuzo_post_views .el-fire:before { font-size: 18px;}
 .yuzo_label_counter_wrap{ width: 100px; display:inline-block;background: rgb(236, 236, 236);height: 30px;padding-left: 8px; }
 .yuzo_label_counter_item{ width:19px;float:left; margin-top: 7px;display:block;height:20px;}
 .tablenav .actions{ overflow:  inherit; }
 #view_in_meta_yuzo_views{ font-size: 26px; }
-#view_in_meta_yuzo_views .el-icon-fire:before{ font-size: 28px; }
-.yuzo_label_counter_item  .el-icon-fire:before { font-size: 18px;}
+#view_in_meta_yuzo_views .el-fire:before{ font-size: 28px; }
+.yuzo_label_counter_item  .el-fire:before { font-size: 18px;}
 .yuzo_label_counter_item[data-tips].top-tip:hover:before{left: 2px!important;}
 .yuzo_label_counter_item[data-tips].top-tip:hover:after{left: -10px!important;}
 
 /* plugin option header */
 .ilenplugin-options header .header__logo i { padding: 13px 16px 15px!important; }
-.ilenplugin-options header.text-long .header__logo{ margin-top: 21px!important; }
+.ilenplugin-options header.text-long .header__logo{ margin-top: 4px!important  }
 
 /* page welcome.php */
 @font-face {
@@ -54,6 +54,7 @@
 .page--header{width: 98%;display: block;clear: both;float: left;}
 .page--header__a{width:25%;float:left;margin-top:15px;font-size: 96px;}
 .page--header__a i {color:#FF873C;}
+.page--header__a .el-fire:before{ font-size: 78px; }
 .page--header__b{width:70%;float:right;margin-top:10px;}
 .page--header p{font-size: 24px;line-height: 29px;}
 .page--body{margin-top: 15px;clear: both;display: block;width: 98%;float: left;position: relative;}
