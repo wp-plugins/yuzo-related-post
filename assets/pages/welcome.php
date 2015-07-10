@@ -1,20 +1,20 @@
 <?php 
-global $IF_CONFIG;
+global $YUZO_CORE;
 ?>
 <!-- used for the media query -->
 <meta name="viewport" content="width=device-width" />
-<link rel="stylesheet" type="text/css" href="<?php echo $IF_CONFIG->parameter["url_framework"] ?>/assets/css/animate.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo $IF_CONFIG->parameter["url_framework"] ?>/assets/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $YUZO_CORE->parameter["url_framework"] ?>/assets/css/animate.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $YUZO_CORE->parameter["url_framework"] ?>/assets/css/font-awesome.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script type='text/javascript' src='<?php echo $IF_CONFIG->parameter["url_framework"] ?>/assets/js/wow.min.js' ></script>
+<script type='text/javascript' src='<?php echo $YUZO_CORE->parameter["url_framework"] ?>/assets/js/wow.min.js' ></script>
 
 <div class="page--yuzo__welcome">
     <div class="page--header wow fadeIn animated" data-wow-delay="0.2s">
         <div class="page--header__a">
-            <i class="el-icon-fire"></i><span class="tlogo"><span class="ylogo">Y</span>uzo</span>
+            <i class="el el-fire"></i><span class="tlogo"><span class="ylogo">Y</span>uzo</span>
         </div>
         <div class="page--header__b">
-            <p>Welcome to one of the best <strong>related post</strong> 
+            <p>Welcome to the best <strong>related post</strong> 
                 plugin having Wordpress, with a number of features and 
                 usability experience that make it unique. <a class="button-secondary" href="options-general.php?page=yuzo-related-post" target="_blank">Settings Page</a></p>
         </div>
@@ -67,7 +67,7 @@ global $IF_CONFIG;
                     </div>
                 </div>
             <div class="wow fadeInUp animated">
-                <img src="<?php echo $IF_CONFIG->parameter["theme_imagen"] ?>/metabox-1.png" />
+                <img src="<?php echo $YUZO_CORE->parameter["theme_imagen"] ?>/metabox-1.png" />
             </div>
         </div>
 
@@ -89,7 +89,7 @@ global $IF_CONFIG;
                     </div>
                 </div>
             <div style="visibility:hidden" class="wow fadeInDown animated" data-wow-delay="0.2s">
-                <img src="<?php echo $IF_CONFIG->parameter["theme_imagen"] ?>/widgets.png" />
+                <img src="<?php echo $YUZO_CORE->parameter["theme_imagen"] ?>/widgets.png" />
             </div>
         </div>
 
@@ -130,7 +130,7 @@ global $IF_CONFIG;
                     </div>
                 </div>
             <div class="wow fadeInUp animated" data-wow-delay="0.2s">
-                <img src="<?php echo $IF_CONFIG->parameter["theme_imagen"] ?>/plugin-options.png" />
+                <img src="<?php echo $YUZO_CORE->parameter["theme_imagen"] ?>/plugin-options.png" />
             </div>
         </div>
 
@@ -372,7 +372,7 @@ global $IF_CONFIG;
         <div class="page--yuzo__ilenframework">
             
             <div class="side_a wow fadeInLeft animated" data-wow-delay="0.3s" data-wow-duration="0.8s">
-                <img src="<?php echo $IF_CONFIG->parameter["theme_imagen"] ?>/ilenframework_code.png" />
+                <img src="<?php echo $YUZO_CORE->parameter["theme_imagen"] ?>/ilenframework_code.png" />
             </div>
             <div class="side_b wow fadeInRight animated" data-wow-delay="1s" data-wow-duration="1s">
                 <h3>After a long work, time, training  and find the best practices to program wordpress, I created a core which helps me to create cool plugin as it is Yuzo.</h3>
@@ -385,7 +385,7 @@ global $IF_CONFIG;
         <div class="page--yuzo__support">
             
             <div class="side_a wow fadeInUp animated" data-wow-delay="0.5s">
-                <img style="margin-top: 13px;" src="<?php echo $IF_CONFIG->parameter["theme_imagen"] ?>/free.jpg" />
+                <img style="margin-top: 13px;" src="<?php echo $YUZO_CORE->parameter["theme_imagen"] ?>/free.jpg" />
             </div>
             <div class="side_b">
                 <h3 class="wow fadeInUp animated" data-wow-delay="0.5s">Yuzo related post attend only support directly from <a href="http://support.ilentheme.com" target="_blank">support.ilentheme.com</a> since that is the official website of the plugin.</h3>
@@ -401,7 +401,7 @@ global $IF_CONFIG;
 
 
         <hr />
-        <div style="clear:both;width:100%;"><p  style="text-align:center"><strong style="font-weight:bold;">Possibly the best WordPress Related Post ;)</strong></p><p style="text-align:center;maring:0 auto;"><span class="ilen_shine" style="display:inline-block;width:114px;height:51px;"><span class="shine-effect"></span><img  src="<?php echo $IF_CONFIG->parameter["theme_imagen"] ?>/wordpress-and-love.png" /></span> <BR /><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/yuzo-related-post?filter=5">Vote for this plugin</a></p></div>
+        <div style="clear:both;width:100%;"><p  style="text-align:center"><strong style="font-weight:bold;">Possibly the best WordPress Related Post ;)</strong></p><p style="text-align:center;maring:0 auto;"><span class="ilen_shine" style="display:inline-block;width:114px;height:51px;"><span class="shine-effect"></span><img  src="<?php echo $YUZO_CORE->parameter["theme_imagen"] ?>/wordpress-and-love.png" /></span> <BR /><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/yuzo-related-post?filter=5">Vote for this plugin</a></p></div>
 
 
     </div>
