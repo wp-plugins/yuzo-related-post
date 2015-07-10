@@ -15,7 +15,7 @@ License: GPLv2 or later
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
 == Description ==
 <blockquote>
-  <h3>★ The best WordPress plugin 2015 ★</h3><p>&nbsp;</p>
+  <h2>★ The best WordPress plugin 2015 ★</h2>
 </blockquote>
 <blockquote>
   <p>Support only <a href="http://support.ilentheme.com" target="_blank">HERE</a></p>
