@@ -3281,7 +3281,8 @@ function fields_update($data,$is_tab = 1){
 				// set values normal
 				$value_final = '';
 				if( isset( $_POST ) && isset( $value['name'] ) && isset( $_POST[$value['name']] ) ){
-					$value_final = mysql_real_escape_string( stripslashes($_POST[$value['name']]) );
+					//$value_final = mysql_real_escape_string( stripslashes($_POST[$value['name']]) );
+					$value_final = stripslashes($_POST[$value['name']]);
 				}
 
 				if( isset( $value['name'] ) ){
