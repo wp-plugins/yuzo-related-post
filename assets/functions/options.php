@@ -27,7 +27,7 @@ class yuzo_related_post_make extends IF_utils{
 								 'db_version'     =>'1.4',
 								 'present_version'=>'1.4',
 								 'url'            =>'',
-								 'logo'           =>'<i class="el-icon-fire"></i>', // or image .jpg,png
+								 'logo'           =>'<i class="el el-fire"></i>', // or image .jpg,png
 								 'logo_text'      =>'', // alt of image
 								 'slogan'         =>'', // powered by <a href="">iLenTheme</a>
 								 'url_framework'  =>plugins_url()."/yuzo-related-post/assets/ilenframework",
@@ -818,7 +818,7 @@ class yuzo_related_post_make extends IF_utils{
 																						  <code>loop.php</code>,
 																						  <code>your-template.php</code> file anywhere you 
 																						  want and with the personalization you want since this function will get the number of visits this Post. <br /><br />
-																						  <div><p  style="text-align:center"><strong style="font-weight:bold;">Possibly the best WordPress Related Post ;)</strong></p><p style="text-align:center;maring:0 auto;"><span class="ilen_shine" style="display:inline-block;width:114px;height:51px;"><span class="shine-effect"></span><img  src="'.$this->parameter['theme_imagen'].'/wordpress-and-love.png" /></span></p></div>',
+																						  <div><p  style="text-align:center"><strong style="font-weight:bold;">The best WordPress Related Post ;)</strong></p><p style="text-align:center;maring:0 auto;"><span class="ilen_shine" style="display:inline-block;width:114px;height:51px;"><span class="shine-effect"></span><img  src="'.$this->parameter['theme_imagen'].'/wordpress-and-love.png" /></span></p></div>',
 																				'id'    =>$this->parameter['name_option'].'_'.'yuzo_get_views_html',
 																				'name'  =>$this->parameter['name_option'].'_'.'yuzo_get_views_html',
 																				'class' =>'yuzo_message_html',
