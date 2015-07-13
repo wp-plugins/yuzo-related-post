@@ -200,22 +200,31 @@ class my_meta_yuzo{
 
     function script_and_style_metabox_custom(){
  
-        global $YUZO_CORE;
-
-        $post_id = isset($_GET['post'])?$_GET['post']:0;
-        $counter = $YUZO_CORE->yuzo_get_views($post_id);
+        global $YUZO_CORE, $yuzo_options;
 
         $_html = "";
-        if( $counter < 1000 ){
-            $_html = "<i class='el-icon-fire color_flare_normal'></i> <span class='color_flare_normal'>$counter</span>";
-        }elseif( $counter >= 1000 && $counter < 10000 ){
-            $_html = "<i class='el-icon-fire  color_flare_hot'></i> <span class='color_flare_normal'>$counter</span>";
-        }elseif( $counter >= 10000 && $counter < 25000 ){
-            $_html = "<i class='el-icon-fire  color_flare_hot2'></i> <span class='color_flare_normal'>$counter</span>";
-        }elseif( $counter >= 25000 && $counter < 50000 ){
-            $_html = "<i class='el-icon-fire  color_flare_hot3'></i> <span class='color_flare_normal'>$counter</span>";
-        }elseif( $counter >= 50000 ){
-            $_html = "<i class='el-icon-fire  color_flare_hot4'></i> <span class='color_flare_normal'>$counter</span>";
+        $disabled = 0;
+        if( isset($yuzo_options->disabled_counter) && $yuzo_options->disabled_counter ){
+            $_html = "<span style='font-size:13px;color:#60666B;'>Counter views deactivated, enable it from Yuzo Setting</span>";
+            $disabled = 1;
+        }
+
+        if( $disabled == 0 ){
+            $post_id = isset($_GET['post'])?$_GET['post']:0;
+            $counter = $YUZO_CORE->yuzo_get_views($post_id);
+
+            
+            if( $counter < 1000 ){
+                $_html = "<i class='el el-fire color_flare_normal'></i> <span class='color_flare_normal'>$counter</span>";
+            }elseif( $counter >= 1000 && $counter < 10000 ){
+                $_html = "<i class='el el-fire  color_flare_hot'></i> <span class='color_flare_normal'>$counter</span>";
+            }elseif( $counter >= 10000 && $counter < 25000 ){
+                $_html = "<i class='el el-fire  color_flare_hot2'></i> <span class='color_flare_normal'>$counter</span>";
+            }elseif( $counter >= 25000 && $counter < 50000 ){
+                $_html = "<i class='el el-fire  color_flare_hot3'></i> <span class='color_flare_normal'>$counter</span>";
+            }elseif( $counter >= 50000 ){
+                $_html = "<i class='el el-fire  color_flare_hot4'></i> <span class='color_flare_normal'>$counter</span>";
+            }
         }
  
 

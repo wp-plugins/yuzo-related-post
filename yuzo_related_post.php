@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that you must install on your wordpress site.
-Version: 4.9.9.1
+Version: 4.9.9.2
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -1323,6 +1323,10 @@ function yuzo_post_column_views($newcolumn){
 
 //Function that Populates the 'Views' Column with the number of views count.
 function yuzo_post_custom_column_views($column_name, $id){
+
+	global $yuzo_options;
+
+	if( isset($yuzo_options->disabled_counter) && $yuzo_options->disabled_counter ) return;
 	 
 	if($column_name === 'yuzo_post_views'){
 		// Display the Post View Count of the current post.
@@ -1331,15 +1335,15 @@ function yuzo_post_custom_column_views($column_name, $id){
 		$_html = "";
 		$counter = self::yuzo_get_PostViews(get_the_ID(),'',false);
 		if( $counter < 1000 ){
-			$_html = "<i class='el-icon-fire color_flare_normal'></i> $counter";
+			$_html = "<i class='el el-fire color_flare_normal'></i> $counter";
 		}elseif( $counter >= 1000 && $counter < 10000 ){
-			$_html = "<i class='el-icon-fire  color_flare_hot'></i> $counter";
+			$_html = "<i class='el el-fire  color_flare_hot'></i> $counter";
 		}elseif( $counter >= 10000 && $counter < 25000 ){
-			$_html = "<i class='el-icon-fire  color_flare_hot2'></i> $counter";
+			$_html = "<i class='el el-fire  color_flare_hot2'></i> $counter";
 		}elseif( $counter >= 25000 && $counter < 50000 ){
-			$_html = "<i class='el-icon-fire  color_flare_hot3'></i> $counter";
+			$_html = "<i class='el el-fire  color_flare_hot3'></i> $counter";
 		}elseif( $counter >= 50000 ){
-			$_html = "<i class='el-icon-fire  color_flare_hot4'></i> $counter";
+			$_html = "<i class='el el-fire  color_flare_hot4'></i> $counter";
 		}
 
 		echo $_html;
@@ -1588,16 +1592,19 @@ function yuzo_get_views($id = NULL) {
 
 
 function add_labes_hits_tablelist() {
-	global $post_type;
+	global $post_type,$yuzo_options;
 	$labels_counter = null;
+
+	if( isset($yuzo_options->disabled_counter) && $yuzo_options->disabled_counter ) return;
+
 	if( $post_type == 'post' ){ 
 
 		$labels_counter .= "<div class='yuzo_label_counter_wrap'> ";
-			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='< 1000'> <i class='el-icon-fire color_flare_normal'></i></div>";
-			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='>= 1000 < 10000'><i class='el-icon-fire color_flare_hot'></i></div>";
-			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='>= 10000 < 25000'><i class='el-icon-fire color_flare_hot2'></i></div>";
-			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='>= 25000 < 50000'><i class='el-icon-fire color_flare_hot3'></i></div>";
-			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='>= 50000'><i class='el-icon-fire color_flare_hot4'></i></div>";
+			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='< 1000'> <i class='el el-fire color_flare_normal'></i></div>";
+			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='>= 1000 < 10000'><i class='el el-fire color_flare_hot'></i></div>";
+			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='>= 10000 < 25000'><i class='el el-fire color_flare_hot2'></i></div>";
+			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='>= 25000 < 50000'><i class='el el-fire color_flare_hot3'></i></div>";
+			$labels_counter .= "<div  class='yuzo_label_counter_item top-tip' data-tips='>= 50000'><i class='el el-fire color_flare_hot4'></i></div>";
 		$labels_counter .= "</div>";
 
 	?>
