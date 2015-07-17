@@ -41,8 +41,8 @@ class my_meta_yuzo{
                                                                 'priority'   => 'low', // (high, core, default, or low)
                                                                 'position'   => 'vertical', // vertical or horizontal
                                                                 'tabs'       => array(
-                                                                                    array('id'=>'tab02','name'=>'View','icon'=>'<i class="el-icon-eye-open"></i>','width'=>'200'),
-                                                                                    array('id'=>'tab01','name'=>'Include / Exclude','icon'=>'<i class="fa fa-wrench"></i>','width'=>'200'),
+                                                                                    array('id'=>'yuzo_tab02','name'=>'View','icon'=>'<i class="el-icon-eye-open"></i>','width'=>'200'),
+                                                                                    array('id'=>'yuzo_tab01','name'=>'Include / Exclude','icon'=>'<i class="fa fa-wrench"></i>','width'=>'200'),
                                                                                 )
                                                           );
 
@@ -66,7 +66,7 @@ class my_meta_yuzo{
                                     'a'=>array( 'title'      => __(''), 
                                                 'title_large'=> __(''), 
                                                 'description'=> __('Include and Exclude related to this post.'), 
-                                                'tab'        => 'tab01',
+                                                'tab'        => 'yuzo_tab01',
 
                                                 'options'    => array(
                                                                         array(  'title' =>__('Include post'),
@@ -94,7 +94,7 @@ class my_meta_yuzo{
                                     'b'=>array( 'title'      => __(''), 
                                                 'title_large'=> __(''), 
                                                 'description'=> __(''), 
-                                                'tab'        => 'tab02',
+                                                'tab'        => 'yuzo_tab02',
 
                                                 'options'    => array(    
                                                                         array(  'title' =>__('Disable related post',$this->parameter['name_option']), //title section

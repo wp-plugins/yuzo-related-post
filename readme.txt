@@ -8,8 +8,8 @@ Author URI: http://ilentheme.com
 Author: iLen
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 4.9.8.6
-Version: 4.9.9.2
+Stable tag: 4.9.9.3
+Version: 4.9.9.3
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
@@ -64,6 +64,9 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.9.3 =
+* Fixed: Metabox union with other metabox
+* Update core <code>iLenFramework 2.6.5</code>
 = 4.9.9.2 =
 * Fix icon fire in admin
 * When the counter hits the post is disabled, this is no longer displayed
