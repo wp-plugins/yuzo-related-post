@@ -501,7 +501,7 @@ If not well visualized Related Post Yuzo possibly has a conflict with some other
 
 
 == Screenshots ==
-1. Show related post
+1. Yuzo related post plugin is inspired by these three geniuses
 2. The fastest of all
 3. Other page example 2
 4. Other page example 3
