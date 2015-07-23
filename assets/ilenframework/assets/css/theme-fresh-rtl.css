@@ -127,3 +127,14 @@
 .ilenplugin-options footer a.btn_donate i{
   margin-right: 13px;  
 }
+
+/* add 22/07/2015 */
+.ilenmetabox-options [type="checkbox"]:not(:checked), .ilenmetabox-options [type="checkbox"]:checked{
+  right: -9999px;
+}
+.ilenmetabox-options [type="checkbox"]:not(:checked) + label, .ilenmetabox-options [type="checkbox"]:checked + label{
+  float: right!important;
+}
+.ilenmetabox-options .row_checkbox_normal{
+  direction: ltr;
+}
