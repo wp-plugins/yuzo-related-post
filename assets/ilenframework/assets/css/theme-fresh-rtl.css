@@ -1,3 +1,11 @@
+.CodeMirror {
+  direction: ltr;
+}
+
+.tag-editor-hidden-src{
+right: -99999px;
+}
+
 div.widget[id*=_yuzo_widget-] .widget-title::before{
   left: initial;
   right: 0px;
@@ -59,17 +67,6 @@ div.widget[id*=_yuzo_widget-] .widget-title::after{
   float: right!important;
 }
 
-
-
-
-
-
-
-
-
-
-
-/*my changes */
 .ilenmetabox-options [type="checkbox"]:not(:checked), .ilenmetabox-options [type="checkbox"]:checked{
   right: -9999px;
 }

@@ -6,10 +6,10 @@ Tags: admin, related,related posts,related post, post, sidebar, widget , wordpre
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSRAUBMB5BZFU
 Author URI: http://ilentheme.com
 Author: iLen
-Requires at least: 3.9
-Tested up to: 4.2.2
-Stable tag: 4.9.9.5
-Version: 4.9.9.5
+Requires at least: 4.0
+Tested up to: 4.2.3
+Stable tag: 4.9.9.6
+Version: 4.9.9.6
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
@@ -64,6 +64,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.9.6 =
+* Fix: 'theme-fresh-rtl.css' and add code in <code>rtl.css</code> for Front-ends
 = 4.9.9.5 =
 * Fix: New 'theme-fresh-rtl.css' for site RTL
 = 4.9.9.4 =
