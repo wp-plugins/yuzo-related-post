@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that you must install on your wordpress site.
-Version: 4.9.9.6
+Version: 4.9.9.7
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -1929,9 +1929,9 @@ if( isset($yuzo_options->active_widget) && $yuzo_options->active_widget ){
 }
 
 
-
-require_once "assets/functions/metabox.php";
-
+if( isset( $yuzo_options->show_columns_dashboard ) && $yuzo_options->show_columns_dashboard ){
+    require_once "assets/functions/metabox.php";    
+}
 
 
 function get_yuzo_related_posts($content=""){

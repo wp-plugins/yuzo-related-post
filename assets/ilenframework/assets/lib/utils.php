@@ -617,6 +617,24 @@ function IF_cut_text(  $text = "",  $length = 30, $strip_tags = false ){
 
 
 
+/**
+* Return true/false
+* Detect if document index is localhost
+* @return boolean
+*
+*/
+function IF_if_localhost(){
+
+    if (substr($_SERVER['REMOTE_ADDR'], 0, 4) == '127.'
+            || $_SERVER['REMOTE_ADDR'] == '::1') {
+        return true;
+    }else{
+        return;
+    }
+
+}
+
+
 
 } // end class
 

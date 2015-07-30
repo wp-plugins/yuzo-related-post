@@ -99,6 +99,11 @@ Nuevos cambios en YUZO RELATED POST:
  ✔ Me pidieron que no se muestre en la pagina de archivos (como categorias, etc....) @done (15-01-24 17:47)
 
  ✔ Revisa si vale bien el cache @done (15-01-29 01:58)
+ ☐ Realizar Yuzo con nuevos efectos como este related post
+   La idea es que el usuario elija el theme clasico o al momento de poner los nuevos themes
+   prefabricado ya se le oculte las opciones de texto, esto theme los puedes ver dentro de esta
+   pagoina web https://wordpress.org/plugins/modern-related-posts/
+   otro: http://momstyle.net/gray-benko-summer-2015-kids-clothes/
 
 ERRORES:
  ✔ Solo en el efecto de hacer grande el related tienes que quitar el overflow:hidden, el resto tiene que que tenerlo porque pasa algo en muchos themes..... @done (15-01-30 22:15)
