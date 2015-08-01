@@ -105,6 +105,8 @@ Nuevos cambios en YUZO RELATED POST:
    pagoina web https://wordpress.org/plugins/modern-related-posts/
    otro: http://momstyle.net/gray-benko-summer-2015-kids-clothes/
 
+ ☐ Agregar en el readme.txt que ayuda al SEO
+
 ERRORES:
  ✔ Solo en el efecto de hacer grande el related tienes que quitar el overflow:hidden, el resto tiene que que tenerlo porque pasa algo en muchos themes..... @done (15-01-30 22:15)
  ✔ agregar la opcion en el metabox para que no se mueva en ningun lado... y dejar abierta la pauta para que no se cierre, esas 2 opciones agregarles. @done (15-01-31 01:07)

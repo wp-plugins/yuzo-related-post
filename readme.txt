@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 4.0
 Tested up to: 4.2.3
 Stable tag: 4.9.9.6
-Version: 4.9.9.7
+Version: 4.9.9.8
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
@@ -64,6 +64,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.9.8 =
+* Add widget option 'Text center': Place your title text centered
 = 4.9.9.7 =
 * No show metabox if disabled option 'View visits in administration'
 = 4.9.9.6 =

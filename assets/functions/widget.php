@@ -35,7 +35,7 @@ function __construct(){
 
 
   // default inputs
-  $this->default                    = array( 'title'                     => 'Related Post',
+  $this->default                    = array('title'                     => 'Related Post',
 											'number_post'                => 4,
 											'related_based'              => 1,
 											'order_by'                   => 'rand',
@@ -73,6 +73,7 @@ function __construct(){
 											'post_type'					=> array('post'),
 											'exclude_id'               	=> '',
 											'no_appear'               	=> '',
+											'title_center'				=> ''
 											);
 
 
@@ -119,6 +120,7 @@ function __construct(){
 								  'post_type'				   => 'a',
 								  'exclude_id'				   => 's',
 								  'no_appear'				   => 's',
+								  'title_center'			   => 's'
 								 );
 
 
@@ -539,7 +541,17 @@ function form($instance){
 																			'id'    =>$this->get_field_id('text_color'),
 																			'name'  =>$this->get_field_name('text_color'),
 																			'class' =>'',
-																			'row' =>array('a','b')), 
+																			'row' =>array('a','b')),
+
+																	array(  'title' =>__('Text center:',$this->parameter['name_option']), //title section
+																			'help'  =>'Place your title text centered',
+																			'type'  =>'checkbox', //type input configuration
+																			'value' =>$title_center, //default
+																			'value_check'=>1, // value
+																			'id'    =>$this->get_field_id('title_center'),
+																			'name'  =>$this->get_field_name('title_center'),
+																			'class' =>'', //class
+																			'row'   =>array('a','b')),
 
 																	),
 									  ),
@@ -1266,6 +1278,13 @@ function widget($args,$instance){
 			$css_background_size = 'contain';
 		}
 
+		// title center
+		$css_title_center = null;
+		if( isset($yuzo_option_widget->title_center)  && $yuzo_option_widget->title_center ){
+			$css_title_center = "text-align:center;";
+		}
+
+
 		// variable views
 		$my_array_views = array();
 
@@ -1329,7 +1348,7 @@ jQuery(document).ready(function() {
 			if( $yuzo_option_widget->style == 1 ){
 				$image = $if_utils->IF_get_image(  $yuzo_option_widget->thumbnail_size, $yuzo_options->default_image, get_the_ID() );
 				$_html .= '
-					  <div class="relatedthumb " style="width:'.((int)$yuzo_option_widget->height_image + 15).'px;float:left;overflow:hidden;">  
+					  <div class="relatedthumb " style="width:'.((int)$yuzo_option_widget->height_image + 15).'px;float:left;overflow:hidden;'.$css_title_center.';">  
 						  
 						  <a rel="external" href="'.get_permalink().'">
 								  <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_option_widget->height_image+15).'px;height:'.((int)$yuzo_option_widget->height_image - 20).'px;">
@@ -1361,7 +1380,7 @@ jQuery(document).ready(function() {
 			}elseif( $yuzo_option_widget->style == 2 ){
 					$image = $if_utils->IF_get_image(  $yuzo_option_widget->thumbnail_size, $yuzo_options->default_image, get_the_ID() );
 					$_html .= '
-			  <div class="relatedthumb yuzo-list"  >  
+			  <div class="relatedthumb yuzo-list "  style="'.$css_title_center.';"  >  
 				  <a rel="external" href="'.get_permalink().'" class="image-list">
 				  <div class="yuzo-img-wrap '.$css_shine_effect1.'" style="width: '.((int)$yuzo_option_widget->height_image+15).'px;height:'.((int)$yuzo_option_widget->height_image - 20).'px;">
 							'.$css_shine_effect2.'
