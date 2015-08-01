@@ -2,7 +2,7 @@
 Contributors: iLenStudio
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/support/plugin/yuzo-related-post
-Tags: admin, related,related posts,related post, post, sidebar, widget , wordpress related post, related page, best plugins, content,associate page, associate post, filters, image, images, terms
+Tags: admin, related,related posts,related content,related post, post, sidebar, widget , wordpress related post, related page, best plugins, content,associate page, associate post, filters, image, images, terms
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSRAUBMB5BZFU
 Author URI: http://ilentheme.com
 Author: iLen
