@@ -634,6 +634,18 @@ function IF_if_localhost(){
 
 }
 
+/**
+* Return String modify
+* Insert string at specified position (for string)
+* Example: $oldstring = $args['before_widget'];
+*          $okok = insert_text_middel($oldstring, "<aside ", "style='background:black;'");
+* @return String
+*
+*/
+function IF_insert_text_middel($string, $keyword, $body) {
+   return substr_replace($string, PHP_EOL . $body, strpos($string, $keyword) + strlen($keyword), 0);
+}
+
 
 
 } // end class
