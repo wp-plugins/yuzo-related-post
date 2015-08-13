@@ -160,7 +160,7 @@ Yuzo in Widget
 .yuzo_related_post_widget{
 
   /*overflow: hidden;*/
-  padding: 10px 0;
+  padding: 0 0;
   margin: 10px 0;
   width: 100%;
   display: block;
@@ -224,19 +224,21 @@ Yuzo in Widget
   min-width: 35px;
 }
 .style-3 .yuzo-list:before {
-  content: '';
-  background: url(../images/arrow-left-point.png);
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 22px;
-  height: 22px;
-  opacity: .2;
+    content: '';
+    background: url(../images/arrow-left-point.png);
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 22px;
+    height: 22px;
+    opacity: .2;
 }
 .style-3 .yuzo-list a{
-  padding-left: 22px;
+    padding-left: 22px;
 }
-
+.yuzo_widget_wrap .yuzo_views_post{
+    padding: 4px 20px;
+}
 
 
 

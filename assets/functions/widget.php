@@ -73,7 +73,7 @@ function __construct(){
 											'post_type'					=> array('post'),
 											'exclude_id'               	=> '',
 											'no_appear'               	=> '',
-											'title_center'				=> ''
+											'title_center'				=> '0'
 											);
 
 
@@ -546,7 +546,7 @@ function form($instance){
 																	array(  'title' =>__('Text center:',$this->parameter['name_option']), //title section
 																			'help'  =>'Place your title text centered',
 																			'type'  =>'checkbox', //type input configuration
-																			'value' =>$title_center, //default
+																			'value' =>( isset($title_center) && $title_center)?$title_center:0, //default
 																			'value_check'=>1, // value
 																			'id'    =>$this->get_field_id('title_center'),
 																			'name'  =>$this->get_field_name('title_center'),
@@ -968,6 +968,7 @@ function widget($args,$instance){
 
 
 
+
 			$args_sql		= array(
 								  'posts_per_page'      => isset($yuzo_option_widget->number_post)?$yuzo_option_widget->number_post:0,
 								  'post_status'         => 'publish',
@@ -1028,7 +1029,7 @@ function widget($args,$instance){
 			}elseif( $yuzo_option_widget->show_list  == 'rand' ){
 
 				$args_sql = array('orderby'         => 'rand',
-							  'posts_per_page'  => (int)$yuzo_option_widget->number_post);
+							  	 'posts_per_page'  => (int)$yuzo_option_widget->number_post);
 
 				$args_sql['post__not_in'] = array($post->ID);
 
@@ -1116,6 +1117,7 @@ function widget($args,$instance){
 						$array_ids = null;
 
 						// validate INTERVAL
+						$interval_filter = "";
 						if($yuzo_option_widget->interval=='last-month')
 							$interval_filter = "WHERE b.post_date > '" . date('Y-m-d', strtotime('-30 days')) . "' ";
 						elseif($yuzo_option_widget->interval =='last-year')
@@ -1144,6 +1146,16 @@ function widget($args,$instance){
 
 						}
 
+
+						// validate order most views
+						//var_dump($yuzo_option_widget->show_list);
+						if( $yuzo_option_widget->show_list == 'most-view' ){
+							$args_sql["order"] = '';
+							$args_sql["orderby"] = 'post__in';
+						}
+
+
+
 				}
 
 				$post__not_in[] = $post->ID;
@@ -1161,6 +1173,7 @@ function widget($args,$instance){
 			$args_sql['ignore_sticky_posts'] = '1';
 
 		} // yuzo_widget_as
+
 
 
 		// validate if tags exclude custom
@@ -1209,8 +1222,10 @@ function widget($args,$instance){
 	} // rebuilt query
 
 
-	//var_dump($args_sql);
+
 	// cache query
+	//var_dump($args_sql);
+
 	if( $rebuilt_query ){
 		$the_query_yuzo = new WP_Query( $args_sql );
 		if(  isset($yuzo_options->transient) && $yuzo_options->transient ){

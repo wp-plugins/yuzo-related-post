@@ -7,9 +7,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Author URI: http://ilentheme.com
 Author: iLen
 Requires at least: 4.0
-Tested up to: 4.2.3
+Tested up to: 4.2.4
 Stable tag: 4.9.9.8
-Version: 4.9.9.8.1
+Version: 4.9.9.8.2
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
@@ -64,6 +64,9 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.9.8.2 =
+* Fix: Widget option 'most views'
+* Fix: Css widget
 = 4.9.9.8.1 =
 * Minor changes
 = 4.9.9.8 =
