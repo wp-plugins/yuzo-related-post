@@ -3,7 +3,7 @@
 Plugin Name: Yuzo  ̵ ̵ ̵  Related Posts
 Plugin URI: https://wordpress.org/plugins/yuzo-related-post/
 Description: The first plugin that you must install on your wordpress site.
-Version: 4.9.9.8.2
+Version: 4.9.9.8.3
 Author: iLen
 Author URI: http://ilentheme.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd =_s-xclick&hosted_button_id=MSRAUBMB5BZFU
@@ -593,11 +593,15 @@ function create_post_related( $content ){
 			//while ( have_posts() ) : the_post();
 			$_html .="<div class='yuzo_wraps'>";
 			while ( $the_query_yuzo->have_posts() || $metabox_add_post_first < $counter_manual_post ) :
-
+				$post_count_manual = count($post_in);
 				// $the_query_yuzo->request; // view query sql
 				// START custom first post
 				// link: http://wordpress.stackexchange.com/questions/76877/include-a-specific-post-to-the-query-posts-and-remove-it-if-it-is-already-in-the
-				if ( isset($post_in) && count($post_in) >  $metabox_add_post_first ) {
+                // validate if num post = manual num post for break loop
+                //echo "salio $metabox_add_post_first | postcount:$the_query_yuzo->post_count";
+                if( $post_count_manual >= $the_query_yuzo->post_count && $the_query_yuzo->post_count < $metabox_add_post_first ){ break;}
+                
+				if ( isset($post_count_manual) && $post_count_manual >  $metabox_add_post_first ) {
 					$post_id = $post_in[$metabox_add_post_first]; // This is the ID of the first post to be displayed on slider
 					if($the_query_yuzo->have_posts() && $wp_query->post_count != 0){
 						$the_query_yuzo->the_post(); // END custom first post
@@ -607,7 +611,7 @@ function create_post_related( $content ){
 					//the_post(); // END custom first post
 					$the_query_yuzo->the_post(); // END custom first post
 				}
-				$metabox_add_post_first++;
+				$metabox_add_post_first++;		
 
 				
 

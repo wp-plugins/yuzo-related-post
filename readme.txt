@@ -9,7 +9,7 @@ Author: iLen
 Requires at least: 4.0
 Tested up to: 4.2.4
 Stable tag: 4.9.9.8
-Version: 4.9.9.8.2
+Version: 4.9.9.8.3
 License: GPLv2 or later
 
 The first plugin that you must install on your wordpress site. All the best websites use Yuzo.
@@ -64,6 +64,8 @@ Gives shape and life to your post with 'Yuzo related post' ;)
 
 
 == Changelog ==
+= 4.9.9.8.3 =
+* Minor changes in loop for problem with manual post
 = 4.9.9.8.2 =
 * Fix: Widget option 'most views'
 * Fix: Css widget
