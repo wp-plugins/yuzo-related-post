@@ -2798,7 +2798,7 @@ function delete_select2_to_dragdrop_{$value['name']}( id ){
 		}
 	}
  
-	jQuery(select2_search_post_{$value["name"]}_values).val(new_ids);
+	jQuery('.select2_search_post_{$value["name"]}_values').val(new_ids);
 	jQuery('#li_select2_item_'+id).remove();
 }
 
